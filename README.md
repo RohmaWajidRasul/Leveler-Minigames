@@ -19,12 +19,11 @@ The follwing are a cursury look at the deliverables for development Sprint 1:
     - Play option
 
 - Satisfiable sensor input handlers for deliverable minigames
-
 - Satisfiable raceing minigame
     - Succesful integration of GUI, game logic, and accelerometer sensor
-
 - Satisfiable sequence minigame
     - Succesful integration of GUI, game logic, and joystick sensor
+
 
 _See [wiki](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/wikis/home) for additional info on the product [system requirements](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/wikis/home/System-Requirements)_
 
@@ -35,25 +34,23 @@ _Still liable to change_
 - Satisfiable improvements in Sprint 1 main menu
     - Leaderboard option
     - Tutorial option
-
 - Satisfiable improvements in Sprint 1 minigames
     - Possible Aesthetic changes
     - Additional feature tweaks
-
 - Satisfiable color matching minigame
     - Successful integration of GUI, game logic, and the red/yellow/blue LED button sensors
+
+
+_See [wiki](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/wikis/home) for additional info on the product [system requirements](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/wikis/home/System-Requirements)_
 
 ## Software Development Practices
 
 - Vertical Slice Development Process
     - Each minigame can stand alone as its own feature of the Leveler minigame product package
-
 - Version Control System
     - Git with Gitlab Web interface
-
 - System Build Tool Integration 
     - Gradle build tool
-
 - Milestone Incorporation 
     - Gradle build tool
 
@@ -62,9 +59,7 @@ _Still liable to change_
 Agile Project Management
 
 - Sprint-division Timeline (Sprint 1 and 2) 
-
 - Scheduled as well as Standup Meetings
-
 - Soft Paradigm Integration
 
 
