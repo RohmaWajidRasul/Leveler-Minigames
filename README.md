@@ -35,6 +35,8 @@ _(Still liable to change)_
     - Additional feature tweaks
 - Satisfiable color matching minigame
     - Successful integration of GUI, game logic, and the red/yellow/blue LED button sensors
+- Satisfiable Sneaky Thief minigame
+    - Successful integration of GUI, game logic, and the accelerometer/joystick sensors
 
 
 _See [wiki](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/wikis/home) for additional info on the product [system requirements](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/wikis/home/System-Requirements)_
