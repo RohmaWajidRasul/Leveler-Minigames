@@ -1,4 +1,4 @@
-# Leveler Minigames (BETA Version 1)
+# Leveler Minigames (Version 1)
 _-brought to you by the members of DEV TEAM 14_ 
 
 
