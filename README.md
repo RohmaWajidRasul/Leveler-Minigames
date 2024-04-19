@@ -1,3 +1,6 @@
+![levlerPNG](uploads/8aa19e88ab9e8ebd5df1d1db5d3d2785/levlerPNG.png){width=40%}
+
+
 ## Leveler Minigames
 _-brought to you by the members of DEV TEAM 14: Romah, Jerome, Karl, Filipe, and David_ 
 
