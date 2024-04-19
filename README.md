@@ -1,4 +1,4 @@
-## Leveler Minigames (BETA Sprint-1)
+# Leveler Minigames (BETA Sprint-1)
 _-brought to you by the members of DEV TEAM 14_ 
 
 
