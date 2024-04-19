@@ -48,7 +48,7 @@ _See [wiki](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/wik
 - System Build Tool Integration 
     - Gradle build tool
 - Milestone Incorporation 
-    - Gradle build tool
+    - Leveler Minigames Version 1 and 2
 
 ## Project Management Practices
 
