@@ -17,7 +17,6 @@ The follwing are a cursury look at the deliverables for development Sprint 1:
 - Satisfiable main menu
     - Registration option
     - Play option
-
 - Satisfiable sensor input handlers for deliverable minigames
 - Satisfiable raceing minigame
     - Succesful integration of GUI, game logic, and accelerometer sensor
@@ -29,7 +28,7 @@ _See [wiki](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/wik
 
 ## Sprint 2 Deliverables
 
-_Still liable to change_
+_(Still liable to change)_
 
 - Satisfiable improvements in Sprint 1 main menu
     - Leaderboard option
