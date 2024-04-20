@@ -4,38 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javafx_swt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/minigames-1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini-Menu/Mini-Menu.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini-Menu/src/menu/Leveler_Final_Product.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini-Menu/src/menu/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini-Menu/src/menu/Menu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini-Menu/src/menu/MenuController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini-Menu/src/menu/Register.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini-Menu/src/menu/RegisterController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini-Menu/src/menu/Scrollpane.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini-Menu/src/menu/Style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini-Menu/src/menu/Tutorial.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini-Menu/src/menu/TutorialController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini-Menu/src/menu/names.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mini-Menu/menu/Leveler_Final_Product.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mini-Menu/menu/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mini-Menu/menu/Menu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mini-Menu/menu/MenuController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mini-Menu/menu/Register.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mini-Menu/menu/RegisterController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mini-Menu/menu/Scrollpane.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mini-Menu/menu/Style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mini-Menu/menu/Tutorial.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mini-Menu/menu/TutorialController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mini-Menu/menu/names.txt" beforeDir="false" />
+    <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#3, implement main menu scene with partially functional buttons.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,16 +57,6 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="menu.Main" />
-      <module name="Leveler" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\ikun1039\javafx-sdk-21.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -105,11 +65,32 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1713626379298</updated>
-      <workItem from="1713626380405" duration="3447000" />
+      <workItem from="1713626380405" duration="4966000" />
     </task>
+    <task id="LOCAL-00001" summary="#3, implement main menu scene with partially functional buttons.">
+      <option name="closed" value="true" />
+      <created>1713629906581</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713629906581</updated>
+    </task>
+    <task id="LOCAL-00002" summary="#3, implement main menu scene with partially functional buttons.">
+      <option name="closed" value="true" />
+      <created>1713629983159</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713629983159</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="#3, implement main menu scene with partially functional buttons." />
+    <option name="LAST_COMMIT_MESSAGE" value="#3, implement main menu scene with partially functional buttons." />
   </component>
 </project>
