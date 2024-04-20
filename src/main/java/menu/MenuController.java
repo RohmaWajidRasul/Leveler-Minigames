@@ -9,11 +9,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 public class MenuController {
+    @FXML
+    private void handleRegisterSceneButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/menu/Register.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene registerScene = new Scene(root);
+        Node sourceNode = (Node) event.getSource();
+        Stage currentStage = (Stage) sourceNode.getScene().getWindow();
+        currentStage.setScene(registerScene);
+    }
 
     @FXML
     private void handleExitButton(ActionEvent event) {
