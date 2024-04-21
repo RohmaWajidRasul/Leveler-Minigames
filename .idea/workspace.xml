@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#3, fix error.">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/menu/AccelerationSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/AccelerationSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/Draft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/Draft.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,13 +47,14 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.AccelerationSubscriber.executor": "Run",
+    "Application.Draft.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "8-bolt",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/asus/.m2/repository/org/eclipse/paho/org.eclipse.paho.client.mqttv3/1.2.2/org.eclipse.paho.client.mqttv3-1.2.2.jar",
+    "last_opened_file_path": "C:/Users/filip/Área de Trabalho/Leveler/minigames",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,6 +89,7 @@
       <workItem from="1713702243414" duration="14000" />
       <workItem from="1713703028509" duration="38000" />
       <workItem from="1713703498826" duration="474000" />
+      <workItem from="1713705409883" duration="3192000" />
     </task>
     <task id="LOCAL-00001" summary="#3, implement main menu scene with partially functional buttons.">
       <option name="closed" value="true" />
