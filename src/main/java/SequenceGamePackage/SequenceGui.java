@@ -1,6 +1,8 @@
 package SequenceGamePackage;
 
+import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -15,6 +17,7 @@ public class SequenceGui {
     StackPane stackPane;
     Image arrowWhite;
     Image arrowGreen;
+    Image arrowRed;
     ImageView imageview1;
     ImageView imageview2;
     ImageView imageview3;
@@ -23,7 +26,7 @@ public class SequenceGui {
     public SequenceGui() {
         this.stackPane = new StackPane();
         this.arrowGreen = new Image("ArrowGreen.png");
-
+        this.arrowRed = new Image("ArrowRed.png");
         this.arrowWhite = new Image("ArrowWhite.png");
         this.imageview1 = new ImageView();
         this.imageview1.setImage(arrowWhite);
