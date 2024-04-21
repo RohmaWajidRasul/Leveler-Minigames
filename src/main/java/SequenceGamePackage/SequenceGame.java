@@ -1,5 +1,8 @@
 package SequenceGamePackage;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import Handlers.JoystickHandler;
 
 import javafx.application.Application;
@@ -11,6 +14,9 @@ public class SequenceGame  {
     public static int number = 0;
     public static String[] strings;
     public static int count = 0;
+
+    private int timeStamp = 7; //total countdown
+    private int timeZero = 0; //seconds
 
     public static SequenceGui sequenceGui = new SequenceGui();
 
@@ -37,7 +43,23 @@ public class SequenceGame  {
             System.out.println(string);
         }
 
+        Timer gameTimer = new Timer();
 
+        gameTimer.schedule(new TimerTask() {
+            
+            public void run() {
+                if (timeStamp >= timeZero) {
+                    System.out.println(timeStamp);
+                    //lbTimer.setText("TIMER COUNTDOWN");
+                    timeStamp--;
+
+                } else {
+                    managePerformance("time_out");
+                    gameTimer.cancel();
+                }
+            }
+
+        }, 0,1000); //1000 = 1000 milliseconds = 1 second
 
     }
 
