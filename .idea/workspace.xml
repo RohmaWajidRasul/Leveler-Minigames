@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#3, fix error.">
+      <change beforePath="$PROJECT_DIR$/-tcptestmosquittoorg/.lck" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/menu/AccelerationSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/AccelerationSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/menu/BoltMinigameDraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/Bolt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/menu/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/menu/Menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/Bolt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/Bolt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +101,7 @@
       <workItem from="1713703498826" duration="474000" />
       <workItem from="1713705409883" duration="3192000" />
       <workItem from="1713709883299" duration="1995000" />
-      <workItem from="1713721792883" duration="2160000" />
+      <workItem from="1713721792883" duration="3365000" />
     </task>
     <task id="LOCAL-00001" summary="#3, implement main menu scene with partially functional buttons.">
       <option name="closed" value="true" />

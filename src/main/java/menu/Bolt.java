@@ -3,6 +3,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -13,6 +14,8 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.eclipse.paho.client.mqttv3.MqttException;
+
+import java.io.IOException;
 
 public class Bolt {
 
@@ -25,7 +28,7 @@ public class Bolt {
     final int runnerRows = 5;
     final int gridRow = 20;
     final int gridColumn = 2;
-    private int timerValue = 5;
+    private int timerValue = 7;
 
     AccelerationSubscriber accelerationSubscriber;
     Timeline timeline;
@@ -54,7 +57,7 @@ public class Bolt {
         timeline = new Timeline(new KeyFrame(Duration.millis(130), e -> {
             try {
                 run(stage);
-            } catch (MqttException ex) {
+            } catch (MqttException | IOException ex) {
                 throw new RuntimeException(ex);
             }
         }));
@@ -62,7 +65,7 @@ public class Bolt {
         timeline.play();
 
         timer = new Timeline(new KeyFrame(Duration.seconds(1), e -> timerValue--));
-        timer.setCycleCount(5);
+        timer.setCycleCount(timerValue);
         timer.play();
 
         stage.setScene(start);
@@ -71,14 +74,23 @@ public class Bolt {
 
     }
 
-    public void run(Stage stage) throws MqttException {
+    public void run(Stage stage) throws MqttException, IOException {
         drawBackground(gc);
         drawRunner();
         move();
-        if (RunnerX > FinishLineX + 40 || timerValue == 0) {
+        if (RunnerX > FinishLineX + 50) {
             timeline.stop();
             accelerationSubscriber.unsubscribeFromMessages();
             Game game = new Game(stage);
+        } else if (timerValue == 0) {
+            Game.level = 0;
+            timeline.stop();
+            accelerationSubscriber.unsubscribeFromMessages();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle("Leveler");
+            stage.setScene(scene);
+            stage.show();
         }
     }
 
