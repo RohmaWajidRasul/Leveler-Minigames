@@ -4,16 +4,16 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import Handlers.JoystickHandler;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class SequenceGame  {
-    public static String[] input = new String[4];
+    public static String[] input = new String[4 + SequenceGui.level - 1];
     public static boolean gameActive;
     public static int number = 0;
     public static String[] strings;
     public static int count = 0;
+    public static int ArrowCount = 0;
 
     private int timeStamp = 7; //total countdown
     private int timeZero = 0; //seconds
@@ -35,7 +35,6 @@ public class SequenceGame  {
 
         sequenceGui.start(stage);
 
-        //strings = generateArrowDirection();
         sequenceGui.drawArrows();
         gameActive = true;
 

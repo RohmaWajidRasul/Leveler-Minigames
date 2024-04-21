@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="Add basics of sequenceMini-game">
+    <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#3, fix error.">
+      <change beforePath="$PROJECT_DIR$/-tcptestmosquittoorg/.lck" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SequenceGamePackage/SequenceGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SequenceGamePackage/SequenceGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/menu/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/Bolt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/Bolt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +40,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -54,30 +54,36 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.AccelerationSubscriber.executor": "Run",
+    "Application.BoltMinigameDraft.executor": "Run",
+    "Application.Draft.executor": "Run",
+    "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "10-sequence-match-minigame",
-    "last_opened_file_path": "C:/Users/kakan/Desktop/Incompetence/minigames/src/main/resources/sequenceGame",
+    "git-widget-placeholder": "8-bolt",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/filip/Área de Trabalho/Leveler/minigames",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\kakan\Desktop\Incompetence\minigames\src\main\resources\sequenceGame" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\kakan\Desktop\Incompetence\minigames\src\main\resources" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Handlers" />
-      <recent name="SequenceGame" />
-    </key>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -88,7 +94,14 @@
       <option name="presentableId" value="Default" />
       <updated>1713626379298</updated>
       <workItem from="1713626380405" duration="8112000" />
-      <workItem from="1713698401507" duration="4254000" />
+      <workItem from="1713701728613" duration="107000" />
+      <workItem from="1713701840604" duration="24000" />
+      <workItem from="1713702243414" duration="14000" />
+      <workItem from="1713703028509" duration="38000" />
+      <workItem from="1713703498826" duration="474000" />
+      <workItem from="1713705409883" duration="3192000" />
+      <workItem from="1713709883299" duration="1995000" />
+      <workItem from="1713721792883" duration="3365000" />
     </task>
     <task id="LOCAL-00001" summary="#3, implement main menu scene with partially functional buttons.">
       <option name="closed" value="true" />
@@ -114,14 +127,7 @@
       <option name="project" value="LOCAL" />
       <updated>1713631502051</updated>
     </task>
-    <task id="LOCAL−00004" summary="Add basics of sequenceMini-game">
-      <option name="closed" value="true" />
-      <created>1713701084791</created>
-      <option name="number" value="LOCAL−00004" />
-      <option name="presentableId" value="LOCAL−00004" />
-      <updated>1713701084791</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,7 +136,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="#3, implement main menu scene with partially functional buttons." />
     <MESSAGE value="#3, fix error." />
-    <MESSAGE value="Add basics of sequenceMini-game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add basics of sequenceMini-game" />
+    <option name="LAST_COMMIT_MESSAGE" value="#3, fix error." />
   </component>
 </project>
