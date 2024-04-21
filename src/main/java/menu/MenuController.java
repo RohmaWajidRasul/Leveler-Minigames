@@ -1,6 +1,5 @@
 package menu;
 
-import SequenceGamePackage.SequenceGame;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MenuController {
+
     @FXML
     private void handleRegisterSceneButton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/menu/Register.fxml"));
@@ -28,12 +28,12 @@ public class MenuController {
         Platform.exit();
     }
 
+
     @FXML
-    private void handlePlayButton(ActionEvent event) throws Exception {
+    private void handlePlayButton(ActionEvent event) {
         Node sourceNode = (Node) event.getSource();
         Stage currentStage = (Stage) sourceNode.getScene().getWindow();
-        SequenceGame sequenceGame = new SequenceGame();
-        sequenceGame.begin(currentStage);
+        Game game = new Game(currentStage);
 
     }
 }
