@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
-public class Draft extends Application {
+public class BoltMinigameDraft extends Application {
 
     GraphicsContext gc;
     int RunnerX = 10;
@@ -27,17 +27,18 @@ public class Draft extends Application {
 
     final int gridColumn = 2;
 
-    AccelerationSubscriber AccSub;
+    AccelerationSubscriber accelerationSubscriber;
+    Timeline timeline;
 
 
     @Override
     public void start(Stage window) {
-        {
-            try {
-                AccSub = new AccelerationSubscriber();
-            } catch (MqttException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            accelerationSubscriber = new AccelerationSubscriber();
+            accelerationSubscriber.subscribeToMessages();
+        } catch (MqttException e) {
+            e.printStackTrace();
+            System.exit(1); // Exit if there's an error initializing AccelerationSubscriber
         }
 
         AnchorPane anchor = new AnchorPane();
@@ -47,7 +48,7 @@ public class Draft extends Application {
         gc = canvas.getGraphicsContext2D();
         anchor.getChildren().add(canvas);
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(130), e -> run()));
+        timeline = new Timeline(new KeyFrame(Duration.millis(130), e -> run()));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
@@ -61,6 +62,9 @@ public class Draft extends Application {
         drawBackground(gc);
         drawRunner();
         move();
+        if (RunnerX > FinishLineX + 40) {
+            timeline.stop();
+        }
     }
 
     public void drawBackground(GraphicsContext gc){
@@ -89,9 +93,9 @@ public class Draft extends Application {
     }
 
     public void move(){
-
-        RunnerX = RunnerX + RunnerSize;
-
+        if (accelerationSubscriber.getDifference() > 70) {
+            RunnerX = RunnerX + RunnerSize;
+        }
     }
 
     public static void main(String[] args) {

@@ -21,13 +21,16 @@ public class AccelerationSubscriber implements MqttCallback {
     private final static String BROKER  = "tcp://test.mosquitto.org";
     private final static String USER_ID = "";
 
+    private double zValue = 0.9;
+    private double lastZValue = 0.9;
+
     public AccelerationSubscriber() throws MqttException {
         middleware = new MqttClient(BROKER, USER_ID);
         middleware.connect();
         middleware.setCallback(this);
     }
 
-    private void subscribeToMessages() {
+    public void subscribeToMessages() {
         // This is an example of a thread that will continue running until the program stops.
         THREAD_POOL.submit(() -> {
             try {
@@ -65,20 +68,29 @@ public class AccelerationSubscriber implements MqttCallback {
     public void deliveryComplete(IMqttDeliveryToken token) {
     }
 
-    @Override
     public void messageArrived(String topic, MqttMessage message) {
         String payloadString = new String(message.getPayload());
 
         // Check if the payload can be parsed into a float
         try {
             double doubleValue = Double.parseDouble(payloadString);
+            // Update zValue in BoltApplication
+            lastZValue = zValue;
+            zValue = doubleValue;
             // Now you have the float value
-            System.out.println("Received double value: " + doubleValue);
+            System.out.println("last" + lastZValue);
+            System.out.println("z" + zValue);
+            System.out.println((Math.abs(lastZValue - doubleValue) / 3) * 100);
         } catch (NumberFormatException e) {
             // Payload is not a valid float, so ignore it
             System.err.println("Received non-double value, ignoring: " + payloadString);
         }
     }
+
+    public double getDifference() {
+        return (Math.abs(lastZValue - zValue)) * 100;
+    }
+
 
     public static void main(String[] args) throws MqttException {
         AccelerationSubscriber accelerationSubscriber = new AccelerationSubscriber();
