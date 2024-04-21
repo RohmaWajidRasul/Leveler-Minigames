@@ -61,21 +61,15 @@ public class JoystickHandler implements MqttCallback {
         String s = new String(message.getPayload(), StandardCharsets.UTF_8);
         System.out.println(s);
 
-        SequenceGamePackage.SequenceGame.gameActive = true;
-
 
         if (SequenceGamePackage.SequenceGame.gameActive && SequenceGamePackage.SequenceGame.number < 4) {
             SequenceGamePackage.SequenceGame.input[SequenceGamePackage.SequenceGame.number] = s;
             SequenceGamePackage.SequenceGame.number++;
         }
 
-        System.out.println(SequenceGamePackage.SequenceGame.checkDirection(s));
-
-
-
-
+        String performanceResult = SequenceGamePackage.SequenceGame.checkPerformance(s);
+        SequenceGamePackage.SequenceGame.managePerformance(performanceResult);
     }
-
 }
 
 
