@@ -91,6 +91,10 @@ public class AccelerationSubscriber implements MqttCallback {
         return (Math.abs(lastZValue - zValue)) * 100;
     }
 
+    public void unsubscribeFromMessages() throws MqttException {
+        middleware.disconnect();
+    }
+
 
     public static void main(String[] args) throws MqttException {
         AccelerationSubscriber accelerationSubscriber = new AccelerationSubscriber();

@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
-public class BoltMinigameDraft extends Application {
+public class Bolt {
 
     GraphicsContext gc;
     int RunnerX = 10;
@@ -22,11 +22,8 @@ public class BoltMinigameDraft extends Application {
     int RunnerSize = 40;
     final int GridSquare = 20;
     final int FinishLineX = 520;
-
     final int runnerRows = 5;
-
     final int gridRow = 20;
-
     final int gridColumn = 2;
     private int timerValue = 5;
 
@@ -34,9 +31,11 @@ public class BoltMinigameDraft extends Application {
     Timeline timeline;
     Timeline timer;
 
+    public Bolt(Stage stage){
+        start(stage);
+    }
 
-    @Override
-    public void start(Stage window) {
+    public void start(Stage stage) {
         try {
             accelerationSubscriber = new AccelerationSubscriber();
             accelerationSubscriber.subscribeToMessages();
@@ -52,7 +51,13 @@ public class BoltMinigameDraft extends Application {
         gc = canvas.getGraphicsContext2D();
         anchor.getChildren().add(canvas);
 
-        timeline = new Timeline(new KeyFrame(Duration.millis(130), e -> run()));
+        timeline = new Timeline(new KeyFrame(Duration.millis(130), e -> {
+            try {
+                run(stage);
+            } catch (MqttException ex) {
+                throw new RuntimeException(ex);
+            }
+        }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
@@ -60,18 +65,20 @@ public class BoltMinigameDraft extends Application {
         timer.setCycleCount(5);
         timer.play();
 
-        window.setScene(start);
-        window.show();
+        stage.setScene(start);
+        stage.show();
 
 
     }
 
-    public void run(){
+    public void run(Stage stage) throws MqttException {
         drawBackground(gc);
         drawRunner();
         move();
         if (RunnerX > FinishLineX + 40 || timerValue == 0) {
             timeline.stop();
+            accelerationSubscriber.unsubscribeFromMessages();
+            Game game = new Game(stage);
         }
     }
 
@@ -106,12 +113,10 @@ public class BoltMinigameDraft extends Application {
     }
 
     public void move(){
-        if (accelerationSubscriber.getDifference() > 70) {
+        if (accelerationSubscriber.getDifference() > (70 + Game.level - 1)) {
             RunnerX = RunnerX + RunnerSize;
         }
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
+
 }

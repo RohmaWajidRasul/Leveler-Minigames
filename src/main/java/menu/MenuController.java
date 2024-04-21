@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MenuController {
+
     @FXML
     private void handleRegisterSceneButton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/menu/Register.fxml"));
@@ -25,5 +26,14 @@ public class MenuController {
     @FXML
     private void handleExitButton(ActionEvent event) {
         Platform.exit();
+    }
+
+
+    @FXML
+    private void handlePlayButton(ActionEvent event) {
+        Node sourceNode = (Node) event.getSource();
+        Stage currentStage = (Stage) sourceNode.getScene().getWindow();
+        Game game = new Game(currentStage);
+
     }
 }
