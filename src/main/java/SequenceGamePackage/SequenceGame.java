@@ -78,4 +78,34 @@ public class SequenceGame  {
         }
         return performanceResult; /* time out is checked in the Game method within timer background loop */
     }
+
+    public static void managePerformance(String performanceResult) { //had to make this static for call in MQTT class
+
+        System.out.println(performanceResult);
+        switch (performanceResult) {
+
+            case "arrow_correct": /* input correct arrow counted --> (possibly visual/auditory feedback) --> game continues on to next arrow */
+                gameActive = true;
+                sequenceGui.changeArrowColor(count, "green");
+                count++;
+                break;
+
+            case "quota_met": /* game stops --> display victory --> goes to next game after specified time*/
+                sequenceGui.changeArrowColor(count, "green");
+                gameActive = false; /* depends what gameActive means: either the minigame stops or it means the entire continuation of minigames (including others) ends */
+                break;
+
+            case "arrow_wrong": /* game stops --> display game over (because of wrong arrow) --> with/without button to go to menu */
+                sequenceGui.changeArrowColor(count, "red");
+                sequenceGui.showDisplay();
+                gameActive = false;
+                count++; //temp for testing so it continues and doesnt track back
+                break;
+
+            case "time_out": /* game stops --> display game over (because of time out) --> with/without button to go to menu */
+                sequenceGui.showDisplay();
+                gameActive = false;
+                break;
+        }
+    }
 }
