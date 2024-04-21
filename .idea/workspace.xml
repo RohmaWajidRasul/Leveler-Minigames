@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#3, fix error.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/menu/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/menu/Menu.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#3, fix error." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,9 +33,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2fN0lA8DZz43abcazFOceHRYTYe" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -51,7 +47,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "3-main-menu",
+    "git-widget-placeholder": "8-bolt",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
