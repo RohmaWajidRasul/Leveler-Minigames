@@ -2,7 +2,6 @@ package menu;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -71,7 +70,6 @@ public class Bolt {
         stage.setScene(start);
         stage.show();
 
-
     }
 
     public void run(Stage stage) throws MqttException, IOException {
@@ -112,7 +110,6 @@ public class Bolt {
                 gc.fillRect(FinishLineX + (GridSquare * column), row * GridSquare, GridSquare, GridSquare);
             }
         }
-
         gc.setFill(Color.WHITE);
         gc.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 20));
         gc.fillText(String.format("Time Left: %d",timerValue), 10, 25, 100);
@@ -129,6 +126,5 @@ public class Bolt {
             RunnerX = RunnerX + RunnerSize;
         }
     }
-
 
 }

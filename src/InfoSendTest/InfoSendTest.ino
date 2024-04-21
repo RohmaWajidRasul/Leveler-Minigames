@@ -9,8 +9,8 @@ MMA7660 accelemeter;
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 
-const char* ssid = "Rohma's phone";
-const char* password =  "12345678";
+const char* ssid = "TN-EB0840";
+const char* password =  "EshyooshBas3";
 void setup() {
 
     accelemeter.init();
@@ -77,7 +77,7 @@ void loop() {
   
     client.publish("Topic 1", charArray);
 
-    delay(500);
+    delay(750);
 
   }
 }

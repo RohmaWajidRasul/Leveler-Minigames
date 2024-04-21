@@ -2,7 +2,6 @@ package menu;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -15,12 +14,10 @@ public class AccelerationSubscriber implements MqttCallback {
 
     private final static ExecutorService THREAD_POOL = Executors.newSingleThreadExecutor();
 
-    // These are important variables that you need to change.
     private final IMqttClient middleware;
     private final static String TOPIC   = "Topic 1";
     private final static String BROKER  = "tcp://test.mosquitto.org";
     private final static String USER_ID = "";
-
     private double zValue = 0.9;
     private double lastZValue = 0.9;
 
@@ -31,12 +28,9 @@ public class AccelerationSubscriber implements MqttCallback {
     }
 
     public void subscribeToMessages() {
-        // This is an example of a thread that will continue running until the program stops.
         THREAD_POOL.submit(() -> {
             try {
-
                 middleware.subscribe(TOPIC);
-
             } catch (MqttSecurityException e) {
                 e.printStackTrace();
             } catch (MqttException e) {
@@ -45,12 +39,9 @@ public class AccelerationSubscriber implements MqttCallback {
         });
     }
 
-    // These methods are the implementation of methods that will be triggered when
-    // different events for *this* MQTT client.
+
     @Override
     public void connectionLost(Throwable throwable) {
-        // Simple code to indicate that the connection was lost.
-        // For a more robust system, we should try to re-establish the connection.
         System.out.println("Connection lost!");
         try {
             middleware.disconnect();
@@ -58,12 +49,8 @@ public class AccelerationSubscriber implements MqttCallback {
         } catch (MqttException e) {
             e.printStackTrace();
         }
-        // Try to reestablish? Plan B?
     }
 
-    // This method would be used when we know that the message was delivered. Its important
-    // when handling more synchronised communication using higher "quality of services" (QoS)
-    // You will learn about QoS in a future course.
     @Override
     public void deliveryComplete(IMqttDeliveryToken token) {
     }
@@ -71,10 +58,9 @@ public class AccelerationSubscriber implements MqttCallback {
     public void messageArrived(String topic, MqttMessage message) {
         String payloadString = new String(message.getPayload());
 
-        // Check if the payload can be parsed into a float
         try {
             double doubleValue = Double.parseDouble(payloadString);
-            // Update zValue in BoltApplication
+            // Update zValue and lastZValue
             lastZValue = zValue;
             zValue = doubleValue;
             // Now you have the float value
@@ -94,7 +80,6 @@ public class AccelerationSubscriber implements MqttCallback {
     public void unsubscribeFromMessages() throws MqttException {
         middleware.disconnect();
     }
-
 
     public static void main(String[] args) throws MqttException {
         AccelerationSubscriber accelerationSubscriber = new AccelerationSubscriber();

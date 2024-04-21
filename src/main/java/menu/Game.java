@@ -16,7 +16,6 @@ public class Game {
         int random = (int) (Math.random() * (numberOfGames - 1));
         switch (random){
             case 0 ->  {Bolt bolt = new Bolt(stage);}
-            //case 1 ->
         }
     }
 
