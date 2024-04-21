@@ -186,6 +186,10 @@ public class SequenceGui {
         }
     }
 
+    public void showDisplay() { //to prevent thread overload issues
+        Platform.runLater(this::showGameOver); 
+    }
+
     public void showGameOver() { //to display GAME OVER
         Label lbGameOver = new Label("GAME OVER");
         stackPane.getChildren().add(lbGameOver);
