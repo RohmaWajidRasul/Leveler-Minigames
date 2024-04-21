@@ -164,18 +164,27 @@ public class SequenceGui {
         }
     }
 
-    public void changeArrowColor(int arrowNumber) {
+    public void changeArrowColor(int arrowNumber, String color) {
 
+        Image arrowColor = arrowWhite;
 
-        switch (arrowNumber) {
-            case 0 -> this.imageview1.setImage(arrowGreen);
-            case 1 -> this.imageview2.setImage(arrowGreen);
-            case 2 -> this.imageview3.setImage(arrowGreen);
-            case 3 -> this.imageview4.setImage(arrowGreen);
+        if(color == "green") {
+            arrowColor = arrowGreen;
+        } else {
+            arrowColor = arrowRed;
+        }
+        
+        if(SequenceGame.gameActive == true) {
 
+            switch (arrowNumber) {
+                case 0 -> this.imageview1.setImage(arrowColor);
+                case 1 -> this.imageview2.setImage(arrowColor);
+                case 2 -> this.imageview3.setImage(arrowColor);
+                case 3 -> this.imageview4.setImage(arrowColor);
+
+            }
         }
     }
-
 }
 
 
