@@ -1,16 +1,15 @@
 package SequenceGamePackage;
 
 import Handlers.JoystickHandler;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class SequenceGame  {
-    public static String[] input = new String[4];
+    public static String[] input = new String[4 + SequenceGui.level - 1];
     public static boolean gameActive;
     public static int number = 0;
     public static String[] strings;
-    public static int count = 0;
+    public static int ArrowCount = 0;
 
     public static SequenceGui sequenceGui = new SequenceGui();
 
@@ -29,7 +28,6 @@ public class SequenceGame  {
 
         sequenceGui.start(stage);
 
-        //strings = generateArrowDirection();
         sequenceGui.drawArrows();
         gameActive = true;
 
@@ -37,23 +35,25 @@ public class SequenceGame  {
             System.out.println(string);
         }
 
-
-
     }
+
+
 
     public static boolean checkDirection(String dierection) {
 
         boolean result = false;
-        if (count < strings.length) {
-            if (dierection.equals(strings[count])) {
+        if (ArrowCount < strings.length) {
+            if (dierection.equals(strings[ArrowCount])) {
                 result = true;
-                sequenceGui.changeArrowColor(count);
+                sequenceGui.changeArrowColor(ArrowCount);
 
             } else {
                 gameActive = false;
+
+
             }
 
-            count++;
+            ArrowCount++;
         } else {
             gameActive = false;
             result = false;

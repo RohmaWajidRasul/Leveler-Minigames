@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="Add basics of sequenceMini-game">
+    <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#10 Make play button functional">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Handlers/JoystickHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Handlers/JoystickHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SequenceGamePackage/SequenceGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SequenceGamePackage/SequenceGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/menu/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SequenceGamePackage/SequenceGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SequenceGamePackage/SequenceGui.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,21 +53,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "10-sequence-match-minigame",
-    "last_opened_file_path": "C:/Users/kakan/Desktop/Incompetence/minigames/src/main/resources/sequenceGame",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;10-sequence-match-minigame&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kakan/Desktop/Incompetence/minigames/src/main/resources/sequenceGame&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kakan\Desktop\Incompetence\minigames\src\main\resources\sequenceGame" />
@@ -88,7 +89,10 @@
       <option name="presentableId" value="Default" />
       <updated>1713626379298</updated>
       <workItem from="1713626380405" duration="8112000" />
-      <workItem from="1713698401507" duration="4254000" />
+      <workItem from="1713698401507" duration="6662000" />
+      <workItem from="1713707744291" duration="159000" />
+      <workItem from="1713711019183" duration="563000" />
+      <workItem from="1713712230708" duration="11823000" />
     </task>
     <task id="LOCAL-00001" summary="#3, implement main menu scene with partially functional buttons.">
       <option name="closed" value="true" />
@@ -121,7 +125,14 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1713701084791</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="#10 Make play button functional">
+      <option name="closed" value="true" />
+      <created>1713702867694</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1713702867694</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +142,7 @@
     <MESSAGE value="#3, implement main menu scene with partially functional buttons." />
     <MESSAGE value="#3, fix error." />
     <MESSAGE value="Add basics of sequenceMini-game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add basics of sequenceMini-game" />
+    <MESSAGE value="#10 Make play button functional" />
+    <option name="LAST_COMMIT_MESSAGE" value="#10 Make play button functional" />
   </component>
 </project>

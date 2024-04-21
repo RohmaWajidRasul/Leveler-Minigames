@@ -19,49 +19,47 @@ public class SequenceGui {
     ImageView imageview2;
     ImageView imageview3;
     ImageView imageview4;
+    ImageView imageview5;
+    ImageView imageview6;
+    ImageView imageview7;
+    ImageView imageview8;
+
+    public static int level = 5;
 
     public SequenceGui() {
         this.stackPane = new StackPane();
         this.arrowGreen = new Image("ArrowGreen.png");
-
         this.arrowWhite = new Image("ArrowWhite.png");
+
         this.imageview1 = new ImageView();
         this.imageview1.setImage(arrowWhite);
+
         this.imageview2 = new ImageView(arrowWhite);
         this.imageview2.setImage(arrowWhite);
+
         this.imageview3 = new ImageView();
         this.imageview3.setImage(arrowWhite);
+
         this.imageview4 = new ImageView();
         this.imageview4.setImage(arrowWhite);
+
+        this.imageview5 = new ImageView(arrowWhite);
+        this.imageview5.setImage(arrowWhite);
+
+        this.imageview6 = new ImageView(arrowWhite);
+        this.imageview6.setImage(arrowWhite);
+
+        this.imageview7 = new ImageView(arrowWhite);
+        this.imageview7.setImage(arrowWhite);
+
+        this.imageview8 = new ImageView(arrowWhite);
+        this.imageview8.setImage(arrowWhite);
     }
 
 
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
 
-
-
-
-        Polygon arrowHead1 = new Polygon();
-        arrowHead1.getPoints().addAll(new Double [] {
-                0.0,0.0,
-                200.0,0.0,
-                100.0,-100.0 });
-        arrowHead1.setFill(Color.BLACK);
-        arrowHead1.setTranslateX(20);
-        arrowHead1.setTranslateY(100);
-
-        Rectangle arrowPart1 = new Rectangle();
-        arrowPart1.setHeight(100);
-        arrowPart1.setWidth(50);
-        arrowPart1.setFill(Color.BLACK);
-
-
-
-        //stackPane.getChildren().addAll(arrowPart1);
-        //stackPane.getChildren().addAll(arrowHead1);
-
-
-        Scene sequenceScene = new Scene(stackPane,1000,1000);
+        Scene sequenceScene = new Scene(stackPane,600,400);
         stage.setScene(sequenceScene);
         stage.show();
 
@@ -95,6 +93,10 @@ public class SequenceGui {
                         case 1 -> imageview2.setRotate(180);
                         case 2 -> imageview3.setRotate(180);
                         case 3 -> imageview4.setRotate(180);
+                        case 4 -> imageview5.setRotate(180);
+                        case 5 -> imageview6.setRotate(180);
+                        case 6 -> imageview7.setRotate(180);
+                        case 7 -> imageview8.setRotate(180);
                     }
                     allLeft = false;
                 }
@@ -106,6 +108,10 @@ public class SequenceGui {
                         case 1 -> imageview2.setRotate(270);
                         case 2 -> imageview3.setRotate(270);
                         case 3 -> imageview4.setRotate(270);
+                        case 4 -> imageview5.setRotate(270);
+                        case 5 -> imageview6.setRotate(270);
+                        case 6 -> imageview7.setRotate(270);
+                        case 7 -> imageview8.setRotate(270);
                     }
 
                 }
@@ -117,12 +123,14 @@ public class SequenceGui {
                         case 1 -> imageview2.setRotate(90);
                         case 2 -> imageview3.setRotate(90);
                         case 3 -> imageview4.setRotate(90);
+                        case 4 -> imageview5.setRotate(90);
+                        case 5 -> imageview6.setRotate(90);
+                        case 6 -> imageview7.setRotate(90);
+                        case 7 -> imageview8.setRotate(90);
                     }
                     allLeft = false;
                 }
-
             }
-
         }
         SequenceGame.strings = strings;
 
@@ -130,20 +138,55 @@ public class SequenceGui {
 
         imageview1.setFitWidth(100);
         imageview1.setPreserveRatio(true);
-        imageview1.setTranslateX(-300);
+        imageview1.setTranslateX(-220);
 
         imageview2.setFitWidth(100);
         imageview2.setPreserveRatio(true);
-        imageview2.setTranslateX(-200);
-
+        imageview2.setTranslateX(-70);
 
         imageview3.setFitWidth(100);
         imageview3.setPreserveRatio(true);
-        imageview3.setTranslateX(-100);
+        imageview3.setTranslateX(80);
 
         imageview4.setFitWidth(100);
         imageview4.setPreserveRatio(true);
-        imageview4.setTranslateX(0);
+        imageview4.setTranslateX(230);
+
+        System.out.println(imageview1.getTranslateY());
+
+        if (level > 1) {
+            imageview1.setTranslateY(100);
+            imageview2.setTranslateY(100);
+            imageview3.setTranslateY(100);
+            imageview4.setTranslateY(100);
+        }
+
+        if (level == 2) {
+            imageview5.setTranslateY(-100);
+            imageview5.setFitWidth(100);
+            imageview5.setPreserveRatio(true);
+            imageview5.setTranslateX(-220);
+            stackPane.getChildren().add(imageview5);
+        } else if (level == 3) {
+            imageview6.setTranslateY(-100);
+            imageview6.setFitWidth(100);
+            imageview6.setPreserveRatio(true);
+            imageview6.setTranslateX(-70);
+            stackPane.getChildren().add(imageview6);
+        } else if (level == 4) {
+            imageview7.setTranslateY(-100);
+            imageview7.setFitWidth(100);
+            imageview7.setPreserveRatio(true);
+            imageview7.setTranslateX(80);
+            stackPane.getChildren().add(imageview7);
+        } else if (level == 5) {
+            imageview8.setTranslateY(-100);
+            imageview8.setFitWidth(100);
+            imageview8.setPreserveRatio(true);
+            imageview8.setTranslateX(230);
+            stackPane.getChildren().add(imageview8);
+        }
+
 
         stackPane.getChildren().add(imageview1);
         stackPane.getChildren().add(imageview2);
@@ -169,6 +212,10 @@ public class SequenceGui {
             case 1 -> this.imageview2.setImage(arrowGreen);
             case 2 -> this.imageview3.setImage(arrowGreen);
             case 3 -> this.imageview4.setImage(arrowGreen);
+            case 4 -> this.imageview5.setImage(arrowGreen);
+            case 5 -> this.imageview6.setImage(arrowGreen);
+            case 6 -> this.imageview7.setImage(arrowGreen);
+            case 7 -> this.imageview8.setImage(arrowGreen);
 
         }
     }
