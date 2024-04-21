@@ -63,24 +63,19 @@ public class SequenceGame  {
 
     }
 
-    public static boolean checkDirection(String dierection) {
+    public static String checkPerformance(String directionInput) { //had to make this static for call in MQTT class
+        
+        String performanceResult;   
+        int arrowQuota = 4; //this is for how many arrows should be done correctly to win
 
-        boolean result = false;
-        if (count < strings.length) {
-            if (dierection.equals(strings[count])) {
-                result = true;
-                sequenceGui.changeArrowColor(count);
-
-            } else {
-                gameActive = false;
+        if(directionInput.equals(strings[count])) {
+            performanceResult = "arrow_correct"; //correct arrow direction performance
+            if(count == (arrowQuota - 1)) {
+                performanceResult = "quota_met";
             }
-
-            count++;
         } else {
-            gameActive = false;
-            result = false;
+            performanceResult = "arrow_wrong"; //incorrect arrow direction performance --> game over
         }
-
-        return result;
+        return performanceResult; /* time out is checked in the Game method within timer background loop */
     }
 }
