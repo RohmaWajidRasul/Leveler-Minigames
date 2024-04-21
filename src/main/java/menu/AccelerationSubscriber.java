@@ -66,9 +66,18 @@ public class AccelerationSubscriber implements MqttCallback {
     }
 
     @Override
-    public void messageArrived(String topic, MqttMessage message) throws MqttException {
-        System.out.println("topic '" + topic + "': " + message);
+    public void messageArrived(String topic, MqttMessage message) {
+        String payloadString = new String(message.getPayload());
 
+        // Check if the payload can be parsed into a float
+        try {
+            double doubleValue = Double.parseDouble(payloadString);
+            // Now you have the float value
+            System.out.println("Received double value: " + doubleValue);
+        } catch (NumberFormatException e) {
+            // Payload is not a valid float, so ignore it
+            System.err.println("Received non-double value, ignoring: " + payloadString);
+        }
     }
 
     public static void main(String[] args) throws MqttException {
