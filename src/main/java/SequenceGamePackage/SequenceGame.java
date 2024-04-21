@@ -5,7 +5,7 @@ import Handlers.JoystickHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class SequenceGame extends Application {
+public class SequenceGame  {
     public static String[] input = new String[4];
     public static boolean gameActive;
     public static int number = 0;
@@ -14,8 +14,8 @@ public class SequenceGame extends Application {
 
     public static SequenceGui sequenceGui = new SequenceGui();
 
-    @Override
-    public void start(Stage stage) throws Exception {
+
+    public void begin(Stage stage) throws Exception {
 
         Game(stage);
 
