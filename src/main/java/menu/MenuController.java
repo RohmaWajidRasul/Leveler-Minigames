@@ -26,4 +26,9 @@ public class MenuController {
     private void handleExitButton(ActionEvent event) {
         Platform.exit();
     }
+
+    @FXML
+    private void handlePlayButton(ActionEvent event) {
+
+    }
 }
