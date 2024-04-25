@@ -11,6 +11,7 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import menu.Game;
 
 public class SequenceGui {
 
@@ -26,8 +27,6 @@ public class SequenceGui {
     ImageView imageview6;
     ImageView imageview7;
     ImageView imageview8;
-
-    public static int level = 5;
 
     public SequenceGui() {
         this.stackPane = new StackPane();
@@ -158,32 +157,37 @@ public class SequenceGui {
 
         System.out.println(imageview1.getTranslateY());
 
-        if (level > 1) {
+        if (Game.level > 1) {
             imageview1.setTranslateY(100);
             imageview2.setTranslateY(100);
             imageview3.setTranslateY(100);
             imageview4.setTranslateY(100);
         }
 
-        if (level == 2) {
+        if (Game.level > 1) {
+            imageview1.setTranslateY(100);
+            imageview2.setTranslateY(100);
+            imageview3.setTranslateY(100);
+            imageview4.setTranslateY(100);
+
             imageview5.setTranslateY(-100);
             imageview5.setFitWidth(100);
             imageview5.setPreserveRatio(true);
             imageview5.setTranslateX(-220);
             stackPane.getChildren().add(imageview5);
-        } else if (level == 3) {
+        } else if (Game.level > 2) {
             imageview6.setTranslateY(-100);
             imageview6.setFitWidth(100);
             imageview6.setPreserveRatio(true);
             imageview6.setTranslateX(-70);
             stackPane.getChildren().add(imageview6);
-        } else if (level == 4) {
+        } else if (Game.level > 3) {
             imageview7.setTranslateY(-100);
             imageview7.setFitWidth(100);
             imageview7.setPreserveRatio(true);
             imageview7.setTranslateX(80);
             stackPane.getChildren().add(imageview7);
-        } else if (level == 5) {
+        } else if (Game.level > 4) {
             imageview8.setTranslateY(-100);
             imageview8.setFitWidth(100);
             imageview8.setPreserveRatio(true);
@@ -218,7 +222,7 @@ public class SequenceGui {
             arrowColor = arrowRed;
         }
         
-        if(SequenceGame.gameActive == true) {
+        if(SequenceGame.gameActive) {
 
             switch (arrowNumber) {
                 case 0 -> this.imageview1.setImage(arrowColor);

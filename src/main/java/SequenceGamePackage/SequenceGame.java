@@ -8,9 +8,10 @@ import javafx.scene.text.Text;
 import Handlers.JoystickHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import menu.Game;
 
-public class SequenceGame  {
-    public static String[] input = new String[4 + SequenceGui.level - 1];
+public class SequenceGame extends Application {
+    public static String[] input = new String[4 + Game.level - 1];
     public static boolean gameActive;
     public static int number = 0;
     public static String[] strings;
@@ -24,7 +25,7 @@ public class SequenceGame  {
     public static SequenceGui sequenceGui = new SequenceGui();
 
 
-    public void begin(Stage stage) throws Exception {
+    public void start(Stage stage) throws Exception {
 
         Game(stage);
 
