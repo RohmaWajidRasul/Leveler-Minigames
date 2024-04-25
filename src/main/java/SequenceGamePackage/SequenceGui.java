@@ -6,9 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import menu.Game;
@@ -157,12 +154,7 @@ public class SequenceGui {
 
         System.out.println(imageview1.getTranslateY());
 
-        if (Game.level > 1) {
-            imageview1.setTranslateY(100);
-            imageview2.setTranslateY(100);
-            imageview3.setTranslateY(100);
-            imageview4.setTranslateY(100);
-        }
+
 
         if (Game.level > 1) {
             imageview1.setTranslateY(100);
@@ -175,19 +167,19 @@ public class SequenceGui {
             imageview5.setPreserveRatio(true);
             imageview5.setTranslateX(-220);
             stackPane.getChildren().add(imageview5);
-        } else if (Game.level > 2) {
+        } if (Game.level > 2) {
             imageview6.setTranslateY(-100);
             imageview6.setFitWidth(100);
             imageview6.setPreserveRatio(true);
             imageview6.setTranslateX(-70);
             stackPane.getChildren().add(imageview6);
-        } else if (Game.level > 3) {
+        } if (Game.level > 3) {
             imageview7.setTranslateY(-100);
             imageview7.setFitWidth(100);
             imageview7.setPreserveRatio(true);
             imageview7.setTranslateX(80);
             stackPane.getChildren().add(imageview7);
-        } else if (Game.level > 4) {
+        } if (Game.level > 4) {
             imageview8.setTranslateY(-100);
             imageview8.setFitWidth(100);
             imageview8.setPreserveRatio(true);
@@ -214,9 +206,9 @@ public class SequenceGui {
 
     public void changeArrowColor(int arrowNumber, String color) {
 
-        Image arrowColor = arrowWhite;
+        Image arrowColor;
 
-        if(color == "green") {
+        if(color.equals("green")) {
             arrowColor = arrowGreen;
         } else {
             arrowColor = arrowRed;
