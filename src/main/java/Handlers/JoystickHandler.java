@@ -6,7 +6,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static SequenceGamePackage.SequenceGame.numberOfArrows;
+
 public class JoystickHandler implements MqttCallback {
+
+    public int inputNumber = 0;
 
     // Most of this code is taken from the exercise on canvas
 
@@ -62,10 +66,9 @@ public class JoystickHandler implements MqttCallback {
         System.out.println(s);
 
 
-        if (SequenceGamePackage.SequenceGame.gameActive && SequenceGamePackage.SequenceGame.number < 4) {
-            SequenceGamePackage.SequenceGame.input[SequenceGamePackage.SequenceGame.number] = s;
-            SequenceGamePackage.SequenceGame.number++;
-
+        if (SequenceGamePackage.SequenceGame.gameActive && inputNumber < numberOfArrows) {
+            SequenceGamePackage.SequenceGame.input[inputNumber] = s;
+            inputNumber++;
         }
 
         String performanceResult = SequenceGamePackage.SequenceGame.checkPerformance(s);

@@ -11,13 +11,13 @@ import javafx.stage.Stage;
 import menu.Game;
 
 public class SequenceGame extends Application {
-    public static String[] input = new String[4 + Game.level - 1];
-    public static boolean gameActive;
-    public static int number = 0;
-    public static String[] strings;
-    public static int count = 0;
-    public static int ArrowCount = 0;
 
+    private static final int BASE_ARROWS = 3;
+    public static int numberOfArrows = BASE_ARROWS + Game.level;
+    public static String[] input = new String[numberOfArrows];
+    public static boolean gameActive;
+    public static String[] strings;
+    public static int currentArrow = 0;
     private int seqTime = 10;
     private int seqTimeRemaining = seqTime;
     private int preCountdown = 2;
@@ -32,6 +32,8 @@ public class SequenceGame extends Application {
     }
 
     public void Game(Stage stage) throws Exception {
+
+        numberOfArrows = BASE_ARROWS + Game.level;
 
         JoystickHandler joystickHandler = new JoystickHandler();
         joystickHandler.subscribeToMessages();
@@ -81,12 +83,11 @@ public class SequenceGame extends Application {
 
     public static String checkPerformance(String directionInput) { //had to make this static for call in MQTT class
         
-        String performanceResult;   
-        int arrowQuota = 4; //this is for how many arrows should be done correctly to win
+        String performanceResult;
 
-        if(directionInput.equals(strings[count])) {
+        if(directionInput.equals(strings[currentArrow])) {
             performanceResult = "arrow_correct"; //correct arrow direction performance
-            if(count == (arrowQuota - 1)) {
+            if(currentArrow == (numberOfArrows - 1)) {
                 performanceResult = "quota_met";
             }
         } else {
@@ -102,20 +103,20 @@ public class SequenceGame extends Application {
 
             case "arrow_correct": /* input correct arrow counted --> (possibly visual/auditory feedback) --> game continues on to next arrow */
                 gameActive = true;
-                sequenceGui.changeArrowColor(count, "green");
-                count++;
+                sequenceGui.changeArrowColor(currentArrow, "green");
+                currentArrow++;
                 break;
 
             case "quota_met": /* game stops --> display victory --> goes to next game after specified time*/
-                sequenceGui.changeArrowColor(count, "green");
+                sequenceGui.changeArrowColor(currentArrow, "green");
                 gameActive = false; /* depends what gameActive means: either the minigame stops or it means the entire continuation of minigames (including others) ends */
                 break;
 
             case "arrow_wrong": /* game stops --> display game over (because of wrong arrow) --> with/without button to go to menu */
-                sequenceGui.changeArrowColor(count, "red");
+                sequenceGui.changeArrowColor(currentArrow, "red");
                 sequenceGui.showDisplay();
                 gameActive = false;
-                count++; //temp for testing so it continues and doesnt track back
+                currentArrow++; //temp for testing so it continues and doesnt track back
                 break;
 
             case "time_out": /* game stops --> display game over (because of time out) --> with/without button to go to menu */
