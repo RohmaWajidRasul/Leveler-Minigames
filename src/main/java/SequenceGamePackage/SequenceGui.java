@@ -69,7 +69,7 @@ public class SequenceGui {
         boolean allLeft = true;
 
 
-        String[] strings = new String[4];
+        String[] strings = new String[SequenceGame.numberOfArrows];
 
         int max = 4;
         int min = 1;
@@ -134,8 +134,6 @@ public class SequenceGui {
         }
         SequenceGame.strings = strings;
 
-
-
         imageview1.setFitWidth(100);
         imageview1.setPreserveRatio(true);
         imageview1.setTranslateX(-220);
@@ -152,35 +150,31 @@ public class SequenceGui {
         imageview4.setPreserveRatio(true);
         imageview4.setTranslateX(230);
 
-        System.out.println(imageview1.getTranslateY());
-
-
-
         if (Game.level > 1) {
-            imageview1.setTranslateY(100);
-            imageview2.setTranslateY(100);
-            imageview3.setTranslateY(100);
-            imageview4.setTranslateY(100);
+            imageview1.setTranslateY(-100);
+            imageview2.setTranslateY(-100);
+            imageview3.setTranslateY(-100);
+            imageview4.setTranslateY(-100);
 
-            imageview5.setTranslateY(-100);
+            imageview5.setTranslateY(100);
             imageview5.setFitWidth(100);
             imageview5.setPreserveRatio(true);
             imageview5.setTranslateX(-220);
             stackPane.getChildren().add(imageview5);
         } if (Game.level > 2) {
-            imageview6.setTranslateY(-100);
+            imageview6.setTranslateY(100);
             imageview6.setFitWidth(100);
             imageview6.setPreserveRatio(true);
             imageview6.setTranslateX(-70);
             stackPane.getChildren().add(imageview6);
         } if (Game.level > 3) {
-            imageview7.setTranslateY(-100);
+            imageview7.setTranslateY(100);
             imageview7.setFitWidth(100);
             imageview7.setPreserveRatio(true);
             imageview7.setTranslateX(80);
             stackPane.getChildren().add(imageview7);
         } if (Game.level > 4) {
-            imageview8.setTranslateY(-100);
+            imageview8.setTranslateY(100);
             imageview8.setFitWidth(100);
             imageview8.setPreserveRatio(true);
             imageview8.setTranslateX(230);
@@ -193,15 +187,6 @@ public class SequenceGui {
         stackPane.getChildren().add(imageview3);
         stackPane.getChildren().add(imageview4);
 
-
-        int position = - 300;
-
-        for (int i = 0; i < strings.length; i++) {
-            Text text = new Text(strings[i]);
-            text.setTranslateX(position);
-            stackPane.getChildren().addAll(text);
-            position = position + 100;
-        }
     }
 
     public void changeArrowColor(int arrowNumber, String color) {
