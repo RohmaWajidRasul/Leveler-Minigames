@@ -1,8 +1,10 @@
 package SequenceGamePackage;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
+import javafx.util.Duration;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.geometry.Pos;
+import javafx.scene.text.Text;
 import Handlers.JoystickHandler;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -15,8 +17,9 @@ public class SequenceGame  {
     public static int count = 0;
     public static int ArrowCount = 0;
 
-    private int timeStamp = 7; //total countdown
-    private int timeZero = 0; //seconds
+    private int seqTime = 10;
+    private int seqTimeRemaining = seqTime;
+    private int preCountdown = 2;
 
     public static SequenceGui sequenceGui = new SequenceGui();
 
@@ -42,23 +45,36 @@ public class SequenceGame  {
             System.out.println(string);
         }
 
-        Timer gameTimer = new Timer();
+        Text txtTimeDisplay = new Text("Welcome to Sequence!");
 
-        gameTimer.schedule(new TimerTask() {
-            
-            public void run() {
-                if (timeStamp >= timeZero) {
-                    System.out.println(timeStamp);
-                    //lbTimer.setText("TIMER COUNTDOWN");
-                    timeStamp--;
+        txtTimeDisplay.setStyle("-fx-fill: red; -fx-font-size: 28px; -fx-font-weight: bold; -fx-font-family: 'Courier New';");
+        txtTimeDisplay.layoutXProperty();
+        
+        sequenceGui.stackPane.getChildren().add(txtTimeDisplay);
+        sequenceGui.stackPane.setAlignment(txtTimeDisplay, Pos.TOP_CENTER);
 
+        Duration countdownTime = Duration.seconds(1); //increments of seconds 
+
+        Timeline seqTimer = new Timeline(
+
+            new KeyFrame(countdownTime, event -> {
+
+                if(preCountdown > 0) {
+                    txtTimeDisplay.setText("MATCH THE ARROW DIRECTION TO WIN");
+                    preCountdown = preCountdown - 1;
                 } else {
-                    managePerformance("time_out");
-                    gameTimer.cancel();
-                }
-            }
+                    txtTimeDisplay.setText("TIME LEFT: " + seqTimeRemaining);
 
-        }, 0,1000); //1000 = 1000 milliseconds = 1 second
+                    if(seqTimeRemaining == 0) {
+                        txtTimeDisplay.setText("TIME OUT!");
+                    } else {
+                        seqTimeRemaining = seqTimeRemaining - 1; 
+                    }
+                }
+            })
+        );
+        seqTimer.setCycleCount(seqTime + preCountdown + 1);
+        seqTimer.play();
 
     }
 
