@@ -29,6 +29,7 @@ public class SequenceGame {
     private SequenceGui sequenceGui;
     private JoystickHandler joystickHandler;
     private Timeline timeline;
+    private Timeline seqTimer;
 
     private Stage stage;
 
@@ -96,7 +97,7 @@ public class SequenceGame {
 
         Duration countdownTime = Duration.seconds(1); //increments of seconds 
 
-        Timeline seqTimer = new Timeline(
+        seqTimer = new Timeline(
 
             new KeyFrame(countdownTime, event -> {
 
@@ -130,25 +131,60 @@ public class SequenceGame {
                 gameActive = true;
                 sequenceGui.changeArrowColor(currentArrow, "green");
                 currentArrow++;
+                myDaddySaidShoot();
                 break;
 
             case "quota_met": /* game stops --> display victory --> goes to next game after specified time*/
                 sequenceGui.changeArrowColor(currentArrow, "green");
                 gameActive = false; /* depends what gameActive means: either the minigame stops or it means the entire continuation of minigames (including others) ends */
+                myDaddySaidShoot();
                 break;
 
             case "arrow_wrong": /* game stops --> display game over (because of wrong arrow) --> with/without button to go to menu */
                 sequenceGui.changeArrowColor(currentArrow, "red");
                 sequenceGui.showDisplay();
                 gameActive = false;
+                die();
                 break;
 
             case "time_out": /* game stops --> display game over (because of time out) --> with/without button to go to menu */
                 sequenceGui.showDisplay();
                 gameActive = false;
+                die();
 
 
                 break;
         }
     }
+
+    public void die() {
+        this.timeline.stop();
+        this.seqTimer.stop();
+        Game.level = 0;
+        try {
+            joystickHandler.unsubscribeFromMessages();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle("Leveler");
+            stage.setScene(scene);
+            stage.show();
+        } catch (MqttException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void myDaddySaidShoot() {
+
+        this.timeline.stop();
+        this.seqTimer.stop();
+        try {
+            joystickHandler.unsubscribeFromMessages();
+            Game game = new Game(stage);
+        } catch (MqttException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
