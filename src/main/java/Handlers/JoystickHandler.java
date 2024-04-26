@@ -74,6 +74,11 @@ public class JoystickHandler implements MqttCallback {
         String performanceResult = SequenceGamePackage.SequenceGame.checkPerformance(s);
         SequenceGamePackage.SequenceGame.managePerformance(performanceResult);
     }
+
+    public void unsubscribeFromMessages() throws MqttException {
+        middleware.disconnect();
+    }
+
 }
 
 

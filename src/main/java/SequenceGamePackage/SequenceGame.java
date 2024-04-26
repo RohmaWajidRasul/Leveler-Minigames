@@ -10,7 +10,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import menu.Game;
 
-public class SequenceGame extends Application {
+public class SequenceGame {
 
     private static final int BASE_ARROWS = 3;
     public static int numberOfArrows = BASE_ARROWS + Game.level;
@@ -25,19 +25,20 @@ public class SequenceGame extends Application {
     public static SequenceGui sequenceGui = new SequenceGui();
 
 
-    public void start(Stage stage) throws Exception {
+    public SequenceGame(Stage stage) throws Exception {
+
 
         Game(stage);
+        sequenceGui = new SequenceGui();
 
     }
 
     public void Game(Stage stage) throws Exception {
 
-        numberOfArrows = BASE_ARROWS + Game.level;
-
         JoystickHandler joystickHandler = new JoystickHandler();
         joystickHandler.subscribeToMessages();
 
+        numberOfArrows = BASE_ARROWS + Game.level;
 
         sequenceGui.start(stage);
 
@@ -69,6 +70,12 @@ public class SequenceGame extends Application {
                     txtTimeDisplay.setText("TIME LEFT: " + seqTimeRemaining);
 
                     if(seqTimeRemaining == 0) {
+                        try {
+                            joystickHandler.unsubscribeFromMessages();
+
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
                         txtTimeDisplay.setText("TIME OUT!");
                     } else {
                         seqTimeRemaining = seqTimeRemaining - 1; 
