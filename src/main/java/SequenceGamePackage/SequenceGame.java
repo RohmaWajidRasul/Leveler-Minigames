@@ -1,42 +1,49 @@
 package SequenceGamePackage;
 
+import javafx.animation.Animation;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.util.Duration;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.text.Text;
 import Handlers.JoystickHandler;
-import javafx.application.Application;
 import javafx.stage.Stage;
 import menu.Game;
+import menu.Main;
+import org.eclipse.paho.client.mqttv3.MqttException;
+
+import java.io.IOException;
 
 public class SequenceGame {
 
     private static final int BASE_ARROWS = 3;
     public static int numberOfArrows = BASE_ARROWS + Game.level;
-    public static String[] input = new String[numberOfArrows];
     public static boolean gameActive;
-    public static String[] strings;
-    public static int currentArrow = 0;
+    public static String[] correctStrings;
+    public int currentArrow = 0;
     private int seqTime = 10;
     private int seqTimeRemaining = seqTime;
     private int preCountdown = 2;
+    private SequenceGui sequenceGui;
+    private JoystickHandler joystickHandler;
+    private Timeline timeline;
 
-    public static SequenceGui sequenceGui = new SequenceGui();
+    private Stage stage;
 
 
     public SequenceGame(Stage stage) throws Exception {
 
-
+        this.sequenceGui = new SequenceGui();
+        joystickHandler = new JoystickHandler();
+        joystickHandler.subscribeToMessages();
+        this.stage = stage;
         Game(stage);
-        sequenceGui = new SequenceGui();
 
     }
 
     public void Game(Stage stage) throws Exception {
-
-        JoystickHandler joystickHandler = new JoystickHandler();
-        joystickHandler.subscribeToMessages();
 
         numberOfArrows = BASE_ARROWS + Game.level;
 
@@ -45,9 +52,39 @@ public class SequenceGame {
         sequenceGui.drawArrows();
         gameActive = true;
 
-        for(String string : strings) {
+        for(String string : correctStrings) {
             System.out.println(string);
         }
+
+
+
+        Duration updateInterval = Duration.millis(200);
+
+        this.timeline = new Timeline( new KeyFrame(updateInterval, event -> {
+
+            if (joystickHandler.input[currentArrow] != null && currentArrow < numberOfArrows) {
+
+                String performanceResult;
+
+                String banana = joystickHandler.input[currentArrow];
+
+                if(banana.equals(correctStrings[currentArrow])) {
+                    performanceResult = "arrow_correct"; //correct arrow direction performance
+                    if(currentArrow == (numberOfArrows - 1)) {
+                        performanceResult = "quota_met";
+                    }
+                } else {
+
+                    performanceResult = "arrow_wrong"; //incorrect arrow direction performance --> game over
+
+                }
+                 managePerformance(performanceResult);
+
+            }
+
+        }));
+        this.timeline.setCycleCount(Animation.INDEFINITE);
+        this.timeline.play();
 
         Text txtTimeDisplay = new Text("Welcome to Sequence!");
 
@@ -70,13 +107,9 @@ public class SequenceGame {
                     txtTimeDisplay.setText("TIME LEFT: " + seqTimeRemaining);
 
                     if(seqTimeRemaining == 0) {
-                        try {
-                            joystickHandler.unsubscribeFromMessages();
 
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
-                        }
                         txtTimeDisplay.setText("TIME OUT!");
+                        managePerformance("time_out");
                     } else {
                         seqTimeRemaining = seqTimeRemaining - 1; 
                     }
@@ -88,22 +121,7 @@ public class SequenceGame {
 
     }
 
-    public static String checkPerformance(String directionInput) { //had to make this static for call in MQTT class
-        
-        String performanceResult;
-
-        if(directionInput.equals(strings[currentArrow])) {
-            performanceResult = "arrow_correct"; //correct arrow direction performance
-            if(currentArrow == (numberOfArrows - 1)) {
-                performanceResult = "quota_met";
-            }
-        } else {
-            performanceResult = "arrow_wrong"; //incorrect arrow direction performance --> game over
-        }
-        return performanceResult; /* time out is checked in the Game method within timer background loop */
-    }
-
-    public static void managePerformance(String performanceResult) { //had to make this static for call in MQTT class
+    public void managePerformance(String performanceResult) { //had to make this static for call in MQTT class
 
         System.out.println(performanceResult);
         switch (performanceResult) {
@@ -123,12 +141,13 @@ public class SequenceGame {
                 sequenceGui.changeArrowColor(currentArrow, "red");
                 sequenceGui.showDisplay();
                 gameActive = false;
-                currentArrow++; //temp for testing so it continues and doesnt track back
                 break;
 
             case "time_out": /* game stops --> display game over (because of time out) --> with/without button to go to menu */
                 sequenceGui.showDisplay();
                 gameActive = false;
+
+
                 break;
         }
     }

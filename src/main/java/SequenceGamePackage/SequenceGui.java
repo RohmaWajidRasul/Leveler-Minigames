@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import menu.Game;
 
@@ -132,7 +131,7 @@ public class SequenceGui {
                 }
             }
         }
-        SequenceGame.strings = strings;
+        SequenceGame.correctStrings = strings;
 
         imageview1.setFitWidth(100);
         imageview1.setPreserveRatio(true);

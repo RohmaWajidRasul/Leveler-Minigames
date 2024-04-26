@@ -11,6 +11,7 @@ import static SequenceGamePackage.SequenceGame.numberOfArrows;
 public class JoystickHandler implements MqttCallback {
 
     public int inputNumber = 0;
+    public String[] input = new String[numberOfArrows];
 
     // Most of this code is taken from the exercise on canvas
 
@@ -67,12 +68,10 @@ public class JoystickHandler implements MqttCallback {
 
 
         if (SequenceGamePackage.SequenceGame.gameActive && inputNumber < numberOfArrows) {
-            SequenceGamePackage.SequenceGame.input[inputNumber] = s;
+            this.input[inputNumber] = s;
             inputNumber++;
         }
 
-        String performanceResult = SequenceGamePackage.SequenceGame.checkPerformance(s);
-        SequenceGamePackage.SequenceGame.managePerformance(performanceResult);
     }
 
     public void unsubscribeFromMessages() throws MqttException {
