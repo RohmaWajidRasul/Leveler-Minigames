@@ -36,6 +36,13 @@ public class SequenceGame {
 
     public SequenceGame(Stage stage) throws Exception {
 
+
+        if (Game.level > 5) {
+            numberOfArrows = 8;
+        } else {
+            numberOfArrows = BASE_ARROWS + Game.level;
+        }
+
         this.sequenceGui = new SequenceGui();
         joystickHandler = new JoystickHandler();
         joystickHandler.subscribeToMessages();
@@ -45,8 +52,6 @@ public class SequenceGame {
     }
 
     public void Game(Stage stage) throws Exception {
-
-        numberOfArrows = BASE_ARROWS + Game.level;
 
         sequenceGui.start(stage);
 
@@ -59,7 +64,7 @@ public class SequenceGame {
 
 
 
-        Duration updateInterval = Duration.millis(200);
+        Duration updateInterval = Duration.millis(100);
 
         this.timeline = new Timeline( new KeyFrame(updateInterval, event -> {
 
@@ -131,7 +136,6 @@ public class SequenceGame {
                 gameActive = true;
                 sequenceGui.changeArrowColor(currentArrow, "green");
                 currentArrow++;
-                myDaddySaidShoot();
                 break;
 
             case "quota_met": /* game stops --> display victory --> goes to next game after specified time*/
