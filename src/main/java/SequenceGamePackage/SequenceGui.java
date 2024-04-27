@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import menu.Game;
 
@@ -66,6 +67,9 @@ public class SequenceGui {
 
     public void drawArrows() {
         boolean allLeft = true;
+        boolean allUp = true;
+        boolean allDown = true;
+        boolean allRight = true;
 
 
         String[] strings = new String[SequenceGame.numberOfArrows];
@@ -82,6 +86,8 @@ public class SequenceGui {
                 case 1 -> {
                     strings[i] = "UP";
                     allLeft = false;
+                    allRight = false;
+                    allDown = false;
                 }
 
                 case 2 -> {
@@ -98,6 +104,8 @@ public class SequenceGui {
                         case 7 -> imageview8.setRotate(180);
                     }
                     allLeft = false;
+                    allUp = false;
+                    allRight = false;
                 }
                 case 3 -> {
                     strings[i] = "LEFT";
@@ -112,6 +120,9 @@ public class SequenceGui {
                         case 6 -> imageview7.setRotate(270);
                         case 7 -> imageview8.setRotate(270);
                     }
+                    allDown = false;
+                    allUp = false;
+                    allRight = false;
 
                 }
                 case 4 -> {
@@ -128,10 +139,32 @@ public class SequenceGui {
                         case 7 -> imageview8.setRotate(90);
                     }
                     allLeft = false;
+                    allDown = false;
+                    allUp = false;
                 }
             }
         }
         SequenceGame.correctStrings = strings;
+
+        Text text = new Text();
+        text.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;");
+        stackPane.getChildren().add(text);
+
+        if (allLeft) { //Homage to the queen
+            text.setText("To the left, to the left\n everything you own in the box to the left");
+
+        } else if (allRight) {
+            text.setText("Right where you left me");
+
+        } else if (allUp) {
+            text.setText("We're going u-u-u-u-u-u-up");
+        } else if (allDown) {
+            text.setText("Now I'm down bad crying at the gym");
+        }
+
+        if(Game.level < 2) {
+            text.setTranslateY(-100);
+        }
 
         imageview1.setFitWidth(100);
         imageview1.setPreserveRatio(true);
