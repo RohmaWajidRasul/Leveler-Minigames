@@ -1,5 +1,10 @@
 package SequenceGamePackage;
 
+import java.util.ArrayList;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -12,10 +17,19 @@ import menu.Game;
 
 public class SequenceGui {
 
+    ArrayList <ImageView> arrowViewArrL = new ArrayList<>(); //scalable array lists for arrow drawing
+    ArrayList <String> arrowOrientationArrL = new ArrayList<>();
+
+    private int arrowPlacing = 225; //arrow starting x-pos
+    private int arrowSpacing = 170;
+    private int arrowSizeWH = 125;
+    private int speedMillis = 15; //change arrow sequence speed
+
     StackPane stackPane;
     Image arrowWhite;
     Image arrowGreen;
     Image arrowRed;
+    Image arrowGrey;
     ImageView imageview1;
     ImageView imageview2;
     ImageView imageview3;
@@ -30,6 +44,7 @@ public class SequenceGui {
         this.arrowGreen = new Image(getClass().getResourceAsStream("/images/ArrowGreen.png"));
         this.arrowRed = new Image(getClass().getResourceAsStream("/images/ArrowRed.png"));
         this.arrowWhite = new Image(getClass().getResourceAsStream("/images/ArrowWhite.png"));
+        this.arrowGrey = new Image(getClass().getResourceAsStream("/images/ArrowGrey.png")); //grey for alternative default color option 
 
         this.imageview1 = new ImageView();
         this.imageview1.setImage(arrowWhite);
@@ -63,6 +78,38 @@ public class SequenceGui {
         stage.setScene(sequenceScene);
         stage.show();
 
+    }
+
+    public void drawArrowsAlt() {
+
+        int max = 4;
+        int min = 1;
+        int range = max - min + 1;
+        int randomNumber = (int)(Math.random() * range) + min;
+
+        int orientationDegree = randomNumber * 90;
+        String orientation = "UP";
+
+        switch (orientationDegree) {
+            case 0 -> orientation = "UP";
+            case 90 -> orientation = "RIGHT";
+            case 180 -> orientation = "DOWN";
+            case 270 -> orientation = "LEFT";
+        }
+
+        ImageView arrowView = new ImageView();
+        arrowView.setImage(arrowGrey);
+
+        arrowView.setTranslateX(arrowPlacing);
+        arrowView.setFitWidth(arrowSizeWH);
+        arrowView.setFitHeight(arrowSizeWH);
+        arrowView.setRotate(orientationDegree);
+
+        stackPane.getChildren().add(arrowView);
+        arrowViewArrL.add(arrowView);
+        arrowOrientationArrL.add(orientation);
+
+        arrowPlacing = arrowPlacing + arrowSpacing;
     }
 
     public void drawArrows() {
@@ -220,6 +267,36 @@ public class SequenceGui {
         stackPane.getChildren().add(imageview4);
 
     }
+
+    public void moveArrows() { //timeline for moving arrow sequence to the left by accessing ArrayList
+
+        Timeline arrowMovementTL = new Timeline(new KeyFrame(Duration.millis(speedMillis), event -> {
+
+            for(ImageView arrowView : arrowViewArrL) {
+                double arrowPosition = arrowView.getTranslateX();
+                arrowPosition--;
+                arrowView.setTranslateX(arrowPosition);
+            }
+        }));
+        arrowMovementTL.setCycleCount(Timeline.INDEFINITE);
+        arrowMovementTL.play();
+    }
+
+    public void changeArrowColorAlt(int arrowNumber, String color) {
+
+        Image arrowColor;
+    
+        if(color.equals("green")) {
+            arrowColor = arrowGreen;
+        } else {
+            arrowColor = arrowRed;
+        }
+        
+        if(SequenceGame.gameActive) {
+            ImageView specificArrowView = arrowViewArrL.get(arrowNumber);
+            specificArrowView.setImage(arrowColor);
+        }
+    }  
 
     public void changeArrowColor(int arrowNumber, String color) {
 

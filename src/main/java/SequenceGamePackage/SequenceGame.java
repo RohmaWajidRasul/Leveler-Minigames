@@ -20,6 +20,7 @@ public class SequenceGame {
 
     private static final int BASE_ARROWS = 3;
     public static int numberOfArrows = BASE_ARROWS + Game.level;
+    public static int numberOfArrowsAlt = 10; //can add as many arrows as needed
     public static boolean gameActive;
     public static String[] correctStrings;
     public int currentArrow = 0;
@@ -54,6 +55,11 @@ public class SequenceGame {
     public void Game(Stage stage) throws Exception {
 
         sequenceGui.start(stage);
+        
+        for(int i = 0; i < numberOfArrows; i++) { //this loop calls the method that creates the arrows and stores them
+            sequenceGui.drawArrowsAlt();
+        }
+        sequenceGui.moveArrows(); //starts timeline to move arrows to the left
 
         sequenceGui.drawArrows();
         gameActive = true;
@@ -73,8 +79,11 @@ public class SequenceGame {
                 String performanceResult;
 
                 String banana = joystickHandler.input[currentArrow];
+                String currentOrientation = sequenceGui.arrowOrientationArrL.get(currentArrow); //string with arrow orientation from ArrayList 
+                
+                //if(banana.equals(correctStrings[currentArrow])) {
 
-                if(banana.equals(correctStrings[currentArrow])) {
+                if(banana.equals(currentOrientation)) { //this compares the orientation of the arraylist arrows instead of the commented-out comparison in the line above (for now)
                     performanceResult = "arrow_correct"; //correct arrow direction performance
                     if(currentArrow == (numberOfArrows - 1)) {
                         performanceResult = "quota_met";
@@ -135,17 +144,20 @@ public class SequenceGame {
             case "arrow_correct": /* input correct arrow counted --> (possibly visual/auditory feedback) --> game continues on to next arrow */
                 gameActive = true;
                 sequenceGui.changeArrowColor(currentArrow, "green");
+                sequenceGui.changeArrowColorAlt(currentArrow, "green");
                 currentArrow++;
                 break;
 
             case "quota_met": /* game stops --> display victory --> goes to next game after specified time*/
                 sequenceGui.changeArrowColor(currentArrow, "green");
+                sequenceGui.changeArrowColorAlt(currentArrow, "green");
                 gameActive = false; /* depends what gameActive means: either the minigame stops or it means the entire continuation of minigames (including others) ends */
                 myDaddySaidShoot();
                 break;
 
             case "arrow_wrong": /* game stops --> display game over (because of wrong arrow) --> with/without button to go to menu */
                 sequenceGui.changeArrowColor(currentArrow, "red");
+                sequenceGui.changeArrowColorAlt(currentArrow, "red");
                 sequenceGui.showDisplay();
                 gameActive = false;
                 die();
