@@ -6,12 +6,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static SequenceGamePackage.SequenceGame.numberOfArrows;
-
 public class JoystickHandler implements MqttCallback {
 
     public int inputNumber = 0;
-    public String[] input = new String[numberOfArrows];
+    public String[] input;
+    private final int numberOfArrows;
 
     // Most of this code is taken from the exercise on canvas
 
@@ -21,10 +20,13 @@ public class JoystickHandler implements MqttCallback {
     private final static String BROKER  = "tcp://test.mosquitto.org:1883";
     private final static String USER_ID = "Group-14";
 
-    public JoystickHandler() throws MqttException {
-        middleware = new MqttClient(BROKER, USER_ID);
-        middleware.connect();
-        middleware.setCallback(this);
+    public JoystickHandler(int numberOfArrows) throws MqttException {
+        this.numberOfArrows = numberOfArrows;
+        this.input = new String[numberOfArrows];
+
+        this.middleware = new MqttClient(BROKER, USER_ID);
+        this.middleware.connect();
+        this.middleware.setCallback(this);
     }
 
     public void subscribeToMessages() {
@@ -32,7 +34,7 @@ public class JoystickHandler implements MqttCallback {
         THREAD_POOL.submit(() -> {
             try {
 
-                middleware.subscribe(TOPIC);
+                this.middleware.subscribe(TOPIC);
 
             } catch (MqttSecurityException e) {
                 e.printStackTrace();
@@ -48,8 +50,8 @@ public class JoystickHandler implements MqttCallback {
         // For a more robust system, we should try to re-establish the connection.
         System.out.println("Connection lost!");
         try {
-            middleware.disconnect();
-            middleware.close();
+            this.middleware.disconnect();
+            this.middleware.close();
         } catch (MqttException e) {
             e.printStackTrace();
         }
@@ -67,9 +69,9 @@ public class JoystickHandler implements MqttCallback {
         System.out.println(s);
 
 
-        if (SequenceGamePackage.SequenceGame.gameActive && inputNumber < numberOfArrows) {
-            this.input[inputNumber] = s;
-            inputNumber++;
+        if (SequenceGamePackage.SequenceGame.gameActive && this.inputNumber < this.numberOfArrows) {
+            this.input[this.inputNumber] = s;
+            this.inputNumber++;
         }
 
     }

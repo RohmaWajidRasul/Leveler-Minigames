@@ -49,7 +49,7 @@ public class SequenceGui {
 
     }
 
-    public void drawArrows() {
+    public void drawArrows(int numberOfArrows) {
         int arrowPlacing = 225; //arrow starting x-pos
         int arrowSpacing = 170;
         int arrowSizeWH = 125;
@@ -58,7 +58,7 @@ public class SequenceGui {
         int min = 1;
         int range = max - min + 1;
 
-        for(int i = 0; i < SequenceGame.numberOfArrows; i++) { //this loop calls the method that creates the arrows and stores them
+        for(int i = 0; i < numberOfArrows; i++) { //this loop calls the method that creates the arrows and stores them
 
 
             int randomNumber = (int) (Math.random() * range) + min;

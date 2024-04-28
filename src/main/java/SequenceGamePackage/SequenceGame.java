@@ -18,34 +18,29 @@ import java.io.IOException;
 
 public class SequenceGame {
 
-    private static final int BASE_ARROWS = 3;
-    public static int numberOfArrows = BASE_ARROWS + Game.level;
+    private final int baseArrowAmount;
+    public int numberOfArrows;
     public static boolean gameActive;
-    public static String[] correctStrings;
-    private int currentArrow = 0;
-    private int seqTime = 10;
-    private int seqTimeRemaining = seqTime;
+    private int currentArrow;
+    private final int seqTime;
+    private int seqTimeRemaining;
     private int preCountdown = 2;
-    private SequenceGui sequenceGui;
-    private JoystickHandler joystickHandler;
+    private final SequenceGui sequenceGui;
+    private final JoystickHandler joystickHandler;
     private Timeline timeline;
     private Timeline seqTimer;
-
-    private Stage stage;
+    private final Stage stage;
 
 
     public SequenceGame(Stage stage) throws Exception {
-
-
-        if (Game.level > 5) {
-            numberOfArrows = 8;
-        } else {
-            numberOfArrows = BASE_ARROWS + Game.level;
-        }
-
+        this.currentArrow = 0;
+        this.baseArrowAmount = 3;
+        this.numberOfArrows = baseArrowAmount + Game.level;
+        this.seqTime = 10;
+        this.seqTimeRemaining = seqTime;
         this.sequenceGui = new SequenceGui();
-        joystickHandler = new JoystickHandler();
-        joystickHandler.subscribeToMessages();
+        this.joystickHandler = new JoystickHandler(this.numberOfArrows);
+        this.joystickHandler.subscribeToMessages();
         this.stage = stage;
         Game(stage);
 
@@ -53,10 +48,10 @@ public class SequenceGame {
 
     public void Game(Stage stage) throws Exception {
 
-        sequenceGui.start(stage);
+        this.sequenceGui.start(stage);
 
-        sequenceGui.drawArrows();
-        sequenceGui.moveArrows(); //starts timeline to move arrows to the left
+        this.sequenceGui.drawArrows(this.numberOfArrows);
+        this.sequenceGui.moveArrows(); //starts timeline to move arrows to the left
 
         gameActive = true;
 
@@ -64,16 +59,16 @@ public class SequenceGame {
 
         this.timeline = new Timeline( new KeyFrame(updateInterval, event -> {
 
-            if (joystickHandler.input[currentArrow] != null && currentArrow < numberOfArrows) {
+            if (this.joystickHandler.input[currentArrow] != null && this.currentArrow < this.numberOfArrows) {
 
                 String performanceResult;
 
-                String banana = joystickHandler.input[currentArrow];
-                String currentOrientation = sequenceGui.arrowOrientationArrL.get(currentArrow); //string with arrow orientation from ArrayList
+                String banana = this.joystickHandler.input[currentArrow];
+                String currentOrientation = this.sequenceGui.arrowOrientationArrL.get(currentArrow); //string with arrow orientation from ArrayList
 
                 if(banana.equals(currentOrientation)) { //this compares the orientation of the arraylist arrows instead of the commented-out comparison in the line above (for now)
                     performanceResult = "arrow_correct"; //correct arrow direction performance
-                    if(currentArrow == (numberOfArrows - 1)) {
+                    if(this.currentArrow == (this.numberOfArrows - 1)) {
                         performanceResult = "quota_met";
                     }
                 } else {
@@ -94,8 +89,8 @@ public class SequenceGame {
         txtTimeDisplay.setStyle("-fx-fill: red; -fx-font-size: 28px; -fx-font-weight: bold; -fx-font-family: 'Courier New';");
         txtTimeDisplay.layoutXProperty();
         
-        sequenceGui.stackPane.getChildren().add(txtTimeDisplay);
-        sequenceGui.stackPane.setAlignment(txtTimeDisplay, Pos.TOP_CENTER);
+        this.sequenceGui.stackPane.getChildren().add(txtTimeDisplay);
+        this.sequenceGui.stackPane.setAlignment(txtTimeDisplay, Pos.TOP_CENTER);
 
         Duration countdownTime = Duration.seconds(1); //increments of seconds 
 
@@ -152,8 +147,6 @@ public class SequenceGame {
                 sequenceGui.showDisplay();
                 gameActive = false;
                 die();
-
-
                 break;
         }
     }
