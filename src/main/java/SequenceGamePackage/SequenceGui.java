@@ -17,15 +17,12 @@ import menu.Game;
 
 public class SequenceGui {
 
-    ArrayList <ImageView> arrowViewArrL = new ArrayList<>(); //scalable array lists for arrow drawing
-    ArrayList <String> arrowOrientationArrL = new ArrayList<>();
+    private ArrayList <ImageView> arrowViewArrL; //scalable array lists for arrow drawing
+    public ArrayList <String> arrowOrientationArrL;
 
-    private int arrowPlacing = 225; //arrow starting x-pos
-    private int arrowSpacing = 170;
-    private int arrowSizeWH = 125;
-    private int speedMillis = 15; //change arrow sequence speed
+    private int scrollSpeed;
 
-    StackPane stackPane;
+    public StackPane stackPane;
     Image arrowWhite;
     Image arrowGreen;
     Image arrowRed;
@@ -45,6 +42,10 @@ public class SequenceGui {
         this.arrowRed = new Image(getClass().getResourceAsStream("/images/ArrowRed.png"));
         this.arrowWhite = new Image(getClass().getResourceAsStream("/images/ArrowWhite.png"));
         this.arrowGrey = new Image(getClass().getResourceAsStream("/images/ArrowGrey.png")); //grey for alternative default color option 
+
+        arrowViewArrL = new ArrayList<>();
+        arrowOrientationArrL = new ArrayList<>();
+        this.scrollSpeed = 15; //change arrow sequence speed
 
         this.imageview1 = new ImageView();
         this.imageview1.setImage(arrowWhite);
@@ -81,35 +82,43 @@ public class SequenceGui {
     }
 
     public void drawArrowsAlt() {
+        int arrowPlacing = 225; //arrow starting x-pos
+        int arrowSpacing = 170;
+        int arrowSizeWH = 125;
 
         int max = 4;
         int min = 1;
         int range = max - min + 1;
-        int randomNumber = (int)(Math.random() * range) + min;
 
-        int orientationDegree = randomNumber * 90;
-        String orientation = "UP";
+        for(int i = 0; i < SequenceGame.numberOfArrows; i++) { //this loop calls the method that creates the arrows and stores them
 
-        switch (orientationDegree) {
-            case 0 -> orientation = "UP";
-            case 90 -> orientation = "RIGHT";
-            case 180 -> orientation = "DOWN";
-            case 270 -> orientation = "LEFT";
+
+            int randomNumber = (int) (Math.random() * range) + min;
+            int orientationDegree = randomNumber * 90;
+            String orientation = "UP";
+
+            switch (orientationDegree) {
+                case 0 -> orientation = "UP";
+                case 90 -> orientation = "RIGHT";
+                case 180 -> orientation = "DOWN";
+                case 270 -> orientation = "LEFT";
+            }
+
+            ImageView arrowView = new ImageView();
+            arrowView.setImage(arrowGrey);
+
+            arrowView.setTranslateX(arrowPlacing);
+            arrowView.setFitWidth(arrowSizeWH);
+            arrowView.setFitHeight(arrowSizeWH);
+            arrowView.setRotate(orientationDegree);
+
+            stackPane.getChildren().add(arrowView);
+            arrowViewArrL.add(arrowView);
+            arrowOrientationArrL.add(orientation);
+
+            arrowPlacing = arrowPlacing + arrowSpacing;
         }
-
-        ImageView arrowView = new ImageView();
-        arrowView.setImage(arrowGrey);
-
-        arrowView.setTranslateX(arrowPlacing);
-        arrowView.setFitWidth(arrowSizeWH);
-        arrowView.setFitHeight(arrowSizeWH);
-        arrowView.setRotate(orientationDegree);
-
-        stackPane.getChildren().add(arrowView);
-        arrowViewArrL.add(arrowView);
-        arrowOrientationArrL.add(orientation);
-
-        arrowPlacing = arrowPlacing + arrowSpacing;
+        egg();
     }
 
     public void drawArrows() {
@@ -270,9 +279,9 @@ public class SequenceGui {
 
     public void moveArrows() { //timeline for moving arrow sequence to the left by accessing ArrayList
 
-        Timeline arrowMovementTL = new Timeline(new KeyFrame(Duration.millis(speedMillis), event -> {
+        Timeline arrowMovementTL = new Timeline(new KeyFrame(Duration.millis(scrollSpeed), event -> {
 
-            for(ImageView arrowView : arrowViewArrL) {
+            for (ImageView arrowView : arrowViewArrL) {
                 double arrowPosition = arrowView.getTranslateX();
                 arrowPosition--;
                 arrowView.setTranslateX(arrowPosition);
@@ -320,6 +329,59 @@ public class SequenceGui {
                 case 6 -> this.imageview7.setImage(arrowColor);
                 case 7 -> this.imageview8.setImage(arrowColor);
             }
+        }
+    }
+
+    private void egg() {
+
+        boolean allLeft = true;
+        boolean allUp = true;
+        boolean allDown = true;
+        boolean allRight = true;
+
+        for (String string : arrowOrientationArrL) {
+            switch (string) {
+                case "DOWN" -> {
+                    allLeft = false;
+                    allUp = false;
+                    allRight = false;
+                }
+                case "UP" -> {
+                    allLeft = false;
+                    allRight = false;
+                    allDown = false;
+
+                }
+                case "LEFT" -> {
+                    allDown = false;
+                    allUp = false;
+                    allRight = false;
+                }
+                case "RIGHT" -> {
+                    allLeft = false;
+                    allDown = false;
+                    allUp = false;
+                }
+            }
+        }
+        Text text = new Text();
+        text.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;");
+        stackPane.getChildren().add(text);
+
+        if (allLeft) { //Homage to the queen
+            text.setText("To the left, to the left\n everything you own in the box to the left");
+
+        } else if (allRight) {
+            text.setText("Right where you left me");
+
+        } else if (allUp) {
+            text.setText("We're going u-u-u-u-u-u-up");
+        } else if (allDown) {
+            text.setText("Now I'm down bad crying at the gym");
+        }
+
+        if(Game.level < 2) {
+            text.setTranslateY(-100);
         }
     }
 
