@@ -8,8 +8,8 @@ import java.util.concurrent.Executors;
 
 public class JoystickHandler implements MqttCallback {
 
-    public int inputNumber = 0;
-    public String[] input;
+    private int inputNumber = 0;
+    private String[] input;
     private final int numberOfArrows;
 
     // Most of this code is taken from the exercise on canvas
@@ -77,9 +77,12 @@ public class JoystickHandler implements MqttCallback {
     }
 
     public void unsubscribeFromMessages() throws MqttException {
-        middleware.disconnect();
+        this.middleware.disconnect();
     }
 
+    public String getInput(int index) {
+        return this.input[index];
+    }
 }
 
 

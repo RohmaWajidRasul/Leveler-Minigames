@@ -16,34 +16,30 @@ import javafx.stage.Stage;
 import menu.Game;
 
 public class SequenceGui {
-
-    private ArrayList <ImageView> arrowViewArrL; //scalable array lists for arrow drawing
-    public ArrayList <String> arrowOrientationArrL;
-
-    private int scrollSpeed;
+    private final ArrayList<ImageView> arrowViewArrL; //scalable array lists for arrow drawing
+    private final ArrayList<String> arrowOrientationList;
+    private final int scrollSpeed; //Scroll speed of the arrows
     public StackPane stackPane;
-    Image arrowWhite;
-    Image arrowGreen;
-    Image arrowRed;
-    Image arrowGrey;
+    private final Image arrowGreen;
+    private final Image arrowRed;
+    private final Image arrowGrey;
 
     public SequenceGui() {
         this.stackPane = new StackPane();
         this.arrowGreen = new Image(getClass().getResourceAsStream("/images/ArrowGreen.png"));
         this.arrowRed = new Image(getClass().getResourceAsStream("/images/ArrowRed.png"));
-        this.arrowWhite = new Image(getClass().getResourceAsStream("/images/ArrowWhite.png"));
-        this.arrowGrey = new Image(getClass().getResourceAsStream("/images/ArrowGrey.png")); //grey for alternative default color option 
+        this.arrowGrey = new Image(getClass().getResourceAsStream("/images/ArrowGrey.png")); //grey for alternative default color option
 
-        arrowViewArrL = new ArrayList<>();
-        arrowOrientationArrL = new ArrayList<>();
-        this.scrollSpeed = 15; //change arrow sequence speed
+        this.arrowViewArrL = new ArrayList<>();
+        this.arrowOrientationList = new ArrayList<>();
+        this.scrollSpeed = 7; //change arrow sequence speed
 
     }
 
 
     public void start(Stage stage) {
 
-        Scene sequenceScene = new Scene(stackPane,600,400);
+        Scene sequenceScene = new Scene(this.stackPane,600,400);
         stage.setScene(sequenceScene);
         stage.show();
 
@@ -80,9 +76,9 @@ public class SequenceGui {
             arrowView.setFitHeight(arrowSizeWH);
             arrowView.setRotate(orientationDegree);
 
-            stackPane.getChildren().add(arrowView);
-            arrowViewArrL.add(arrowView);
-            arrowOrientationArrL.add(orientation);
+            this.stackPane.getChildren().add(arrowView);
+            this.arrowViewArrL.add(arrowView);
+            this.arrowOrientationList.add(orientation);
 
             arrowPlacing = arrowPlacing + arrowSpacing;
         }
@@ -91,9 +87,9 @@ public class SequenceGui {
 
     public void moveArrows() { //timeline for moving arrow sequence to the left by accessing ArrayList
 
-        Timeline arrowMovementTL = new Timeline(new KeyFrame(Duration.millis(scrollSpeed), event -> {
+        Timeline arrowMovementTL = new Timeline(new KeyFrame(Duration.millis(this.scrollSpeed), event -> {
 
-            for (ImageView arrowView : arrowViewArrL) {
+            for (ImageView arrowView : this.arrowViewArrL) {
                 double arrowPosition = arrowView.getTranslateX();
                 arrowPosition--;
                 arrowView.setTranslateX(arrowPosition);
@@ -108,13 +104,13 @@ public class SequenceGui {
         Image arrowColor;
     
         if(color.equals("green")) {
-            arrowColor = arrowGreen;
+            arrowColor = this.arrowGreen;
         } else {
-            arrowColor = arrowRed;
+            arrowColor = this.arrowRed;
         }
         
         if(SequenceGame.gameActive) {
-            ImageView specificArrowView = arrowViewArrL.get(arrowNumber);
+            ImageView specificArrowView = this.arrowViewArrL.get(arrowNumber);
             specificArrowView.setImage(arrowColor);
         }
     }
@@ -126,7 +122,7 @@ public class SequenceGui {
         boolean allDown = true;
         boolean allRight = true;
 
-        for (String string : arrowOrientationArrL) {
+        for (String string : this.arrowOrientationList) {
             switch (string) {
                 case "DOWN" -> {
                     allLeft = false;
@@ -153,7 +149,7 @@ public class SequenceGui {
         }
         Text text = new Text();
         text.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;");
-        stackPane.getChildren().add(text);
+        this.stackPane.getChildren().add(text);
 
         if (allLeft) { //Homage to the queen
             text.setText("To the left, to the left\n everything you own in the box to the left");
@@ -176,10 +172,14 @@ public class SequenceGui {
 
     public void showGameOver() { //to display GAME OVER
         Label lbGameOver = new Label("GAME OVER");
-        stackPane.getChildren().add(lbGameOver);
+        this.stackPane.getChildren().add(lbGameOver);
         lbGameOver.setTranslateY(-200);
 
         lbGameOver.setStyle("-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: red;");
+    }
+
+    public ArrayList<String> getArrowOrientationList() {
+        return arrowOrientationList;
     }
 }
 

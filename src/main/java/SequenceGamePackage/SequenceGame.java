@@ -17,14 +17,12 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import java.io.IOException;
 
 public class SequenceGame {
-
-    private final int baseArrowAmount;
-    public int numberOfArrows;
     public static boolean gameActive;
+    private final int numberOfArrows;
     private int currentArrow;
     private final int seqTime;
     private int seqTimeRemaining;
-    private int preCountdown = 2;
+    private int preCountdown;
     private final SequenceGui sequenceGui;
     private final JoystickHandler joystickHandler;
     private Timeline timeline;
@@ -33,11 +31,12 @@ public class SequenceGame {
 
 
     public SequenceGame(Stage stage) throws Exception {
+        int baseArrowAmount = 3;
         this.currentArrow = 0;
-        this.baseArrowAmount = 3;
         this.numberOfArrows = baseArrowAmount + Game.level;
         this.seqTime = 10;
         this.seqTimeRemaining = seqTime;
+        this.preCountdown = 2;
         this.sequenceGui = new SequenceGui();
         this.joystickHandler = new JoystickHandler(this.numberOfArrows);
         this.joystickHandler.subscribeToMessages();
@@ -59,12 +58,12 @@ public class SequenceGame {
 
         this.timeline = new Timeline( new KeyFrame(updateInterval, event -> {
 
-            if (this.joystickHandler.input[currentArrow] != null && this.currentArrow < this.numberOfArrows) {
+            if (this.joystickHandler.getInput(currentArrow) != null && this.currentArrow < this.numberOfArrows) {
 
                 String performanceResult;
 
-                String banana = this.joystickHandler.input[currentArrow];
-                String currentOrientation = this.sequenceGui.arrowOrientationArrL.get(currentArrow); //string with arrow orientation from ArrayList
+                String banana = this.joystickHandler.getInput(currentArrow);
+                String currentOrientation = this.sequenceGui.getArrowOrientationList().get(currentArrow); //string with arrow orientation from ArrayList
 
                 if(banana.equals(currentOrientation)) { //this compares the orientation of the arraylist arrows instead of the commented-out comparison in the line above (for now)
                     performanceResult = "arrow_correct"; //correct arrow direction performance
