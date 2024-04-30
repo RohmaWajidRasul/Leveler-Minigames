@@ -28,7 +28,7 @@
                </font>
             </Button>
             <Region prefHeight="10.0" />
-            <Button fx:id="tutorial" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: transparent;" stylesheets="@Style.css" text="TUTORIAL" textAlignment="CENTER">
+            <Button fx:id="tutorial" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleTutorialSceneButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: transparent;" stylesheets="@Style.css" text="TUTORIAL" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font></Button>
