@@ -1,94 +1,96 @@
 #include "Arduino.h"
+#include "rpcWiFi.h"
+#include "PubSubClient.h"
 
-//1: toggle mode, 2: follow mode
-#define LED_MODE   1
+WiFiClient wifiClient;
+PubSubClient client(wifiClient);
 
-const int yellowButtonPin = 1;   // the number of the pushbutton pin for yellow button (terminal right 1)
-const int redButtonPin = 5;      // the number of the pushbutton pin for red button (battery port 5 pin 5)
-const int blueButtonPin = 8;     // (battery port 2 pin 8)
+const char* ssid = "Rohma's phone";
+const char* password =  "12345678";
+
+const int yellowButtonPin = 1;   // Yellow button pin
+const int redButtonPin = 5;      // Red button pin
+const int blueButtonPin = 8;     // Blue button pin
 
 // Variables will change:
-int yellowButtonState;            // the current reading from the yellow button pin
-int redButtonState;               // the current reading from the red button pin
-int blueButtonState;               // the current reading from the red button pin
-int lastYellowButtonState = HIGH; // the previous reading from the yellow button pin
-int lastRedButtonState = HIGH;    // the previous reading from the red button pin
-int lastBlueButtonState = HIGH;               // the current reading from the red button pin
+int yellowButtonState;            // Yellow button state
+int redButtonState;               // Red button state
+int blueButtonState;              // Blue button state
+int lastYellowButtonState = HIGH; // Previous yellow button state
+int lastRedButtonState = HIGH;    // Previous red button state
+int lastBlueButtonState = HIGH;   // Previous blue button state
 
-unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
-unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
-unsigned long lastLedFadeTime = 0;
+unsigned long lastDebounceTime = 0;  // Last time the output pin was toggled
+unsigned long debounceDelay = 50;    // Debounce time; increase if output flickers
 
 void setup() {
+  Serial.begin(9600);
+
+  // Connect to WiFi
+  WiFi.mode(WIFI_STA);
+  WiFi.disconnect();
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    WiFi.begin(ssid, password);
+  }
+
+  // Set up MQTT client
+  client.setServer("test.mosquitto.org", 1883);
+
   pinMode(yellowButtonPin, INPUT);
   pinMode(redButtonPin, INPUT);
   pinMode(blueButtonPin, INPUT);
 }
 
 void loop() {
+  if (!client.connected()) {
+    reconnect();
+  }
+
+  client.loop();
+
   // Read yellow button state
   int yellowReading = digitalRead(yellowButtonPin);
-  Serial.println(yellowReading);
-
-
-  // If the yellow button state changed, due to noise or pressing:
-  if (yellowReading != lastYellowButtonState) {
-    // reset the yellow debounce timer
+  if (yellowReading != lastYellowButtonState && millis() - lastDebounceTime > debounceDelay) {
     lastDebounceTime = millis();
+    lastYellowButtonState = yellowReading;
+    //client.publish("yellow_button_state", String(yellowReading).c_str());
   }
-
-  // Check if debounce delay has passed for yellow button
-  if ((millis() - lastDebounceTime) >= debounceDelay) {
-    // Update yellow button state if it's still different from the last state
-    if (yellowReading != yellowButtonState) {
-      yellowButtonState = yellowReading;
-
-    }
-  }
-  // Update last yellow button state
-  lastYellowButtonState = yellowReading;
 
   // Read red button state
   int redReading = digitalRead(redButtonPin);
-  Serial.println(redReading);
-
-  // If the red button state changed, due to noise or pressing:
-  if (redReading != lastRedButtonState) {
-    // reset the red debounce timer
+  if (redReading != lastRedButtonState && millis() - lastDebounceTime > debounceDelay) {
     lastDebounceTime = millis();
+    lastRedButtonState = redReading;
+    //client.publish("red_button_state", String(redReading).c_str());
   }
-
-  // Check if debounce delay has passed for red button
-  if ((millis() - lastDebounceTime) >= debounceDelay) {
-    // Update red button state if it's still different from the last state
-    if (redReading != redButtonState) {
-      redButtonState = redReading;
-
-    }
-  }
-
-  // Update last red button state
-  lastRedButtonState = redReading;
 
   // Read blue button state
   int blueReading = digitalRead(blueButtonPin);
-  Serial.println(blueReading);
-
-  // If the vblue button state changed, due to noise or pressing:
-  if (blueReading != lastBlueButtonState) {
-    // reset the blue debounce timer
+  if (blueReading != lastBlueButtonState && millis() - lastDebounceTime > debounceDelay) {
     lastDebounceTime = millis();
+    lastBlueButtonState = blueReading;
+    //client.publish("blue_button_state", String(blueReading).c_str());
   }
 
-  // Check if debounce delay has passed for blue button
-  if ((millis() - lastDebounceTime) >= debounceDelay) {
-    // Update blue button state if it's still different from the last state
-    if (blueReading != blueButtonState) {
-      blueButtonState = blueReading;
+  client.publish("yellow_button_state", String(yellowReading).c_str());
+  client.publish("red_button_state", String(redReading).c_str());
+  client.publish("blue_button_state", String(blueReading).c_str());
 
+  delay(100);
+}
+
+void reconnect() {
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    if (client.connect("")) {
+      Serial.println("connected");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      delay(5000);
     }
   }
-
-  // Update last blue button state
-  lastBlueButtonState = blueReading;
 }
