@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#3, fix error." />
+    <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#3, fix error.">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,14 +61,17 @@
     "Application.AccelerationSubscriber.executor": "Run",
     "Application.BoltMinigameDraft.executor": "Run",
     "Application.Draft.executor": "Run",
+    "Application.Launch.executor": "Run",
     "Application.Main.executor": "Run",
+    "Maven.Leveler [clean].executor": "Run",
+    "Maven.Leveler [install].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "17-ci-setup",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/asus/.m2/repository/org/eclipse/paho/org.eclipse.paho.client.mqttv3/1.2.2/org.eclipse.paho.client.mqttv3-1.2.2.jar",
+    "last_opened_file_path": "C:/Users/filip/Área de Trabalho/Leveler/minigames",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -104,6 +109,7 @@
       <workItem from="1713705409883" duration="3192000" />
       <workItem from="1713709883299" duration="1995000" />
       <workItem from="1713721792883" duration="3365000" />
+      <workItem from="1714594147098" duration="468000" />
     </task>
     <task id="LOCAL-00001" summary="#3, implement main menu scene with partially functional buttons.">
       <option name="closed" value="true" />
