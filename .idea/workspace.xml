@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#3, fix error.">
-      <change beforePath="$PROJECT_DIR$/-tcptestmosquittoorg/.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InfoSendTest/InfoSendTest.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/menu/Bolt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/Bolt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/menu/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/Game.java" afterDir="false" />
-    </list>
+    <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#3, fix error." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -146,5 +139,16 @@
     <MESSAGE value="#3, implement main menu scene with partially functional buttons." />
     <MESSAGE value="#3, fix error." />
     <option name="LAST_COMMIT_MESSAGE" value="#3, fix error." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/menu/Bolt.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
