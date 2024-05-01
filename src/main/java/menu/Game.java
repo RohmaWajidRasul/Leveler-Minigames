@@ -4,8 +4,8 @@ import javafx.stage.Stage;
 
 public class Game {
 
-    public static int level = 0;
-    private static final int numberOfGames = 1;
+    public static int level = 0; //should not be global variable
+    private final int numberOfGames = 1;
 
     public Game(Stage stage){
         play(stage);

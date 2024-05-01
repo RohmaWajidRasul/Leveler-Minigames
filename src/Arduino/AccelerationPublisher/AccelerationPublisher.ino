@@ -9,8 +9,8 @@ MMA7660 accelemeter;
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 
-const char* ssid = "TN-EB0840";
-const char* password =  "EshyooshBas3";
+const char* ssid = "";
+const char* password =  "";
 void setup() {
 
     accelemeter.init();
