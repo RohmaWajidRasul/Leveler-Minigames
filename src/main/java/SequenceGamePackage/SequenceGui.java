@@ -18,7 +18,7 @@ import menu.Game;
 public class SequenceGui {
     private final ArrayList<ImageView> arrowViewArrL; //scalable array lists for arrow drawing
     private final ArrayList<String> arrowOrientationList;
-    private final int scrollSpeed; //Scroll speed of the arrows
+    private double scrollSpeed; //Scroll speed of the arrows
     public StackPane stackPane;
     private final Image arrowGreen;
     private final Image arrowRed;
@@ -32,7 +32,7 @@ public class SequenceGui {
 
         this.arrowViewArrL = new ArrayList<>();
         this.arrowOrientationList = new ArrayList<>();
-        this.scrollSpeed = 7; //change arrow sequence speed
+        this.scrollSpeed = 10.0; //change arrow sequence speed
 
     }
 
@@ -85,7 +85,9 @@ public class SequenceGui {
         egg();
     }
 
-    public void moveArrows() { //timeline for moving arrow sequence to the left by accessing ArrayList
+    public void moveArrows(int numberOfArrows) { //timeline for moving arrow sequence to the left by accessing ArrayList
+
+        calcScrollSpeed(numberOfArrows);
 
         Timeline arrowMovementTL = new Timeline(new KeyFrame(Duration.millis(this.scrollSpeed), event -> {
 
@@ -97,6 +99,10 @@ public class SequenceGui {
         }));
         arrowMovementTL.setCycleCount(Timeline.INDEFINITE);
         arrowMovementTL.play();
+    }
+
+    public void calcScrollSpeed(int numberOfArrows) { //speed increment approximation for arrow number increase
+        this.scrollSpeed = 17.1 * Math.pow(numberOfArrows, -0.818) + 3.5;
     }
 
     public void changeArrowColor(int arrowNumber, String color) {

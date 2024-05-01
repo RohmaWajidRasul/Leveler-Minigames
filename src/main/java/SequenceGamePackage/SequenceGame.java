@@ -50,7 +50,7 @@ public class SequenceGame {
         this.sequenceGui.start(stage);
 
         this.sequenceGui.drawArrows(this.numberOfArrows);
-        this.sequenceGui.moveArrows(); //starts timeline to move arrows to the left
+        this.sequenceGui.moveArrows(this.numberOfArrows); //starts timeline to move arrows to the left
 
         gameActive = true;
 
