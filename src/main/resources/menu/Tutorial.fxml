@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,9 +19,15 @@
                   <Image url="@Leveler_Final_Product.gif" />
                </image>
             </ImageView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="aaaaaaaaaaaaa" textAlignment="CENTER" wrappingWidth="500.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-background-color: transparent;" text="Bolt" textAlignment="CENTER">
                <font>
-                  <Font size="48.0" />
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Region prefHeight="10.0" prefWidth="200.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bolt is a fast-paced game where you control the runner racing through the tracks. Use your controller's accelerometer sensor to move your character by shaking it with enough force. Reach the finish line before time runs out to advance to the next level." textAlignment="CENTER" wrappingWidth="500.0">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Text>
             <Region prefHeight="50.0" prefWidth="200.0" />
