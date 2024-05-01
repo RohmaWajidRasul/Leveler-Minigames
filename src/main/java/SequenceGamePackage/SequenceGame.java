@@ -83,7 +83,12 @@ public class SequenceGame {
         this.timeline.setCycleCount(Animation.INDEFINITE);
         this.timeline.play();
 
-        Text txtTimeDisplay = new Text("Welcome to Sequence!");
+        Text txtTimeDisplay = new Text();
+        if(Game.level == 1) {
+            txtTimeDisplay.setText("Welcome to Sequence!");
+        } else {
+            txtTimeDisplay.setText("LEVEL: " + Game.level);
+        }
 
         txtTimeDisplay.setStyle("-fx-fill: red; -fx-font-size: 28px; -fx-font-weight: bold; -fx-font-family: 'Courier New';");
         txtTimeDisplay.layoutXProperty();
