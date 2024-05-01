@@ -166,10 +166,7 @@ public class SequenceGui {
         } else if (allDown) {
             text.setText("Now I'm down bad crying at the gym");
         }
-
-        if(Game.level < 2) {
-            text.setTranslateY(-100);
-        }
+        text.setTranslateY(-100);
     }
 
     public void showDisplay() { //to prevent thread overload issues

@@ -15,6 +15,7 @@ import menu.Main;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SequenceGame {
     public static boolean gameActive;
@@ -28,6 +29,7 @@ public class SequenceGame {
     private Timeline timeline;
     private Timeline seqTimer;
     private final Stage stage;
+    private boolean toddHoward;
 
 
     public SequenceGame(Stage stage) throws Exception {
@@ -41,11 +43,13 @@ public class SequenceGame {
         this.joystickHandler = new JoystickHandler(this.numberOfArrows);
         this.joystickHandler.subscribeToMessages();
         this.stage = stage;
+        toddHoward = false;
         Game(stage);
 
     }
 
     public void Game(Stage stage) throws Exception {
+
 
         this.sequenceGui.start(stage);
 
@@ -62,20 +66,35 @@ public class SequenceGame {
 
                 String performanceResult;
 
-                String banana = this.joystickHandler.getInput(currentArrow);
+                String userInput = this.joystickHandler.getInput(currentArrow);
                 String currentOrientation = this.sequenceGui.getArrowOrientationList().get(currentArrow); //string with arrow orientation from ArrayList
 
-                if(banana.equals(currentOrientation)) { //this compares the orientation of the arraylist arrows instead of the commented-out comparison in the line above (for now)
-                    performanceResult = "arrow_correct"; //correct arrow direction performance
+                if(userInput.equals(currentOrientation) && this.currentArrow == (this.numberOfArrows - 1)) {
                     if(this.currentArrow == (this.numberOfArrows - 1)) {
                         performanceResult = "quota_met";
+                        sequenceGui.changeArrowColor(currentArrow, "green");
+
+                        if (toddHoward) {
+                            managePerformance(performanceResult);
+                        }
+                        toddHoward = true;
+
                     }
+                } else if(userInput.equals(currentOrientation)) {
+                    performanceResult = "arrow_correct"; //correct arrow direction performance
+                    managePerformance(performanceResult);
+
                 } else {
 
-                    performanceResult = "arrow_wrong"; //incorrect arrow direction performance --> game over
+                    performanceResult = "arrow_wrong";
+                    sequenceGui.changeArrowColor(currentArrow, "red");
 
+                    if (toddHoward) {
+                        managePerformance(performanceResult);
+                    }
+                    toddHoward = true;
                 }
-                 managePerformance(performanceResult);
+
 
             }
 
@@ -135,13 +154,12 @@ public class SequenceGame {
                 break;
 
             case "quota_met": /* game stops --> display victory --> goes to next game after specified time*/
-                sequenceGui.changeArrowColor(currentArrow, "green");
-                gameActive = false; /* depends what gameActive means: either the minigame stops or it means the entire continuation of minigames (including others) ends */
+
                 myDaddySaidShoot();
                 break;
 
             case "arrow_wrong": /* game stops --> display game over (because of wrong arrow) --> with/without button to go to menu */
-                sequenceGui.changeArrowColor(currentArrow, "red");
+
                 sequenceGui.showDisplay();
                 gameActive = false;
                 die();
@@ -174,6 +192,7 @@ public class SequenceGame {
     }
 
     public void myDaddySaidShoot() {
+        gameActive = false;
 
         this.timeline.stop();
         this.seqTimer.stop();
