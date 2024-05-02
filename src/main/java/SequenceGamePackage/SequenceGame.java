@@ -15,7 +15,6 @@ import menu.Main;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SequenceGame {
     public static boolean gameActive;
@@ -29,7 +28,7 @@ public class SequenceGame {
     private Timeline timeline;
     private Timeline seqTimer;
     private final Stage stage;
-    private boolean toddHoward;
+    private boolean colorChange;
 
 
     public SequenceGame(Stage stage) throws Exception {
@@ -43,7 +42,7 @@ public class SequenceGame {
         this.joystickHandler = new JoystickHandler(this.numberOfArrows);
         this.joystickHandler.subscribeToMessages();
         this.stage = stage;
-        toddHoward = false;
+        colorChange = false;
         Game(stage);
 
     }
@@ -74,10 +73,10 @@ public class SequenceGame {
                         performanceResult = "quota_met";
                         sequenceGui.changeArrowColor(currentArrow, "green");
 
-                        if (toddHoward) {
+                        if (colorChange) {
                             managePerformance(performanceResult);
                         }
-                        toddHoward = true;
+                        colorChange = true;
 
                     }
                 } else if(userInput.equals(currentOrientation)) {
@@ -89,10 +88,10 @@ public class SequenceGame {
                     performanceResult = "arrow_wrong";
                     sequenceGui.changeArrowColor(currentArrow, "red");
 
-                    if (toddHoward) {
+                    if (colorChange) {
                         managePerformance(performanceResult);
                     }
-                    toddHoward = true;
+                    colorChange = true;
                 }
 
 
@@ -155,25 +154,26 @@ public class SequenceGame {
 
             case "quota_met": /* game stops --> display victory --> goes to next game after specified time*/
 
-                myDaddySaidShoot();
+                clearLevel();
                 break;
 
             case "arrow_wrong": /* game stops --> display game over (because of wrong arrow) --> with/without button to go to menu */
 
                 sequenceGui.showDisplay();
                 gameActive = false;
-                die();
+                lose();
                 break;
 
             case "time_out": /* game stops --> display game over (because of time out) --> with/without button to go to menu */
                 sequenceGui.showDisplay();
                 gameActive = false;
-                die();
+                System.out.println("Losing him was blue, like i'd never known");
+                lose();
                 break;
         }
     }
 
-    public void die() {
+    public void lose() {
         this.timeline.stop();
         this.seqTimer.stop();
         Game.level = 0;
@@ -191,7 +191,7 @@ public class SequenceGame {
         }
     }
 
-    public void myDaddySaidShoot() {
+    public void clearLevel() {
         gameActive = false;
 
         this.timeline.stop();
