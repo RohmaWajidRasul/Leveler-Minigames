@@ -175,7 +175,7 @@ public class SequenceGui {
     public void showGameOver() { //to display GAME OVER
         Label lbGameOver = new Label("GAME OVER");
         this.stackPane.getChildren().add(lbGameOver);
-        lbGameOver.setTranslateY(-200);
+        lbGameOver.setTranslateY(-100);
 
         lbGameOver.setStyle("-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: red;");
     }
