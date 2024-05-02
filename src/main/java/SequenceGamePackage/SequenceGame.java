@@ -42,7 +42,7 @@ public class SequenceGame {
         this.joystickHandler = new JoystickHandler(this.numberOfArrows);
         this.joystickHandler.subscribeToMessages();
         this.stage = stage;
-        colorChange = false;
+        this.colorChange = false;
         Game(stage);
 
     }
@@ -71,12 +71,12 @@ public class SequenceGame {
                 if(userInput.equals(currentOrientation) && this.currentArrow == (this.numberOfArrows - 1)) {
                     if(this.currentArrow == (this.numberOfArrows - 1)) {
                         performanceResult = "quota_met";
-                        sequenceGui.changeArrowColor(currentArrow, "green");
+                        this.sequenceGui.changeArrowColor(this.currentArrow, "green");
 
-                        if (colorChange) {
+                        if (this.colorChange) {
                             managePerformance(performanceResult);
                         }
-                        colorChange = true;
+                        this.colorChange = true;
 
                     }
                 } else if(userInput.equals(currentOrientation)) {
@@ -86,13 +86,13 @@ public class SequenceGame {
                 } else {
 
                     performanceResult = "arrow_wrong";
-                    sequenceGui.changeArrowColor(currentArrow, "red");
-                    sequenceGui.showDisplay();
+                    this.sequenceGui.changeArrowColor(this.currentArrow, "red");
+                    this.sequenceGui.showDisplay();
 
-                    if (colorChange) {
+                    if (this.colorChange) {
                         managePerformance(performanceResult);
                     }
-                    colorChange = true;
+                    this.colorChange = true;
                 }
 
 
@@ -117,31 +117,31 @@ public class SequenceGame {
 
         Duration countdownTime = Duration.seconds(1); //increments of seconds 
 
-        seqTimer = new Timeline(
+        this.seqTimer = new Timeline(
 
             new KeyFrame(countdownTime, event -> {
-                System.out.println(seqTimeRemaining);
-                if(preCountdown > 0) {
-                    txtTimeDisplay.setText("MATCH THE ARROW DIRECTION TO WIN");
-                    preCountdown = preCountdown - 1;
-                } else {
-                    txtTimeDisplay.setText("TIME LEFT: " + seqTimeRemaining);
 
-                    if(seqTimeRemaining <= 0) {
+                if(this.preCountdown > 0) {
+                    txtTimeDisplay.setText("MATCH THE ARROW DIRECTION TO WIN");
+                    decrementCountdown();
+                } else {
+                    txtTimeDisplay.setText("TIME LEFT: " + this.seqTimeRemaining);
+
+                    if(this.seqTimeRemaining <= 0) {
 
                         txtTimeDisplay.setText("TIME OUT!");
                         if (seqTimeRemaining == -1) {
                             managePerformance("time_out");
                         }
-                        seqTimeRemaining = seqTimeRemaining - 1;
+                        decrementTimer();
                     } else {
-                        seqTimeRemaining = seqTimeRemaining - 1; 
+                        decrementTimer();
                     }
                 }
             })
         );
-        seqTimer.setCycleCount(seqTime + preCountdown + 2);
-        seqTimer.play();
+        this.seqTimer.setCycleCount(this.seqTime + this.preCountdown + 2);
+        this.seqTimer.play();
 
     }
 
@@ -152,8 +152,8 @@ public class SequenceGame {
 
             case "arrow_correct": /* input correct arrow counted --> (possibly visual/auditory feedback) --> game continues on to next arrow */
                 gameActive = true;
-                sequenceGui.changeArrowColor(currentArrow, "green");
-                currentArrow++;
+                this.sequenceGui.changeArrowColor(this.currentArrow, "green");
+                this.currentArrow++;
                 break;
 
             case "quota_met": /* game stops --> display victory --> goes to next game after specified time*/
@@ -165,6 +165,7 @@ public class SequenceGame {
 
 
                 gameActive = false;
+                System.out.println("Loving him was red");
                 lose();
                 break;
 
@@ -182,12 +183,12 @@ public class SequenceGame {
         this.seqTimer.stop();
         Game.level = 0;
         try {
-            joystickHandler.unsubscribeFromMessages();
+            this.joystickHandler.unsubscribeFromMessages();
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-            stage.setTitle("Leveler");
-            stage.setScene(scene);
-            stage.show();
+            this.stage.setTitle("Leveler");
+            this.stage.setScene(scene);
+            this.stage.show();
         } catch (MqttException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -195,17 +196,25 @@ public class SequenceGame {
         }
     }
 
-    public void clearLevel() {
+    private void clearLevel() {
         gameActive = false;
 
         this.timeline.stop();
         this.seqTimer.stop();
         try {
-            joystickHandler.unsubscribeFromMessages();
-            Game game = new Game(stage);
+            this.joystickHandler.unsubscribeFromMessages();
+            Game game = new Game(this.stage);
         } catch (MqttException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void decrementTimer() {
+        this.seqTimeRemaining = this.seqTimeRemaining - 1;
+    }
+
+    private void decrementCountdown() {
+        this.preCountdown = this.preCountdown - 1;
     }
 
 }

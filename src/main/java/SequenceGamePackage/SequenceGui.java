@@ -68,7 +68,7 @@ public class SequenceGui {
             }
 
             ImageView arrowView = new ImageView();
-            arrowView.setImage(arrowGrey);
+            arrowView.setImage(this.arrowGrey);
 
             arrowView.setTranslateX(arrowPlacing);
             arrowView.setFitWidth(arrowSizeWH);
@@ -181,7 +181,7 @@ public class SequenceGui {
     }
 
     public ArrayList<String> getArrowOrientationList() {
-        return arrowOrientationList;
+        return this.arrowOrientationList;
     }
 }
 
