@@ -87,6 +87,7 @@ public class SequenceGame {
 
                     performanceResult = "arrow_wrong";
                     sequenceGui.changeArrowColor(currentArrow, "red");
+                    sequenceGui.showDisplay();
 
                     if (colorChange) {
                         managePerformance(performanceResult);
@@ -119,24 +120,27 @@ public class SequenceGame {
         seqTimer = new Timeline(
 
             new KeyFrame(countdownTime, event -> {
-
+                System.out.println(seqTimeRemaining);
                 if(preCountdown > 0) {
                     txtTimeDisplay.setText("MATCH THE ARROW DIRECTION TO WIN");
                     preCountdown = preCountdown - 1;
                 } else {
                     txtTimeDisplay.setText("TIME LEFT: " + seqTimeRemaining);
 
-                    if(seqTimeRemaining == 0) {
+                    if(seqTimeRemaining <= 0) {
 
                         txtTimeDisplay.setText("TIME OUT!");
-                        managePerformance("time_out");
+                        if (seqTimeRemaining == -1) {
+                            managePerformance("time_out");
+                        }
+                        seqTimeRemaining = seqTimeRemaining - 1;
                     } else {
                         seqTimeRemaining = seqTimeRemaining - 1; 
                     }
                 }
             })
         );
-        seqTimer.setCycleCount(seqTime + preCountdown + 1);
+        seqTimer.setCycleCount(seqTime + preCountdown + 2);
         seqTimer.play();
 
     }
@@ -159,13 +163,13 @@ public class SequenceGame {
 
             case "arrow_wrong": /* game stops --> display game over (because of wrong arrow) --> with/without button to go to menu */
 
-                sequenceGui.showDisplay();
+
                 gameActive = false;
                 lose();
                 break;
 
             case "time_out": /* game stops --> display game over (because of time out) --> with/without button to go to menu */
-                sequenceGui.showDisplay();
+
                 gameActive = false;
                 System.out.println("Losing him was blue, like i'd never known");
                 lose();

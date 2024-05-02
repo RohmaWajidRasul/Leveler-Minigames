@@ -13,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import menu.Game;
 
 public class SequenceGui {
     private final ArrayList<ImageView> arrowViewArrL; //scalable array lists for arrow drawing
