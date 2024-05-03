@@ -69,7 +69,7 @@ public class JoystickHandler implements MqttCallback {
         System.out.println(s);
 
 
-        if (SequenceGamePackage.SequenceGame.gameActive && this.inputNumber < this.numberOfArrows) {
+        if ( this.inputNumber < this.numberOfArrows) {
             this.input[this.inputNumber] = s;
             this.inputNumber++;
         }

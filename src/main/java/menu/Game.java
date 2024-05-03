@@ -18,7 +18,7 @@ public class Game {
 
         level++;
         int random = (int) (Math.random() * range) + min;
-        switch (2) {
+        switch (random) {
             case 1 ->  {
                 Bolt bolt = new Bolt(stage);
             }

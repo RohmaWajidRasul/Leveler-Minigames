@@ -114,10 +114,9 @@ public class SequenceGui {
             arrowColor = this.arrowRed;
         }
         
-        if(SequenceGame.gameActive) {
-            ImageView specificArrowView = this.arrowViewArrL.get(arrowNumber);
-            specificArrowView.setImage(arrowColor);
-        }
+        ImageView specificArrowView = this.arrowViewArrL.get(arrowNumber);
+        specificArrowView.setImage(arrowColor);
+
     }
 
     private void egg() {

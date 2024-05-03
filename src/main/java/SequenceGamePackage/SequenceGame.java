@@ -17,7 +17,7 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import java.io.IOException;
 
 public class SequenceGame {
-    public static boolean gameActive;
+    private boolean gameActive;
     private final int numberOfArrows;
     private int currentArrow;
     private final int seqTime;
