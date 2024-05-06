@@ -3,14 +3,15 @@ image: maven:latest
 stages:
     - build
     - test
+    - package
 
 build_job:
     stage: build
     tags:
         - docker
-    
     script: 
         - echo "Maven compile started"
+        - "mvn clean"
         - "mvn compile"
 
 test_job:
@@ -19,3 +20,11 @@ test_job:
         - docker
     script: 
         - echo "I wanna leave my footprints in the sand of time"
+
+package_job:
+    stage: package
+    tags:
+        - docker
+    script:
+        - echo "Maven packaging started"
+        - "mvn package"
