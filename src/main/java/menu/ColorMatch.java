@@ -84,31 +84,40 @@ public class ColorMatch {
 
     }
 
-    public void checkGameCondition() throws MqttException {
+    public void checkGameCondition() throws MqttException, IOException {
         if (gameOver) {
-            buttonSubscriber.unsubscribeFromMessages();
-            drawScreen(graphicsContext);
-            timeline.stop();
-            graphicsContext.setFill(Color.BLACK);
-            graphicsContext.fillRect(0, 0, 600, 400);
-            System.out.println("GAMEOVER!!!!!!!!!");// replace
-            Game.level = 0;
-            try {
-                this.buttonSubscriber.unsubscribeFromMessages();
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                this.stage.setTitle("Leveler");
-                this.stage.setScene(scene);
-                this.stage.show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            lose();
         } else if (inputIndex == currentNumOfColors - 1) {
-            buttonSubscriber.unsubscribeFromMessages();
-            drawScreen(graphicsContext);
-            timeline.stop();
-            System.out.println("DONE!!!!!!!!!");// replace
+            nextLevel();
         }
+    }
+
+    public void lose() throws MqttException, IOException {
+        buttonSubscriber.unsubscribeFromMessages();
+        drawScreen(graphicsContext);
+        timeline.stop();
+        graphicsContext.setFill(Color.BLACK);
+        graphicsContext.fillRect(0, 0, 600, 400);
+        System.out.println("GAMEOVER!!!!!!!!!");// replace
+        Game.level = 0;
+        this.buttonSubscriber.unsubscribeFromMessages();
+        backToMenu();
+    }
+
+    public void nextLevel() throws MqttException, IOException {
+        buttonSubscriber.unsubscribeFromMessages();
+        drawScreen(graphicsContext);
+        timeline.stop();
+        System.out.println("DONE!!!!!!!!!");// replace
+        Game game = new Game(stage);
+    }
+
+    public void backToMenu() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        this.stage.setTitle("Leveler");
+        this.stage.setScene(scene);
+        this.stage.show();
     }
 
     public void checkColorMatch(ArrayList<String> arrayList) {
@@ -116,7 +125,6 @@ public class ColorMatch {
             inputIndex++;
         } else {
             gameOver = true;
-
         }
     }
 
