@@ -5,7 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#3, fix error.">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/names.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/names.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Arduino/AccelerationPublisher/AccelerationPublisher.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Java/Arduino/AccelerationPublisher/AccelerationPublisher.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/AccelerationSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/java/menu/AccelerationSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/Bolt.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/java/menu/Bolt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/java/menu/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/java/menu/Launch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/java/menu/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/java/menu/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/java/menu/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/Leveler_Final_Product.gif" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/resources/menu/Leveler_Final_Product.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/resources/menu/Menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/resources/menu/Register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/resources/menu/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/names.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Java/main/resources/menu/names.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,34 +72,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AccelerationSubscriber.executor": "Run",
-    "Application.BoltMinigameDraft.executor": "Run",
-    "Application.Draft.executor": "Run",
-    "Application.Launch.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Maven.Leveler [clean].executor": "Run",
-    "Maven.Leveler [install].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "17-ci-setup",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/filip/Área de Trabalho/Leveler/minigames",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AccelerationSubscriber.executor&quot;: &quot;Run&quot;,
+    &quot;Application.BoltMinigameDraft.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Draft.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Launch.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Leveler [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Leveler [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;17-ci-setup&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/filip/Área de Trabalho/Leveler/minigames&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -110,6 +126,7 @@
       <workItem from="1713709883299" duration="1995000" />
       <workItem from="1713721792883" duration="3365000" />
       <workItem from="1714594147098" duration="468000" />
+      <workItem from="1714982677162" duration="389000" />
     </task>
     <task id="LOCAL-00001" summary="#3, implement main menu scene with partially functional buttons.">
       <option name="closed" value="true" />
@@ -150,7 +167,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/menu/Bolt.java</url>
+          <url>file://$PROJECT_DIR$/Java/main/java/menu/Bolt.java</url>
           <line>94</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
