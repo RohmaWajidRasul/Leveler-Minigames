@@ -203,7 +203,7 @@ public class SequenceGame {
         this.seqTimer.stop();
         try {
             this.joystickHandler.unsubscribeFromMessages();
-            Game game = new Game(this.stage);
+            Game.play(this.stage);
         } catch (MqttException e) {
             throw new RuntimeException(e);
         }

@@ -89,7 +89,7 @@ public class Bolt {
         if (runnerX > finishLineX + 50) {
             timeline.stop();
             accelerationSubscriber.unsubscribeFromMessages();
-            Game game = new Game(stage);
+            Game.play(stage);
         } else if (timerValue == 0) {
             Game.level = 0; //need to change this.
             timeline.stop();
