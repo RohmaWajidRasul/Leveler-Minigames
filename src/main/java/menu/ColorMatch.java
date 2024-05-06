@@ -24,6 +24,8 @@ public class ColorMatch {
 
     private ArrayList<String> textColor;
     private ArrayList<String> writtenColor;
+    private ArrayList<String> inputColors;
+    private int inputIndex;
     private String[] colorlist;
 
     private int numOfColors;
@@ -31,7 +33,7 @@ public class ColorMatch {
     private Random random;
     private Timeline timeline;
 
-
+    private boolean gameOver;
 
     public ColorMatch(Stage stage) throws MqttException, IOException {
         start(stage);
@@ -48,14 +50,17 @@ public class ColorMatch {
         anchor.getChildren().add(canvas);
 
         buttonSubscriber = new ButtonSubscriber();
+        buttonSubscriber.subscribeToMessages();
 
         random = new Random();
-
         textColor = new ArrayList<>();
         writtenColor = new ArrayList<>();
-
+        inputColors = new ArrayList<>();
         numOfColors = 5;
         colorlist = new String[]{"Red", "Yellow", "Blue"};
+
+        inputIndex = -1;
+        gameOver = false;
 
         timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
             try {
@@ -77,10 +82,48 @@ public class ColorMatch {
 
     }
 
+    public void checkGameConditon() throws MqttException {
+        if (gameOver) {
+            buttonSubscriber.unsubscribeFromMessages();
+            drawScreen(graphicsContext);
+            timeline.stop();
+            graphicsContext.setFill(Color.BLACK);
+            graphicsContext.fillRect(0, 0, 600, 400);
+            System.out.println("GAMEOVER!!!!!!!!!");// replace
+
+            //Add code to go back to menu
+        } else if (inputIndex == numOfColors - 1) {
+            buttonSubscriber.unsubscribeFromMessages();
+            drawScreen(graphicsContext);
+            timeline.stop();
+            System.out.println("DONE!!!!!!!!!");// replace
+            //Add code to go back to Game for next random minigame
+        }
+    }
+
+    public void checkColorMatch(ArrayList<String> arrayList) {
+        if(arrayList.get(inputIndex + 1).equals(inputColors.get(inputIndex + 1))) {
+            inputIndex++;
+        } else {
+            gameOver = true;
+
+        }
+
+    }
+
+    public void getInput() {
+        String inputColor = buttonSubscriber.getValidButtonPress();
+        if (inputColor != null) {
+            inputColors.add(inputIndex + 1, inputColor);
+            checkColorMatch(textColor);
+        }
+
+    }
 
     public void run(Stage stage) throws MqttException, IOException {
         drawScreen(graphicsContext);
-
+        getInput();
+        checkGameConditon();
     }
 
     public void fillArray(ArrayList<String> arrayList) {
@@ -97,7 +140,7 @@ public class ColorMatch {
         double startX = 50;
         double spacing = (600 - 2 * startX) / numOfColors;
 
-        for (int i = 0; i < numOfColors; i++) { //use a variable for inputIndex + 1
+        for (int i = inputIndex + 1; i < numOfColors; i++) { //use a variable for inputIndex + 1
             double x = startX + i * spacing;
             double y = 200;
 
