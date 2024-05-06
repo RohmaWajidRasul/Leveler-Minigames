@@ -36,4 +36,14 @@ public class MenuController {
         Game game = new Game(currentStage);
 
     }
+
+    @FXML
+    private void handleTutorialSceneButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/menu/Tutorial.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene registerScene = new Scene(root);
+        Node sourceNode = (Node) event.getSource();
+        Stage currentStage = (Stage) sourceNode.getScene().getWindow();
+        currentStage.setScene(registerScene);
+    }
 }
