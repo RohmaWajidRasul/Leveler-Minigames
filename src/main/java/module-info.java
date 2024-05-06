@@ -6,4 +6,7 @@ module com.example.demo {
 
     opens menu to javafx.fxml;
     exports menu;
+    exports SequenceGamePackage;
+    exports Handlers;
+    opens Handlers to javafx.fxml;
 }

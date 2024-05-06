@@ -1,21 +1,34 @@
 package menu;
 
+import SequenceGamePackage.SequenceGame;
 import javafx.stage.Stage;
 
 public class Game {
 
-    public static int level = 0; //should not be global variable
-    private final int numberOfGames = 1;
+    public static int level = 0;
+    private static final int numberOfGames = 2;
 
-    public Game(Stage stage){
+    public Game(Stage stage) {
         play(stage);
     }
 
-    private void play(Stage stage){
+    private void play(Stage stage) {
+        int min = 1;
+        int range = numberOfGames - min + 1;
+
         level++;
-        int random = (int) (Math.random() * (numberOfGames - 1));
-        switch (random){
-            case 0 ->  {Bolt bolt = new Bolt(stage);}
+        int random = (int) (Math.random() * range) + min;
+        switch (random) {
+            case 1 ->  {
+                Bolt bolt = new Bolt(stage);
+            }
+            case 2 -> {
+                try {
+                    SequenceGame sequenceGame = new SequenceGame(stage);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
     }
 
