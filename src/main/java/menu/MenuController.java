@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.eclipse.paho.client.mqttv3.MqttException;
 
 import java.io.IOException;
 
@@ -30,7 +31,7 @@ public class MenuController {
 
 
     @FXML
-    private void handlePlayButton(ActionEvent event) {
+    private void handlePlayButton(ActionEvent event) throws MqttException, IOException {
         Node sourceNode = (Node) event.getSource();
         Stage currentStage = (Stage) sourceNode.getScene().getWindow();
         Game game = new Game(currentStage);
