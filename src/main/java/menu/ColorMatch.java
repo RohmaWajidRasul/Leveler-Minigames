@@ -2,6 +2,7 @@ package menu;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -22,18 +23,20 @@ public class ColorMatch {
     private ButtonSubscriber buttonSubscriber;
     private GraphicsContext graphicsContext;
 
-    private ArrayList<String> textColor;
+    private ArrayList<String> fontColor;
     private ArrayList<String> writtenColor;
     private ArrayList<String> inputColors;
     private int inputIndex;
-    private String[] colorlist;
+    private final String[] colorList = {"Red", "Yellow", "Blue"};
 
-    private int numOfColors;
+    private final int baseNumOfColors = 5;
+    private int currentNumOfColors;
 
     private Random random;
     private Timeline timeline;
 
     private boolean gameOver;
+    private Stage stage;
 
     public ColorMatch(Stage stage) throws MqttException, IOException {
         start(stage);
@@ -53,11 +56,10 @@ public class ColorMatch {
         buttonSubscriber.subscribeToMessages();
 
         random = new Random();
-        textColor = new ArrayList<>();
+        fontColor = new ArrayList<>();
         writtenColor = new ArrayList<>();
         inputColors = new ArrayList<>();
-        numOfColors = 5;
-        colorlist = new String[]{"Red", "Yellow", "Blue"};
+        currentNumOfColors = baseNumOfColors + Game.level;
 
         inputIndex = -1;
         gameOver = false;
@@ -76,13 +78,13 @@ public class ColorMatch {
         stage.setScene(start);
         stage.show();
 
-        fillArray(textColor);
+        fillArray(fontColor);
         fillArray(writtenColor);
 
 
     }
 
-    public void checkGameConditon() throws MqttException {
+    public void checkGameCondition() throws MqttException {
         if (gameOver) {
             buttonSubscriber.unsubscribeFromMessages();
             drawScreen(graphicsContext);
@@ -90,14 +92,22 @@ public class ColorMatch {
             graphicsContext.setFill(Color.BLACK);
             graphicsContext.fillRect(0, 0, 600, 400);
             System.out.println("GAMEOVER!!!!!!!!!");// replace
-
-            //Add code to go back to menu
-        } else if (inputIndex == numOfColors - 1) {
+            Game.level = 0;
+            try {
+                this.buttonSubscriber.unsubscribeFromMessages();
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                this.stage.setTitle("Leveler");
+                this.stage.setScene(scene);
+                this.stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (inputIndex == currentNumOfColors - 1) {
             buttonSubscriber.unsubscribeFromMessages();
             drawScreen(graphicsContext);
             timeline.stop();
             System.out.println("DONE!!!!!!!!!");// replace
-            //Add code to go back to Game for next random minigame
         }
     }
 
@@ -108,14 +118,13 @@ public class ColorMatch {
             gameOver = true;
 
         }
-
     }
 
     public void getInput() {
         String inputColor = buttonSubscriber.getValidButtonPress();
         if (inputColor != null) {
             inputColors.add(inputIndex + 1, inputColor);
-            checkColorMatch(textColor);
+            checkColorMatch(fontColor);
         }
 
     }
@@ -123,12 +132,12 @@ public class ColorMatch {
     public void run(Stage stage) throws MqttException, IOException {
         drawScreen(graphicsContext);
         getInput();
-        checkGameConditon();
+        checkGameCondition();
     }
 
     public void fillArray(ArrayList<String> arrayList) {
-        for (int i = 0; i < numOfColors; i++) {
-            arrayList.add(i, colorlist[random.nextInt(colorlist.length)]);
+        for (int i = 0; i < currentNumOfColors; i++) {
+            arrayList.add(i, colorList[random.nextInt(colorList.length)]);
         }
 
     }
@@ -138,14 +147,14 @@ public class ColorMatch {
         graphicsContext.fillRect(0, 0, 600, 400);
 
         double startX = 50;
-        double spacing = (600 - 2 * startX) / numOfColors;
+        double spacing = (600 - 2 * startX) / currentNumOfColors;
 
-        for (int i = inputIndex + 1; i < numOfColors; i++) { //use a variable for inputIndex + 1
+        for (int i = inputIndex + 1; i < currentNumOfColors; i++) { //use a variable for inputIndex + 1
             double x = startX + i * spacing;
             double y = 200;
 
             String text = writtenColor.get(i);
-            String color = textColor.get(i);
+            String color = fontColor.get(i);
 
 
             graphicsContext.setFont(Font.font("Verdana", FontWeight.SEMI_BOLD, 20));
