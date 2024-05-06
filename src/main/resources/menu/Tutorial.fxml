@@ -30,6 +30,18 @@
                   <Font size="18.0" />
                </font>
             </Text>
+            <Region prefHeight="10.0" prefWidth="200.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-background-color: transparent;" text="Sequence" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Region prefHeight="10.0" prefWidth="200.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In the Sequence Game, your task is simple: match arrow directions swiftly and accurately before the timer runs out. Use the joystick to input the correct direction displayed on the screen. React quickly and stay focused to progress through the levels." textAlignment="CENTER" wrappingWidth="500.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
             <Region prefHeight="50.0" prefWidth="200.0" />
             <Button fx:id="tutorialBack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleTutorialBackButton" style="-fx-background-color: transparent;" stylesheets="@Style.css" text="BACK" textAlignment="CENTER">
                <font>
