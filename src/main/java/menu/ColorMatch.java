@@ -31,9 +31,13 @@ public class ColorMatch {
 
     private final int baseNumOfColors = 5;
     private int currentNumOfColors;
+    private final int time = 10;
+    private int preCountdown;
+    private int timeRemaining;
 
     private Random random;
     private Timeline timeline;
+    private Timeline timer;
 
     private boolean gameOver;
     private Stage stage;
@@ -81,7 +85,30 @@ public class ColorMatch {
         fillArray(fontColor);
         fillArray(writtenColor);
 
+        startTimer();
+    }
 
+    private void startTimer() {
+        Duration countdownTime = Duration.seconds(1);
+        timer = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            //drawScreen(graphicsContext);
+            if (preCountdown > 0) {
+                decrementCountdown();
+                //txtTimeDisplay.setText("TIME LEFT: " + this.seqTimeRemaining);
+            } else {
+                //txtTimeDisplay.setText("TIME OUT!");
+                try {
+                    gameOver = true;
+                    checkGameCondition();
+                } catch (MqttException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }));
+        timer.setCycleCount(this.time + this.preCountdown + 2);
+        timer.play();
     }
 
     public void checkGameCondition() throws MqttException, IOException {
@@ -96,6 +123,7 @@ public class ColorMatch {
         buttonSubscriber.unsubscribeFromMessages();
         drawScreen(graphicsContext);
         timeline.stop();
+        timer.stop();
         graphicsContext.setFill(Color.BLACK);
         graphicsContext.fillRect(0, 0, 600, 400);
         System.out.println("GAMEOVER!!!!!!!!!");// replace
@@ -108,6 +136,7 @@ public class ColorMatch {
         buttonSubscriber.unsubscribeFromMessages();
         drawScreen(graphicsContext);
         timeline.stop();
+        timer.stop();
         System.out.println("DONE!!!!!!!!!");// replace
         Game game = new Game(stage);
     }
@@ -181,6 +210,14 @@ public class ColorMatch {
             }
             graphicsContext.fillText(text, x, y);
         }
+    }
+
+    private void decrementTimer() {
+        this.timeRemaining = this.timeRemaining - 1;
+    }
+
+    private void decrementCountdown() {
+        this.preCountdown = this.preCountdown - 1;
     }
 
 }
