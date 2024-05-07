@@ -21,6 +21,10 @@ arduino-cli core install Seeeduino:samd --config-file .arduino-cli.yaml
 arduino-cli lib install "Seeed Arduino rpcWiFi@1.0.6"
 arduino-cli lib install "PubSubClient@2.8"
 arduino-cli lib install "Seeed Arduino RTC@2.0.0"
+arduino-cli lib install "Grove-3-Axis-Digital-Accelerometer-2g-to-16g-LIS3DHTR"
+arduino-cli lib install "Seeed Arduino rpcUnified"
+arduino-cli lib install "Accelerometer_MMA7660"
+
 
 cd -
 
