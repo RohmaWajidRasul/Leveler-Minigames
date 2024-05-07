@@ -43,7 +43,7 @@ release:
         - arduino-cli lib list                    # check that libraries are installed
 
         # Compile the first sketch file
-        - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal AcceleractionPublisher/AccelerationPublisher.ino
+        - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal AccelerationPublisher/AccelerationPublisher.ino
 
         # Compile the second sketch file
         - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal SequenceGame.ino
