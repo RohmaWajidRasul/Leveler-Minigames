@@ -10,19 +10,6 @@ stages:
     - build
     - deploy
 
-compile_first_sketch:
-    stage: build
-    tags:
-        - docker
-    script:
-        - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal arduino/first_sketch.ino
-
-compile_second_sketch:
-    stage: build
-    tags:
-        - docker
-    script:
-        - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal arduino/second_sketch.ino
 
 compile:
     stage: build
