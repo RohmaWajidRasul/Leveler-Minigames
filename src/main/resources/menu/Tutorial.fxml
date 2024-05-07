@@ -42,7 +42,18 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Region prefHeight="50.0" prefWidth="200.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Color Match" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Region prefHeight="10.0" prefWidth="200.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In the Color Match Game, your mission is to match colors or words promptly and precisely before the timer ticks down to zero. Utilize your keen eye and quick reflexes to select the correct color or word corresponding to the hint displayed on the screen." textAlignment="CENTER" wrappingWidth="500.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Region prefHeight="75.0" prefWidth="200.0" />
             <Button fx:id="tutorialBack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleTutorialBackButton" style="-fx-background-color: transparent;" stylesheets="@Style.css" text="BACK" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
