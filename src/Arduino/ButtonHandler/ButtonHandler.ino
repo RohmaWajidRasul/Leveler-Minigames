@@ -78,7 +78,7 @@ void loop() {
   client.publish("red_button_state", String(redReading).c_str());
   client.publish("blue_button_state", String(blueReading).c_str());
 
-  delay(100);
+  delay(110);
 }
 
 void reconnect() {

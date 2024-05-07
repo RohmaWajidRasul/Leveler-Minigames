@@ -27,27 +27,28 @@ public class ColorMatch {
     private ArrayList<String> writtenColor;
     private ArrayList<String> inputColors;
     private int inputIndex;
-    private final String[] colorList = {"Red", "Yellow", "Blue"};
+    private final String[] colorList;
 
-    private final int baseNumOfColors = 5;
+    private final int baseNumOfColors;
     private int currentNumOfColors;
-    private final int time = 10;
-    private int preCountdown;
-    private int timeRemaining;
 
     private Random random;
     private Timeline timeline;
     private Timeline timer;
+    private int timerValue;
 
     private boolean gameOver;
     private Stage stage;
 
     public ColorMatch(Stage stage) throws MqttException, IOException {
+        colorList = new String[]{"Red", "Yellow", "Blue"};
+        baseNumOfColors = 5;
+        timerValue = 100;
+
         start(stage);
     }
 
     public void start(Stage stage) throws MqttException {
-
 
         AnchorPane anchor = new AnchorPane();
         Scene start = new Scene(anchor, 600, 400);
@@ -55,6 +56,8 @@ public class ColorMatch {
         Canvas canvas = new Canvas(600, 400);
         graphicsContext = canvas.getGraphicsContext2D();
         anchor.getChildren().add(canvas);
+
+        this.stage = stage;
 
         buttonSubscriber = new ButtonSubscriber();
         buttonSubscriber.subscribeToMessages();
@@ -85,31 +88,11 @@ public class ColorMatch {
         fillArray(fontColor);
         fillArray(writtenColor);
 
-        startTimer();
-    }
-
-    private void startTimer() {
-        Duration countdownTime = Duration.seconds(1);
-        timer = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-            //drawScreen(graphicsContext);
-            if (preCountdown > 0) {
-                decrementCountdown();
-                //txtTimeDisplay.setText("TIME LEFT: " + this.seqTimeRemaining);
-            } else {
-                //txtTimeDisplay.setText("TIME OUT!");
-                try {
-                    gameOver = true;
-                    checkGameCondition();
-                } catch (MqttException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }));
-        timer.setCycleCount(this.time + this.preCountdown + 2);
+        timer = new Timeline(new KeyFrame(Duration.seconds(1), e -> timerValue--));
+        timer.setCycleCount(timerValue);
         timer.play();
     }
+
 
     public void checkGameCondition() throws MqttException, IOException {
         if (gameOver) {
@@ -120,7 +103,6 @@ public class ColorMatch {
     }
 
     public void lose() throws MqttException, IOException {
-        buttonSubscriber.unsubscribeFromMessages();
         drawScreen(graphicsContext);
         timeline.stop();
         timer.stop();
@@ -210,14 +192,11 @@ public class ColorMatch {
             }
             graphicsContext.fillText(text, x, y);
         }
+
+        graphicsContext.setFill(Color.BLACK);
+        graphicsContext.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 20));
+        graphicsContext.fillText(String.format("Time Left: %d",timerValue), 10, 25, 100);
     }
 
-    private void decrementTimer() {
-        this.timeRemaining = this.timeRemaining - 1;
-    }
-
-    private void decrementCountdown() {
-        this.preCountdown = this.preCountdown - 1;
-    }
 
 }
