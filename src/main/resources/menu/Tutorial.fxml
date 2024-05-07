@@ -48,7 +48,7 @@
                </font>
             </Label>
             <Region prefHeight="10.0" prefWidth="200.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In the Color Match Game, your mission is to match colors or words promptly and precisely before the timer ticks down to zero. Utilize your keen eye and quick reflexes to select the correct color or word corresponding to the hint displayed on the screen." textAlignment="CENTER" wrappingWidth="500.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In the Color Match Game, swiftly match colors or words before the timer runs out. Use the controller's colored buttons—red, yellow, and blue—as sensors to input your selections. React fast, stay focused, and conquer each level to achieve the highest score." textAlignment="CENTER" wrappingWidth="500.0">
                <font>
                   <Font size="18.0" />
                </font>
