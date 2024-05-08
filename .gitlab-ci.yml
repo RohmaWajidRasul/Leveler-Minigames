@@ -25,7 +25,7 @@ compile:
         - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal AccelerationPublisher/AccelerationPublisher.ino
 
         # Compile the second sketch file
-        - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal SequenceGame.ino
+        #- arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal SequenceGame.ino
 
         # Upload
         - arduino-cli board list                  # Check if device is connected
