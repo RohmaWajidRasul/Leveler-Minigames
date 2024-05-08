@@ -43,7 +43,7 @@ public class ColorMatch {
     public ColorMatch(Stage stage) throws MqttException, IOException {
         colorList = new String[]{"Red", "Yellow", "Blue"};
         baseNumOfColors = 5;
-        timerValue = 100;
+        timerValue = 15;
 
         start(stage);
     }
@@ -95,7 +95,7 @@ public class ColorMatch {
 
 
     public void checkGameCondition() throws MqttException, IOException {
-        if (gameOver) {
+        if (gameOver || timerValue <= 0) {
             lose();
         } else if (inputIndex == currentNumOfColors - 1) {
             nextLevel();
@@ -106,8 +106,6 @@ public class ColorMatch {
         drawScreen(graphicsContext);
         timeline.stop();
         timer.stop();
-        graphicsContext.setFill(Color.BLACK);
-        graphicsContext.fillRect(0, 0, 600, 400);
         System.out.println("GAMEOVER!!!!!!!!!");// replace
         Game.level = 0;
         this.buttonSubscriber.unsubscribeFromMessages();
