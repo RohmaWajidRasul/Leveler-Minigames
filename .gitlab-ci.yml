@@ -73,3 +73,6 @@ install_job:
     script:
         - echo "Maven installing started"
         - "mvn install"
+    artifacts:
+        paths:
+            - ./target/*.jar
