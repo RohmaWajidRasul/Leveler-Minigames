@@ -75,4 +75,4 @@ install_job:
         - "mvn install"
     artifacts:
         paths:
-            - ./target/*.jar
+            - ./target
