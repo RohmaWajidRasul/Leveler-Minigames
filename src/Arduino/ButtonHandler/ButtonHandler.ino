@@ -55,7 +55,7 @@ void loop() {
   if (yellowReading != lastYellowButtonState && millis() - lastDebounceTime > debounceDelay) {
     lastDebounceTime = millis();
     lastYellowButtonState = yellowReading;
-    //client.publish("yellow_button_state", String(yellowReading).c_str());
+    client.publish("yellow_button_state", String(yellowReading).c_str());
   }
 
   // Read red button state
@@ -63,7 +63,7 @@ void loop() {
   if (redReading != lastRedButtonState && millis() - lastDebounceTime > debounceDelay) {
     lastDebounceTime = millis();
     lastRedButtonState = redReading;
-    //client.publish("red_button_state", String(redReading).c_str());
+    client.publish("red_button_state", String(redReading).c_str());
   }
 
   // Read blue button state
@@ -71,12 +71,12 @@ void loop() {
   if (blueReading != lastBlueButtonState && millis() - lastDebounceTime > debounceDelay) {
     lastDebounceTime = millis();
     lastBlueButtonState = blueReading;
-    //client.publish("blue_button_state", String(blueReading).c_str());
+    client.publish("blue_button_state", String(blueReading).c_str());
   }
 
-  client.publish("yellow_button_state", String(yellowReading).c_str());
-  client.publish("red_button_state", String(redReading).c_str());
-  client.publish("blue_button_state", String(blueReading).c_str());
+  //client.publish("yellow_button_state", String(yellowReading).c_str());
+  //client.publish("red_button_state", String(redReading).c_str());
+  //client.publish("blue_button_state", String(blueReading).c_str());
 
   delay(110);
 }
