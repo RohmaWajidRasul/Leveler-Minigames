@@ -66,13 +66,15 @@ public class ButtonSubscriber implements MqttCallback{
             if (topic.equals(TOPIC_YELLOW)) {
                 lastYellowButtonState = yellowButtonState;
                 yellowButtonState = intValue;
+
             } else if (topic.equals(TOPIC_RED)) {
                 lastRedButtonState = redButtonState;
                 redButtonState = intValue;
+
             } else if (topic.equals(TOPIC_BLUE)) {
                 lastBlueButtonState = blueButtonState;
                 blueButtonState = intValue;
-                System.out.println(blueButtonState);
+
             }
         } catch (NumberFormatException e) {
             System.err.println("Received non-integer value, ignoring: " + payloadString);
@@ -81,11 +83,16 @@ public class ButtonSubscriber implements MqttCallback{
 
     public String getValidButtonPress() {
         if (yellowButtonState == 0 && lastYellowButtonState == 1) {
+            lastYellowButtonState = 0;
             return "Yellow";
+
         } else if (redButtonState == 0 && lastRedButtonState == 1) {
-            return "Red";
+            lastRedButtonState = 0;
+            return "Red"; //Loving him was read
+
         } else if (blueButtonState == 0 && lastBlueButtonState == 1) {
-            return "Blue";
+            lastBlueButtonState = 0;
+            return "Blue"; //Losing him was blue, like I'd never know
         } else {
             return null;
         }
