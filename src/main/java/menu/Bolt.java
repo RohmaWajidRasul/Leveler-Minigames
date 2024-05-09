@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
+import gameover.GameOverScreen;
+
 import java.io.IOException;
 
 public class Bolt {
@@ -28,6 +30,7 @@ public class Bolt {
     final int gridRow = 20;
     final int gridColumn = 2;
     private int timerValue = 7;
+    private GameOverScreen gameOver;
 
     AccelerationSubscriber accelerationSubscriber;
     Timeline timeline;
@@ -84,10 +87,14 @@ public class Bolt {
             Game.level = 0;
             timeline.stop();
             accelerationSubscriber.unsubscribeFromMessages();
+            gameOver = new GameOverScreen();
+            gameOver.runGameOver(stage);
+            /*
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("Leveler");
             stage.setScene(scene);
+             */
             stage.show();
         }
     }

@@ -9,6 +9,7 @@ import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.text.Text;
 import Handlers.JoystickHandler;
+import gameover.GameOverScreen;
 import javafx.stage.Stage;
 import menu.Game;
 import menu.Main;
@@ -29,7 +30,7 @@ public class SequenceGame {
     private Timeline seqTimer;
     private final Stage stage;
     private boolean colorChange;
-
+    private GameOverScreen gameOver;
 
     public SequenceGame(Stage stage) throws Exception {
         int baseArrowAmount = 3;
@@ -184,11 +185,15 @@ public class SequenceGame {
         Game.level = 0;
         try {
             this.joystickHandler.unsubscribeFromMessages();
+            gameOver = new GameOverScreen();
+            gameOver.runGameOver(stage);
+            /* 
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             this.stage.setTitle("Leveler");
             this.stage.setScene(scene);
             this.stage.show();
+             */
         } catch (MqttException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

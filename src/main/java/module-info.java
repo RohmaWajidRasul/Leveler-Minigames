@@ -5,6 +5,7 @@ module com.example.demo {
 
 
     opens menu to javafx.fxml;
+    opens gameover to javafx.fxml;
     exports menu;
     exports SequenceGamePackage;
 }
