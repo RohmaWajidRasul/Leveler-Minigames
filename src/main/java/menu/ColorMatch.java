@@ -42,7 +42,7 @@ public class ColorMatch {
 
     public ColorMatch(Stage stage) throws MqttException, IOException {
         colorList = new String[]{"Red", "Yellow", "Blue"};
-        baseNumOfColors = 5;
+        baseNumOfColors = 4;
         timerValue = 15;
 
         start(stage);
@@ -68,7 +68,7 @@ public class ColorMatch {
         inputColors = new ArrayList<>();
         currentNumOfColors = baseNumOfColors + Game.level;
 
-        inputIndex = -1;
+        inputIndex = 0;
         gameOver = false;
 
         timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
@@ -97,7 +97,7 @@ public class ColorMatch {
     public void checkGameCondition() throws MqttException, IOException {
         if (gameOver || timerValue <= 0) {
             lose();
-        } else if (inputIndex == currentNumOfColors - 1) {
+        } else if (inputIndex == currentNumOfColors) {
             nextLevel();
         }
     }
@@ -130,7 +130,7 @@ public class ColorMatch {
     }
 
     public void checkColorMatch(ArrayList<String> arrayList) {
-        if(arrayList.get(inputIndex + 1).equals(inputColors.get(inputIndex + 1))) {
+        if(arrayList.get(inputIndex).equals(inputColors.get(inputIndex))) {
             inputIndex++;
         } else {
             gameOver = true;
@@ -140,7 +140,7 @@ public class ColorMatch {
     public void getInput() {
         String inputColor = buttonSubscriber.getValidButtonPress();
         if (inputColor != null) {
-            inputColors.add(inputIndex + 1, inputColor);
+            inputColors.add(inputIndex, inputColor);
             checkColorMatch(fontColor);
         }
 
@@ -166,7 +166,7 @@ public class ColorMatch {
         double startX = 50;
         double spacing = (600 - 2 * startX) / currentNumOfColors;
 
-        for (int i = inputIndex + 1; i < currentNumOfColors; i++) { //use a variable for inputIndex + 1
+        for (int i = inputIndex; i < currentNumOfColors; i++) { //use a variable for inputIndex + 1
             double x = startX + i * spacing;
             double y = 200;
 
