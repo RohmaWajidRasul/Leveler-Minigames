@@ -21,31 +21,35 @@ compile:
         - cd arduino/publisher                              # change the directory to arduino folder
         - arduino-cli lib list                    # check that libraries are installed
 
+        # Compile
         - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal 
 
-       
+    
         # Upload
         - arduino-cli board list                  # Check if device is connected
     except:
         - tags
 
 release:
-  stage: deploy
-  tags:
-    - upload
-  script:
-    - export PATH=$PATH:/root/bin             # set the path to arduino-cli installation folder
-    - pwd                                     # print the current working directory
-    - cd arduino/publisher                             # change the directory to arduino folder
-    - arduino-cli lib list                    # check that libraries are installed
+    stage: deploy
+    tags:
+        - upload
+    script:
+        - export PATH=$PATH:/root/bin             # set the path to arduino-cli installation folder
+        - pwd                                     # print the current working directory
+        - cd arduino/publisher                              # change the directory to arduino folder
+        - arduino-cli lib list                    # check that libraries are installed
 
+        # Compile
         - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal 
-       
+
         # Upload
         - arduino-cli board list                  # Check if device is connected
         - arduino-cli upload -p $COM_PORT --fqbn Seeeduino:samd:seeed_wio_terminal           # if runnner is on local machine
     only:
         - tags
+
+
 
 # Second Stage: Maven Build
 build_and_install:
