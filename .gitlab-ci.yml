@@ -11,43 +11,37 @@ stages:
     - deploy
 
 
-#compile:
-#    stage: build
-#    tags:
-#        - docker
-#    script:
-#        - export PATH=$PATH:/root/bin             # set the path to arduino-cli installation folder
-#        - pwd                                     # print the current working directory
-#        - cd arduino                              # change the directory to arduino folder
-#        - arduino-cli lib list                    # check that libraries are installed
+compile:
+    stage: build
+    tags:
+        - docker
+    script:
+        - export PATH=$PATH:/root/bin             # set the path to arduino-cli installation folder
+        - pwd                                     # print the current working directory
+        - cd arduino/publisher                              # change the directory to arduino folder
+        - arduino-cli lib list                    # check that libraries are installed
 
-        # Compile the first sketch file
-#        - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal AccelerationPublisher/AccelerationPublisher.ino
+        - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal 
 
-        # Compile the second sketch file
-        #- arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal SequenceGame.ino
+       
+        # Upload
+        - arduino-cli board list                  # Check if device is connected
+    except:
+        - tags
 
-#        # Upload
-#        - arduino-cli board list                  # Check if device is connected
-#    except:
-#        - tags
+release:
+   stage: deploy
+    tags:
+        - upload
+   script:
+        - export PATH=$PATH:/root/bin             # set the path to arduino-cli installation folder
+        - pwd                                     # print the current working directory
+        - cd arduino/publisher                             # change the directory to arduino folder
+        - arduino-cli lib list                    # check that libraries are installed
 
-#release:
- #   stage: deploy
-#    tags:
-#        - upload
- ##   script:
-#        - export PATH=$PATH:/root/bin             # set the path to arduino-cli installation folder
- #       - pwd                                     # print the current working directory
-#        - cd arduino                              # change the directory to arduino folder
-#        - arduino-cli lib list                    # check that libraries are installed
-
-        # Compile the first sketch file
-#        - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal AccelerationPublisher/AccelerationPublisher.ino
-
-        # Compile the second sketch file
-        #- arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal SequenceGame.ino
-
+       
+        - arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal 
+       
         # Upload
 #        - arduino-cli board list                  # Check if device is connected
 #        - arduino-cli upload -p $COM_PORT --fqbn Seeeduino:samd:seeed_wio_terminal           # if runnner is on local machine
