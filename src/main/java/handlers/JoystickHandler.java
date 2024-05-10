@@ -1,4 +1,4 @@
-package Handlers;
+package handlers;
 
 import org.eclipse.paho.client.mqttv3.*;
 
@@ -16,7 +16,7 @@ public class JoystickHandler implements MqttCallback {
 
     private final static ExecutorService THREAD_POOL = Executors.newSingleThreadExecutor();
     private final IMqttClient middleware;
-    private final static String TOPIC   = "SequenceMini-game/Joystick";
+    private final static String TOPIC   = "sensor/direction";
     private final static String BROKER  = "tcp://test.mosquitto.org:1883";
     private final static String USER_ID = "Group-14";
 

@@ -1,18 +1,19 @@
 package menu;
 
-import SequenceGamePackage.SequenceGame;
+import minigamesPackage.Bolt;
+import minigamesPackage.SequenceGame;
 import javafx.stage.Stage;
 
 public class Game {
 
     public static int level = 0;
-    private static final int numberOfGames = 2;
 
     public Game(Stage stage) {
         play(stage);
     }
 
-    private void play(Stage stage) {
+    public static void play(Stage stage) {
+        final int numberOfGames = 2;
         int min = 1;
         int range = numberOfGames - min + 1;
 
