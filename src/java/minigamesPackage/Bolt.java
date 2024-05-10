@@ -1,5 +1,5 @@
-package menu;
-import Handlers.AccelerationSubscriber;
+package minigamesPackage;
+import handlers.AccelerationSubscriber;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -13,6 +13,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import menu.Game;
+import menu.Main;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
 import java.io.IOException;

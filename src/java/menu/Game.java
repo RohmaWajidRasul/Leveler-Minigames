@@ -1,6 +1,7 @@
 package menu;
 
-import SequenceGamePackage.SequenceGame;
+import minigamesPackage.Bolt;
+import minigamesPackage.SequenceGame;
 import javafx.stage.Stage;
 
 public class Game {

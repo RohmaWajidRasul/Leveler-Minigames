@@ -1,4 +1,4 @@
-package SequenceGamePackage;
+package minigamesPackage;
 
 import javafx.animation.Animation;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +8,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.text.Text;
-import Handlers.JoystickHandler;
+import handlers.JoystickHandler;
 import javafx.stage.Stage;
 import menu.Game;
 import menu.Main;

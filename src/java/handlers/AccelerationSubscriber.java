@@ -1,4 +1,4 @@
-package Handlers;
+package handlers;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
