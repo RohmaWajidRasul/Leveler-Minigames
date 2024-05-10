@@ -11,8 +11,8 @@ Joystick joystick;
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 
-const char* ssid = "Rohma's phone";
-const char* password =  "12345678";
+const char* ssid = "";
+const char* password =  "";
 
 void reconnect() {
   // Loop until we're reconnected
@@ -59,7 +59,7 @@ void setup() {
     Serial.println (WiFi.localIP()); // prints out the device's IP address
 
     client.setServer("test.mosquitto.org", 1883);
-    joystick.setup(client, "sensor/movement");
+    joystick.setup(client, "sensor/direction");
 
 }
 void loop() {

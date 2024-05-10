@@ -15,7 +15,7 @@ public class AccelerationSubscriber implements MqttCallback {
     private final static ExecutorService THREAD_POOL = Executors.newSingleThreadExecutor();
 
     private final IMqttClient middleware;
-    private final static String TOPIC   = "Topic 1";
+    private final static String TOPIC   = "sensor/vibration";
     private final static String BROKER  = "tcp://test.mosquitto.org";
     private final static String USER_ID = "";
     private double zValue = 0.9;
