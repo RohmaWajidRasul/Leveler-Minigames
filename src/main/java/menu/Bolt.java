@@ -84,17 +84,10 @@ public class Bolt {
             accelerationSubscriber.unsubscribeFromMessages();
             Game game = new Game(stage);
         } else if (timerValue == 0) {
-            Game.level = 0;
             timeline.stop();
             accelerationSubscriber.unsubscribeFromMessages();
             gameOver = new GameOverScreen();
             gameOver.runGameOver(stage);
-            /*
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            stage.setTitle("Leveler");
-            stage.setScene(scene);
-             */
             stage.show();
         }
     }

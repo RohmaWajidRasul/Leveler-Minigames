@@ -182,18 +182,10 @@ public class SequenceGame {
     public void lose() {
         this.timeline.stop();
         this.seqTimer.stop();
-        Game.level = 0;
         try {
             this.joystickHandler.unsubscribeFromMessages();
             gameOver = new GameOverScreen();
             gameOver.runGameOver(stage);
-            /* 
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            this.stage.setTitle("Leveler");
-            this.stage.setScene(scene);
-            this.stage.show();
-             */
         } catch (MqttException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
