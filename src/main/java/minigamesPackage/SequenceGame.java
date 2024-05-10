@@ -1,4 +1,4 @@
-package SequenceGamePackage;
+package minigamesPackage;
 
 import javafx.animation.Animation;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +8,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.text.Text;
-import Handlers.JoystickHandler;
+import handlers.JoystickHandler;
 import javafx.stage.Stage;
 import menu.Game;
 import menu.Main;
@@ -203,7 +203,7 @@ public class SequenceGame {
         this.seqTimer.stop();
         try {
             this.joystickHandler.unsubscribeFromMessages();
-            Game game = new Game(this.stage);
+            Game.play(this.stage);
         } catch (MqttException e) {
             throw new RuntimeException(e);
         }
