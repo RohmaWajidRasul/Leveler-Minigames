@@ -10,15 +10,13 @@ void Joystick::setup(PubSubClient &mqttClient, const char* topic) {
     mqttClientPtr = &mqttClient;
     TOPIC = topic;
 
-    Serial.begin(115200);
-    while(!Serial); // Wait for Serial to be ready
 }
 
 void Joystick::publishData() {
     String direction = "";
 
-    int sensorValue1 = analogRead(A0);
-    int sensorValue2 = analogRead(A1);
+    int sensorValue1 = analogRead(A2);
+    int sensorValue2 = analogRead(A3);
 
     static unsigned long lastDebounceTime1 = 0;
     static unsigned long lastDebounceTime2 = 0;

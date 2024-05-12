@@ -3,18 +3,18 @@
 #include <Wire.h>
 #include "Accelerometer.h"
 #include "Joystick.h"
+#include "Buttons.h"
 
 
 Accelerometer accelerometer;
 Joystick joystick;
+Buttons buttons(1, 5, 8);   // Yellow button pin (terminal right)
 
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 
-const char* ssid = "";
-const char* password =  "";
-<<<<<<<< HEAD:src/Arduino/AccelerationPublisher/AccelerationPublisher.ino
-========
+const char* ssid = "R15-C712";
+const char* password =  "kmnmq78963";
 
 void reconnect() {
   // Loop until we're reconnected
@@ -37,7 +37,6 @@ void reconnect() {
   }
 }
 
->>>>>>>> 5959a0c85042e68ec07491410b8cf7898c74b436:arduino/publisher/publisher.ino
 void setup() {
 
     accelerometer.init(client, "sensor/vibration");
@@ -63,6 +62,8 @@ void setup() {
 
     client.setServer("test.mosquitto.org", 1883);
     joystick.setup(client, "sensor/direction");
+    buttons.setup(client, "sensor/yellow_button_state", "sensor/red_button_state", "sensor/blue_button_state");
+    
 
 }
 void loop() {
@@ -75,6 +76,7 @@ void loop() {
 
     accelerometer.publishData();
     joystick.publishData();
+    buttons.publishData();
           
     delay(300);
 
