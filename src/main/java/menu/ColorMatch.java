@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -29,6 +30,8 @@ public class ColorMatch {
     private int inputIndex;
     private final String[] colorList;
 
+    private String version;
+
     private final int baseNumOfColors;
     private int currentNumOfColors;
 
@@ -40,10 +43,12 @@ public class ColorMatch {
     private boolean gameOver;
     private Stage stage;
 
-    public ColorMatch(Stage stage) throws MqttException, IOException {
-        colorList = new String[]{"Red", "Yellow", "Blue"};
-        baseNumOfColors = 4;
-        timerValue = 15;
+    public ColorMatch(Stage stage, String version) throws MqttException, IOException {
+        this.colorList = new String[]{"Red", "Yellow", "Blue"};
+        this.baseNumOfColors = 4;
+        this.timerValue = 15;
+        this.version = version;
+        this.stage = stage;
 
         start(stage);
     }
@@ -56,8 +61,6 @@ public class ColorMatch {
         Canvas canvas = new Canvas(600, 400);
         graphicsContext = canvas.getGraphicsContext2D();
         anchor.getChildren().add(canvas);
-
-        this.stage = stage;
 
         buttonSubscriber = new ButtonSubscriber();
         buttonSubscriber.subscribeToMessages();
@@ -141,7 +144,12 @@ public class ColorMatch {
         String inputColor = buttonSubscriber.getValidButtonPress();
         if (inputColor != null) {
             inputColors.add(inputIndex, inputColor);
-            checkColorMatch(fontColor);
+            if (version.equals("Colour")) {
+                checkColorMatch(fontColor);
+            } else if (version.equals("Text")) {
+                checkColorMatch(writtenColor);
+            }
+
         }
 
     }
@@ -194,6 +202,24 @@ public class ColorMatch {
         graphicsContext.setFill(Color.BLACK);
         graphicsContext.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 20));
         graphicsContext.fillText(String.format("Time Left: %d",timerValue), 10, 25, 100);
+
+        graphicsContext.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 30));
+        if (version.equals("Colour")) {
+            String versionText = "Match displayed color";
+            Text text = new Text(versionText);
+            text.setFont(graphicsContext.getFont());
+            double textWidth = text.getLayoutBounds().getWidth();
+            double centerX = (600 - textWidth) / 2;
+            graphicsContext.fillText(versionText, centerX, 120, 300);
+
+        } else if (version.equals("Text")) {
+            String versionText = "Match text";
+            Text text = new Text(versionText);
+            text.setFont(graphicsContext.getFont());
+            double textWidth = text.getLayoutBounds().getWidth();
+            double centerX = (600 - textWidth) / 2;
+            graphicsContext.fillText(versionText, centerX, 120, 300);
+        }
     }
 
 

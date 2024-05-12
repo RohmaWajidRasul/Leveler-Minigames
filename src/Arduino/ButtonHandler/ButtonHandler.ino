@@ -5,8 +5,8 @@
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 
-const char* ssid = "";
-const char* password =  "";
+const char* ssid = "R15-C712";
+const char* password =  "kmnmq78963";
 
 const int yellowButtonPin = 1;   // Yellow button pin (terminal right)
 const int redButtonPin = 5;      // Red button pin    (battery port 5) 
