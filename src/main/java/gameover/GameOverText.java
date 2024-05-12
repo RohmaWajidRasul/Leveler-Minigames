@@ -2,11 +2,12 @@ package gameover;
 
 public class GameOverText {
     
+    private String specificText;
+
     public String setGameOverTextNewbie(int randomNewbieElement) {
 
-        String[] gameOverNewbieTxtArr = {
-
-            "LEVELER MET THE INEVITABLE ON LEVEL ", //(GOS) GAME OVER SCREEN NEWBIE SPLASHES 1-15
+        String[] gameOverNewbieTxtArr = { //newbie string scenarios levels 2-15
+            "LEVELER MET THE INEVITABLE ON LEVEL ",
             "UNREMARKABLY, LEVELER DIED ON LEVEL ",
             "LEVELER GOT COOKED ON LEVEL ",
             "LEVELER ALMOST PROVED A POINT ON LEVEL " ,
@@ -23,15 +24,14 @@ public class GameOverText {
             "LEVELER, GAMERAGE IS WHAT YOU FEEL ON LEVEL "
         };
 
-        String specificText = gameOverNewbieTxtArr[randomNewbieElement];
+        specificText = gameOverNewbieTxtArr[randomNewbieElement];
         return specificText;
     }
 
     public String setGameOverTextPro(int randomProElement) {
 
-        String[] gameOverProTxtArr = {
-
-            "LEVELER LEFT FOR KEBAB PIZZA ON LEVEL ", //(GOS) GAME OVER SCREEN PRO SPLASHES 16-25
+        String[] gameOverProTxtArr = { //pro string scenarios levels 16-25
+            "LEVELER LEFT FOR KEBAB PIZZA ON LEVEL ",
             "LEVELER HELD THE LINE UP UNTIL LEVEL ",
             "LEVELER BUMPED INTO AUTOMATONS ON LEVEL ",
             "LEVELER WENT MAINCHARACTER ON LEVEL ",
@@ -43,7 +43,7 @@ public class GameOverText {
             "LEVELER LEFT THE MATRIX ON LEVEL "
         };
 
-        String specificText = gameOverProTxtArr[randomProElement];
+        specificText = gameOverProTxtArr[randomProElement];
         return specificText;
     }
 }

@@ -24,8 +24,8 @@ public class GameOverController {
         Random randomSplashCasePro = new Random();
         GameOverText gameOverString = new GameOverText();
 
-        int newbieSplashTexts = 14; //array range for 15 elements
-        int proSplashTexts = 9; //array range for 10 elements
+        int newbieSplashTexts = 14; //array range for 15 elements, so always subtract 1 from desired range
+        int proSplashTexts = 9; //array range for 10 elements, so always subtract 1 from desired range
         
         int randomCaseNewbie = randomSplashCaseNewbie.nextInt(newbieSplashTexts);
         int randomCasePro = randomSplashCasePro.nextInt(proSplashTexts);
