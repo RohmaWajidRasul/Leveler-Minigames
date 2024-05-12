@@ -1,4 +1,4 @@
-package menu;
+package minigamesPackage;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -13,6 +13,10 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import handlers.ButtonSubscriber;
+import menu.Game;
+import menu.Main;
+
 import org.eclipse.paho.client.mqttv3.MqttException;
 
 import java.io.IOException;
@@ -77,7 +81,7 @@ public class ColorMatch {
         timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
             try {
                 run(stage);
-            } catch (MqttException | IOException ex) {
+            } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
 
@@ -97,7 +101,7 @@ public class ColorMatch {
     }
 
 
-    public void checkGameCondition() throws MqttException, IOException {
+    public void checkGameCondition() throws Exception {
         if (gameOver || timerValue <= 0) {
             lose();
         } else if (inputIndex == currentNumOfColors) {
@@ -115,7 +119,7 @@ public class ColorMatch {
         backToMenu();
     }
 
-    public void nextLevel() throws MqttException, IOException {
+    public void nextLevel() throws Exception {
         buttonSubscriber.unsubscribeFromMessages();
         drawScreen(graphicsContext);
         timeline.stop();
@@ -154,7 +158,7 @@ public class ColorMatch {
 
     }
 
-    public void run(Stage stage) throws MqttException, IOException {
+    public void run(Stage stage) throws Exception {
         drawScreen(graphicsContext);
         getInput();
         checkGameCondition();

@@ -1,26 +1,30 @@
 package menu;
 
+import minigamesPackage.Bolt;
+import minigamesPackage.ColorMatch;
+import minigamesPackage.SequenceGame;
 import javafx.stage.Stage;
-import org.eclipse.paho.client.mqttv3.MqttException;
-
-import java.io.IOException;
 
 public class Game {
 
     public static int level = 0;
-    private static final int numberOfGames = 3;
 
-    public Game(Stage stage) throws MqttException, IOException {
+    public Game(Stage stage) throws Exception{
         play(stage);
     }
 
-    private void play(Stage stage) throws MqttException, IOException {
+    public static void play(Stage stage) throws Exception {
+        final int numberOfGames = 4;
+        int min = 1;
+        int range = numberOfGames - min + 1;
+
         level++;
-        int random = (int) (Math.random() * (numberOfGames - 1));
-        switch (random){
-            case 0 ->  {Bolt bolt = new Bolt(stage);}
-            case 2 ->  {ColorMatch colorMatch = new ColorMatch(stage, "Colour");}
-            case 3 ->  {ColorMatch colorMatch = new ColorMatch(stage, "Text");}
+        int random = (int) (Math.random() * range) + min;
+        switch (random) {
+            case 1 ->  {Bolt bolt = new Bolt(stage);}
+            case 2 -> {SequenceGame sequenceGame = new SequenceGame(stage);}
+            case 3 ->  {ColorMatch colorMatch = new ColorMatch(stage, "Colour");}
+            case 4 ->  {ColorMatch colorMatch = new ColorMatch(stage, "Text");}
         }
     }
 
