@@ -1,4 +1,4 @@
-package SequenceGamePackage;
+package minigamesPackage;
 
 import javafx.animation.Animation;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +8,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.text.Text;
-import Handlers.JoystickHandler;
-import gameover.GameOverScreen;
+import handlers.JoystickHandler;
 import javafx.stage.Stage;
 import menu.Game;
 import menu.Main;
@@ -30,7 +29,7 @@ public class SequenceGame {
     private Timeline seqTimer;
     private final Stage stage;
     private boolean colorChange;
-    private GameOverScreen gameOver;
+
 
     public SequenceGame(Stage stage) throws Exception {
         int baseArrowAmount = 3;
@@ -75,14 +74,24 @@ public class SequenceGame {
                         this.sequenceGui.changeArrowColor(this.currentArrow, "green");
 
                         if (this.colorChange) {
-                            managePerformance(performanceResult);
+                            try {
+                                managePerformance(performanceResult);
+                            } catch (Exception e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
                         }
                         this.colorChange = true;
 
                     }
                 } else if(userInput.equals(currentOrientation)) {
                     performanceResult = "arrow_correct"; //correct arrow direction performance
-                    managePerformance(performanceResult);
+                    try {
+                        managePerformance(performanceResult);
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
 
                 } else {
 
@@ -91,7 +100,12 @@ public class SequenceGame {
                     this.sequenceGui.showDisplay();
 
                     if (this.colorChange) {
-                        managePerformance(performanceResult);
+                        try {
+                            managePerformance(performanceResult);
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
                     }
                     this.colorChange = true;
                 }
@@ -132,7 +146,12 @@ public class SequenceGame {
 
                         txtTimeDisplay.setText("TIME OUT!");
                         if (seqTimeRemaining == -1) {
-                            managePerformance("time_out");
+                            try {
+                                managePerformance("time_out");
+                            } catch (Exception e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
                         }
                         decrementTimer();
                     } else {
@@ -146,7 +165,7 @@ public class SequenceGame {
 
     }
 
-    public void managePerformance(String performanceResult) { //had to make this static for call in MQTT class
+    public void managePerformance(String performanceResult) throws Exception { //had to make this static for call in MQTT class
 
         System.out.println(performanceResult);
         switch (performanceResult) {
@@ -182,10 +201,14 @@ public class SequenceGame {
     public void lose() {
         this.timeline.stop();
         this.seqTimer.stop();
+        Game.level = 0;
         try {
             this.joystickHandler.unsubscribeFromMessages();
-            gameOver = new GameOverScreen();
-            gameOver.runGameOver(stage);
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            this.stage.setTitle("Leveler");
+            this.stage.setScene(scene);
+            this.stage.show();
         } catch (MqttException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -193,14 +216,14 @@ public class SequenceGame {
         }
     }
 
-    private void clearLevel() {
+    private void clearLevel() throws Exception {
         gameActive = false;
 
         this.timeline.stop();
         this.seqTimer.stop();
         try {
             this.joystickHandler.unsubscribeFromMessages();
-            Game game = new Game(this.stage);
+            Game.play(this.stage);
         } catch (MqttException e) {
             throw new RuntimeException(e);
         }

@@ -30,7 +30,7 @@ public class MenuController {
 
 
     @FXML
-    private void handlePlayButton(ActionEvent event) {
+    private void handlePlayButton(ActionEvent event) throws Exception {
         Node sourceNode = (Node) event.getSource();
         Stage currentStage = (Stage) sourceNode.getScene().getWindow();
         Game game = new Game(currentStage);

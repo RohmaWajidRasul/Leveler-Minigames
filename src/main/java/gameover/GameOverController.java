@@ -49,7 +49,7 @@ public class GameOverController {
     }
 
     @FXML
-    public void restartGame(ActionEvent clickRestart) {
+    public void restartGame(ActionEvent clickRestart) throws Exception{
         System.out.println("\nReplaying game . . .");
         Game.level = 0;
         Node restartNode = (Node) clickRestart.getSource();
