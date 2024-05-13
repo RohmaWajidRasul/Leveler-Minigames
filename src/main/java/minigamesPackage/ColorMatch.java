@@ -16,8 +16,11 @@ import javafx.util.Duration;
 import handlers.ButtonSubscriber;
 import menu.Game;
 import menu.Main;
+import gameover.GameOverScreen;
 
 import org.eclipse.paho.client.mqttv3.MqttException;
+
+import gameover.GameOverScreen;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,6 +48,7 @@ public class ColorMatch {
     private int timerValue;
 
     private boolean gameOver;
+    private GameOverScreen gameOverTrigger;
     private Stage stage;
 
     public ColorMatch(Stage stage, String version) throws MqttException, IOException {
@@ -68,6 +72,7 @@ public class ColorMatch {
 
         buttonSubscriber = new ButtonSubscriber();
         buttonSubscriber.subscribeToMessages();
+        gameOverTrigger = new GameOverScreen();
 
         random = new Random();
         fontColor = new ArrayList<>();
@@ -114,9 +119,8 @@ public class ColorMatch {
         timeline.stop();
         timer.stop();
         System.out.println("GAMEOVER!!!!!!!!!");// replace
-        Game.level = 0;
         this.buttonSubscriber.unsubscribeFromMessages();
-        backToMenu();
+        gameOverTrigger.runGameOver(stage);
     }
 
     public void nextLevel() throws Exception {
@@ -126,14 +130,6 @@ public class ColorMatch {
         timer.stop();
         System.out.println("DONE!!!!!!!!!");// replace
         Game game = new Game(stage);
-    }
-
-    public void backToMenu() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        this.stage.setTitle("Leveler");
-        this.stage.setScene(scene);
-        this.stage.show();
     }
 
     public void checkColorMatch(ArrayList<String> arrayList) {

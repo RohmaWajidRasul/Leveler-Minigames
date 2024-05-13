@@ -14,6 +14,8 @@ import menu.Game;
 import menu.Main;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
+import gameover.GameOverScreen;
+
 import java.io.IOException;
 
 public class SequenceGame {
@@ -29,6 +31,7 @@ public class SequenceGame {
     private Timeline seqTimer;
     private final Stage stage;
     private boolean colorChange;
+    private GameOverScreen gameOverTrigger;
 
 
     public SequenceGame(Stage stage) throws Exception {
@@ -40,6 +43,7 @@ public class SequenceGame {
         this.preCountdown = 2;
         this.sequenceGui = new SequenceGui();
         this.joystickHandler = new JoystickHandler(this.numberOfArrows);
+        this.gameOverTrigger = new GameOverScreen();
         this.joystickHandler.subscribeToMessages();
         this.stage = stage;
         this.colorChange = false;
@@ -201,14 +205,9 @@ public class SequenceGame {
     public void lose() {
         this.timeline.stop();
         this.seqTimer.stop();
-        Game.level = 0;
         try {
             this.joystickHandler.unsubscribeFromMessages();
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            this.stage.setTitle("Leveler");
-            this.stage.setScene(scene);
-            this.stage.show();
+            gameOverTrigger.runGameOver(stage);
         } catch (MqttException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
