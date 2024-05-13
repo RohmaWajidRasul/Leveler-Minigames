@@ -3,16 +3,21 @@
 #include <Wire.h>
 #include "Accelerometer.h"
 #include "Joystick.h"
+#include "Buttons.h"
 
 
 Accelerometer accelerometer;
 Joystick joystick;
+Buttons buttons(1, 5, 8);   // Yellow button pin (terminal right)
 
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 
-const char* ssid = "";
-const char* password =  "";
+const char* ssid = "R15-C712";
+const char* password =  "kmnmq78963";
+
+unsigned long lastAccelTime = 0;
+unsigned long lastButtonsTime = 0;
 
 void reconnect() {
   // Loop until we're reconnected
@@ -60,20 +65,32 @@ void setup() {
 
     client.setServer("test.mosquitto.org", 1883);
     joystick.setup(client, "sensor/direction");
+    buttons.setup(client, "sensor/yellow_button_state", "sensor/red_button_state", "sensor/blue_button_state");
+    
 
 }
 void loop() {
- Serial.print("STARTED");
+  //Serial.print("STARTED");
 
    if (!client.connected()) {
     reconnect();
   } else {
     client.loop();
 
-    accelerometer.publishData();
-    joystick.publishData();
-          
-    delay(300);
+    unsigned long currentTime = millis();
+
+    if (currentTime - lastAccelTime >= 300) {
+      accelerometer.publishData();
+      joystick.publishData();
+      lastAccelTime = currentTime;
+    }
+
+    if (currentTime - lastButtonsTime >= 110) {
+      buttons.publishData();
+      lastButtonsTime = currentTime;
+
+    }
+
 
   }
 

@@ -74,14 +74,24 @@ public class SequenceGame {
                         this.sequenceGui.changeArrowColor(this.currentArrow, "green");
 
                         if (this.colorChange) {
-                            managePerformance(performanceResult);
+                            try {
+                                managePerformance(performanceResult);
+                            } catch (Exception e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
                         }
                         this.colorChange = true;
 
                     }
                 } else if(userInput.equals(currentOrientation)) {
                     performanceResult = "arrow_correct"; //correct arrow direction performance
-                    managePerformance(performanceResult);
+                    try {
+                        managePerformance(performanceResult);
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
 
                 } else {
 
@@ -90,7 +100,12 @@ public class SequenceGame {
                     this.sequenceGui.showDisplay();
 
                     if (this.colorChange) {
-                        managePerformance(performanceResult);
+                        try {
+                            managePerformance(performanceResult);
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
                     }
                     this.colorChange = true;
                 }
@@ -131,7 +146,12 @@ public class SequenceGame {
 
                         txtTimeDisplay.setText("TIME OUT!");
                         if (seqTimeRemaining == -1) {
-                            managePerformance("time_out");
+                            try {
+                                managePerformance("time_out");
+                            } catch (Exception e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
                         }
                         decrementTimer();
                     } else {
@@ -145,7 +165,7 @@ public class SequenceGame {
 
     }
 
-    public void managePerformance(String performanceResult) { //had to make this static for call in MQTT class
+    public void managePerformance(String performanceResult) throws Exception { //had to make this static for call in MQTT class
 
         System.out.println(performanceResult);
         switch (performanceResult) {
@@ -196,7 +216,7 @@ public class SequenceGame {
         }
     }
 
-    private void clearLevel() {
+    private void clearLevel() throws Exception {
         gameActive = false;
 
         this.timeline.stop();

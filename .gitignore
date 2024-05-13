@@ -8,6 +8,7 @@ target/
 *.iws
 *.iml
 *.ipr
+Group-14-tcptestmosquittoorg1883/
 
 ### Eclipse ###
 .apt_generated

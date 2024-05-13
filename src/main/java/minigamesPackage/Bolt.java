@@ -17,8 +17,6 @@ import menu.Game;
 import menu.Main;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
-import java.io.IOException;
-
 public class Bolt {
 
     private GraphicsContext gc;
@@ -69,7 +67,7 @@ public class Bolt {
         timeline = new Timeline(new KeyFrame(Duration.millis(130), e -> {
             try {
                 run(stage);
-            } catch (MqttException | IOException ex) {
+            } catch (Exception  ex) {
                 throw new RuntimeException(ex);
             }
         }));
@@ -84,7 +82,7 @@ public class Bolt {
         stage.show();
     }
 
-    public void run(Stage stage) throws MqttException, IOException {
+    public void run(Stage stage) throws Exception {
         drawBackground(gc);
         drawRunner();
         move();
