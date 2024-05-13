@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49017b35-0ae8-4a74-b4ae-aa6659c20376" name="Changes" comment="#3, fix error.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/-tcptestmosquittoorg/.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SequenceGamePackage/SequenceGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SequenceGamePackage/SequenceGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SequenceGamePackage/SequenceGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SequenceGamePackage/SequenceGui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/menu/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/menu/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/menu/Menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/names.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/menu/names.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -75,7 +82,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;10-sequence-match-minigame&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;6-leaderboard&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/kakan/Desktop/Ny mapp (20)/minigames&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -132,6 +139,12 @@
       <workItem from="1713721792883" duration="3365000" />
       <workItem from="1713802963148" duration="3149000" />
       <workItem from="1714054969251" duration="2938000" />
+      <workItem from="1715370782079" duration="2884000" />
+      <workItem from="1715411684274" duration="18567000" />
+      <workItem from="1715457610516" duration="7913000" />
+      <workItem from="1715516546919" duration="3466000" />
+      <workItem from="1715529835479" duration="6492000" />
+      <workItem from="1715539582484" duration="6673000" />
     </task>
     <task id="LOCAL-00001" summary="#3, implement main menu scene with partially functional buttons.">
       <option name="closed" value="true" />
@@ -189,6 +202,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="#3, implement main menu scene with partially functional buttons." />
     <MESSAGE value="#3, fix error." />
-    <option name="LAST_COMMIT_MESSAGE" value="#3, fix error." />
+    <MESSAGE value="#12 Change inputIndex to start at 0" />
+    <option name="LAST_COMMIT_MESSAGE" value="#12 Change inputIndex to start at 0" />
   </component>
 </project>

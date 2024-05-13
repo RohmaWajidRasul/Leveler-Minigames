@@ -1,5 +1,6 @@
 package SequenceGamePackage;
 
+import LeaderBoard.Leaderboard;
 import javafx.animation.Animation;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -35,7 +36,7 @@ public class SequenceGame {
         int baseArrowAmount = 3;
         this.currentArrow = 0;
         this.numberOfArrows = baseArrowAmount + Game.level;
-        this.seqTime = 10;
+        this.seqTime = 2;
         this.seqTimeRemaining = seqTime;
         this.preCountdown = 2;
         this.sequenceGui = new SequenceGui();
@@ -181,8 +182,12 @@ public class SequenceGame {
     public void lose() {
         this.timeline.stop();
         this.seqTimer.stop();
-        Game.level = 0;
+
         try {
+            Leaderboard leaderboard = new Leaderboard();
+            leaderboard.onDeath(Game.level);
+            Game.level = 0;
+
             this.joystickHandler.unsubscribeFromMessages();
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
             Scene scene = new Scene(fxmlLoader.load());

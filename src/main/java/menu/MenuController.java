@@ -1,5 +1,6 @@
 package menu;
 
+import LeaderBoard.Leaderboard;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,4 +47,13 @@ public class MenuController {
         Stage currentStage = (Stage) sourceNode.getScene().getWindow();
         currentStage.setScene(registerScene);
     }
+
+    @FXML
+    private void handleLeaderboardButton(ActionEvent event) throws IOException {
+        Node sourceNode = (Node) event.getSource();
+        Stage currentStage = (Stage) sourceNode.getScene().getWindow();
+        Leaderboard leaderboard = new Leaderboard();
+        leaderboard.fromMenu(currentStage);
+    }
+
 }

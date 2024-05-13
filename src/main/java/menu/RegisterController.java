@@ -1,5 +1,6 @@
 package menu;
 
+import LeaderBoard.Leaderboard;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +37,7 @@ public class RegisterController {
     @FXML
     private void handleRegisterConfirmButton(ActionEvent event) throws IOException {
         String name = nameField.getText();
-        if (!name.isEmpty()) {
+        if (!name.isEmpty() && !name.contains(",")) {
             saveName(name);
             backToMainMenu(event);
         } else {
@@ -46,7 +47,8 @@ public class RegisterController {
 
     private void saveName(String name) {
         try (PrintWriter writer = new PrintWriter(new FileWriter("src/main/resources/menu/names.txt", true))) {
-            writer.println(name);
+            //writer.println(name);
+            Leaderboard.playerName = name;
             System.out.println("Name saved: " + name);
         } catch (IOException e) {
             e.printStackTrace();

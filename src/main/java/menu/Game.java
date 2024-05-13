@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 
 public class Game {
 
-    public static int level = 0;
+    public static int level = 10;
     private static final int numberOfGames = 2;
 
     public Game(Stage stage) {
@@ -18,7 +18,7 @@ public class Game {
 
         level++;
         int random = (int) (Math.random() * range) + min;
-        switch (random) {
+        switch (2) {
             case 1 ->  {
                 Bolt bolt = new Bolt(stage);
             }
