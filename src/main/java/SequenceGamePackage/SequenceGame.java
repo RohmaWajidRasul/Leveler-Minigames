@@ -36,7 +36,7 @@ public class SequenceGame {
         int baseArrowAmount = 3;
         this.currentArrow = 0;
         this.numberOfArrows = baseArrowAmount + Game.level;
-        this.seqTime = 2;
+        this.seqTime = 10;
         this.seqTimeRemaining = seqTime;
         this.preCountdown = 2;
         this.sequenceGui = new SequenceGui();
@@ -166,14 +166,14 @@ public class SequenceGame {
 
 
                 gameActive = false;
-                System.out.println("Loving him was red");
+                //Loving him was red
                 lose();
                 break;
 
             case "time_out": /* game stops --> display game over (because of time out) --> with/without button to go to menu */
 
                 gameActive = false;
-                System.out.println("Losing him was blue, like i'd never known");
+                //Losing him was blue, like i'd never known
                 lose();
                 break;
         }

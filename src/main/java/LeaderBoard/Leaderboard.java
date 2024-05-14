@@ -53,7 +53,7 @@ public class Leaderboard {
 
 
         } catch (FileNotFoundException e) {
-            System.out.println("File not found you rat");
+            System.out.println("File not found");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,7 +84,7 @@ public class Leaderboard {
 
             button.setOnAction(actionEvent -> {
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
-                Scene Menuscene = null;
+                Scene Menuscene;
                 try {
                     Menuscene = new Scene(fxmlLoader.load());
                 } catch (IOException e) {
@@ -148,8 +148,5 @@ public class Leaderboard {
             }
             i++;
         }
-
-
     }
-
 }

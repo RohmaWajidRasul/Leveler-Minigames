@@ -7,7 +7,6 @@ public class Parser {
     public String[] split(String string) {
         String[] strings = string.split("\\r?\\n");
 
-        System.out.println("JBA:" + strings[0]);
         return strings;
     }
 
