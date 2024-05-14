@@ -27,17 +27,11 @@ public class Leaderboard {
     public void onDeath(int newScore) {
         String filename = "src/main/resources/menu/names.txt";
 
-
-
-        try(Reader reader = new Reader(filename)) {
-
+        try {
             fillArray();
             if (playerName != null) {
                 entries.add(new Entry(playerName,newScore));
             }
-
-
-
 
             insertEntry();
 
