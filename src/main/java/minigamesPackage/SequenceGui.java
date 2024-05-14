@@ -1,4 +1,4 @@
-package SequenceGamePackage;
+package minigamesPackage;
 
 import java.util.ArrayList;
 

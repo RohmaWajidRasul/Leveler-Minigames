@@ -1,16 +1,14 @@
 target/
-!.mvn/wrapper/maven-wrapper.jar
+!src/main/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+.idea/
 *.iws
 *.iml
 *.ipr
+Group-14-tcptestmosquittoorg1883/
 
 ### Eclipse ###
 .apt_generated
@@ -36,3 +34,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+Group-14-tcptestmosquittoorg1883/
+-tcptestmosquittoorg/

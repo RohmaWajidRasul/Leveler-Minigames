@@ -5,14 +5,15 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Scrollpane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.TutorialController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefViewportHeight="400.0" prefViewportWidth="600.0" prefWidth="600.0" stylesheets="@Scrollpane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.TutorialController">
    <content>
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;">
+      <VBox alignment="CENTER" prefWidth="600.0" style="-fx-background-color: white;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -24,16 +25,83 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Region prefHeight="10.0" prefWidth="200.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bolt is a fast-paced game where you control the runner racing through the tracks. Use your controller's accelerometer sensor to move your character by shaking it with enough force. Reach the finish line before time runs out to advance to the next level." textAlignment="CENTER" wrappingWidth="500.0">
+            <HBox prefHeight="100.0" prefWidth="600.0">
+               <children>
+                  <Region prefWidth="30.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Move forward by shaking the controller vertically. Reach the finish line before time runs out!" textAlignment="CENTER" wrappingWidth="300.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Region prefWidth="30.0" />
+                  <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Screenshot_Bolt.png" />
+                     </image>
+                  </ImageView>
+                  <Region prefHeight="200.0" prefWidth="40.0" />
+               </children>
+            </HBox>
+            <Region prefHeight="25.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-background-color: transparent;" text="Sequence" textAlignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
-            </Text>
-            <Region prefHeight="50.0" prefWidth="200.0" />
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="600.0">
+               <children>
+                  <Region prefWidth="30.0" />
+                  <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Screenshot_Sequence.png" />
+                     </image>
+                  </ImageView>
+                  <Region prefWidth="30.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Match the directions displayed, using the joystick, before the timer expires." textAlignment="CENTER" wrappingWidth="300.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Region prefWidth="40.0" />
+               </children>
+            </HBox>
+            <Region prefHeight="25.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Color Match" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="75.0" prefWidth="600.0">
+               <children>
+                  <Region prefWidth="30.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Press the corresponding colored buttons to match the displayed words or colors according to version title before time expires." textAlignment="CENTER" wrappingWidth="530.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Region prefWidth="40.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="600.0">
+               <children>
+                  <Region prefWidth="60.0" />
+                  <ImageView fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Screenshot _ColorMatchMode1.png" />
+                     </image>
+                  </ImageView>
+                  <Region prefWidth="60.0" />
+                  <ImageView fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Screenshot _ColorMatchMode2.png" />
+                     </image></ImageView>
+                  <Region prefWidth="80.0" />
+               </children>
+            </HBox>
+            <Region prefHeight="25.0" />
             <Button fx:id="tutorialBack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleTutorialBackButton" style="-fx-background-color: transparent;" stylesheets="@Style.css" text="BACK" textAlignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Black" size="18.0" />
                </font>
             </Button>
          </children>

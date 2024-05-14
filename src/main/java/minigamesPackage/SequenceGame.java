@@ -1,6 +1,5 @@
-package SequenceGamePackage;
+package minigamesPackage;
 
-import LeaderBoard.Leaderboard;
 import javafx.animation.Animation;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,11 +8,13 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.text.Text;
-import Handlers.JoystickHandler;
+import handlers.JoystickHandler;
 import javafx.stage.Stage;
 import menu.Game;
 import menu.Main;
 import org.eclipse.paho.client.mqttv3.MqttException;
+
+import gameover.GameOverScreen;
 
 import java.io.IOException;
 
@@ -30,6 +31,7 @@ public class SequenceGame {
     private Timeline seqTimer;
     private final Stage stage;
     private boolean colorChange;
+    private GameOverScreen gameOverTrigger;
 
 
     public SequenceGame(Stage stage) throws Exception {
@@ -41,6 +43,7 @@ public class SequenceGame {
         this.preCountdown = 2;
         this.sequenceGui = new SequenceGui();
         this.joystickHandler = new JoystickHandler(this.numberOfArrows);
+        this.gameOverTrigger = new GameOverScreen();
         this.joystickHandler.subscribeToMessages();
         this.stage = stage;
         this.colorChange = false;
@@ -78,11 +81,12 @@ public class SequenceGame {
                             managePerformance(performanceResult);
                         }
                         this.colorChange = true;
-
                     }
                 } else if(userInput.equals(currentOrientation)) {
                     performanceResult = "arrow_correct"; //correct arrow direction performance
+
                     managePerformance(performanceResult);
+
 
                 } else {
 
@@ -91,7 +95,9 @@ public class SequenceGame {
                     this.sequenceGui.showDisplay();
 
                     if (this.colorChange) {
+
                         managePerformance(performanceResult);
+
                     }
                     this.colorChange = true;
                 }
@@ -112,11 +118,11 @@ public class SequenceGame {
 
         txtTimeDisplay.setStyle("-fx-fill: red; -fx-font-size: 28px; -fx-font-weight: bold; -fx-font-family: 'Courier New';");
         txtTimeDisplay.layoutXProperty();
-        
+
         this.sequenceGui.stackPane.getChildren().add(txtTimeDisplay);
         this.sequenceGui.stackPane.setAlignment(txtTimeDisplay, Pos.TOP_CENTER);
 
-        Duration countdownTime = Duration.seconds(1); //increments of seconds 
+        Duration countdownTime = Duration.seconds(1); //increments of seconds
 
         this.seqTimer = new Timeline(
 
@@ -132,7 +138,11 @@ public class SequenceGame {
 
                         txtTimeDisplay.setText("TIME OUT!");
                         if (seqTimeRemaining == -1) {
-                            managePerformance("time_out");
+                            try {
+                                managePerformance("time_out");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                         decrementTimer();
                     } else {
@@ -146,72 +156,60 @@ public class SequenceGame {
 
     }
 
-    public void managePerformance(String performanceResult) { //had to make this static for call in MQTT class
+    public void managePerformance(String performanceResult) {
 
         System.out.println(performanceResult);
-        switch (performanceResult) {
+        try {
+            switch (performanceResult) {
 
-            case "arrow_correct": /* input correct arrow counted --> (possibly visual/auditory feedback) --> game continues on to next arrow */
-                gameActive = true;
-                this.sequenceGui.changeArrowColor(this.currentArrow, "green");
-                this.currentArrow++;
-                break;
+                case "arrow_correct": /* input correct arrow counted --> (possibly visual/auditory feedback) --> game continues on to next arrow */
+                    gameActive = true;
+                    this.sequenceGui.changeArrowColor(this.currentArrow, "green");
+                    this.currentArrow++;
+                    break;
 
-            case "quota_met": /* game stops --> display victory --> goes to next game after specified time*/
+                case "quota_met": /* game stops --> display victory --> goes to next game after specified time*/
 
-                clearLevel();
-                break;
+                    clearLevel();
+                    break;
 
-            case "arrow_wrong": /* game stops --> display game over (because of wrong arrow) --> with/without button to go to menu */
+                case "arrow_wrong": /* game stops --> display game over (because of wrong arrow) --> with/without button to go to menu */
 
 
-                gameActive = false;
-                //Loving him was red
-                lose();
-                break;
+                    gameActive = false;
+                    //Loving him was red
+                    lose();
+                    break;
 
-            case "time_out": /* game stops --> display game over (because of time out) --> with/without button to go to menu */
+                case "time_out": /* game stops --> display game over (because of time out) --> with/without button to go to menu */
 
-                gameActive = false;
-                //Losing him was blue, like i'd never known
-                lose();
-                break;
+                    gameActive = false;
+                    //Losing him was blue, like i'd never known
+                    lose();
+                    break;
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
-    public void lose() {
+    public void lose() throws Exception{
         this.timeline.stop();
         this.seqTimer.stop();
 
-        try {
-            Leaderboard leaderboard = new Leaderboard();
-            leaderboard.onDeath(Game.level);
-            Game.level = 0;
+        this.joystickHandler.unsubscribeFromMessages();
+        gameOverTrigger.runGameOver(stage);
 
-            this.joystickHandler.unsubscribeFromMessages();
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            this.stage.setTitle("Leveler");
-            this.stage.setScene(scene);
-            this.stage.show();
-        } catch (MqttException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
-    private void clearLevel() {
+    private void clearLevel() throws Exception{
         gameActive = false;
 
         this.timeline.stop();
         this.seqTimer.stop();
-        try {
-            this.joystickHandler.unsubscribeFromMessages();
-            Game game = new Game(this.stage);
-        } catch (MqttException e) {
-            throw new RuntimeException(e);
-        }
+
+        this.joystickHandler.unsubscribeFromMessages();
+        Game.play(this.stage);
     }
 
     private void decrementTimer() {
