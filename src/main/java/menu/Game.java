@@ -20,7 +20,7 @@ public class Game {
 
         level++;
         int random = (int) (Math.random() * range) + min;
-        switch (3) {
+        switch (random) {
             case 1 ->  {Bolt bolt = new Bolt(stage);}
             case 2 -> {SequenceGame sequenceGame = new SequenceGame(stage);}
             case 3 ->  {ColorMatch colorMatch = new ColorMatch(stage, "Colour");}

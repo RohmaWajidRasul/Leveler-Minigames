@@ -16,6 +16,7 @@ import javafx.util.Duration;
 import menu.Game;
 import menu.Main;
 import org.eclipse.paho.client.mqttv3.MqttException;
+import gameover.GameOverScreen;
 
 public class Bolt {
 
@@ -33,6 +34,7 @@ public class Bolt {
     private AccelerationSubscriber accelerationSubscriber;
     private Timeline timeline;
     private Timeline timer;
+    private GameOverScreen gameOverTrigger;
 
     public Bolt(Stage stage){
         runnerX = 10;
@@ -52,6 +54,7 @@ public class Bolt {
         try {
             accelerationSubscriber = new AccelerationSubscriber();
             accelerationSubscriber.subscribeToMessages();
+            gameOverTrigger = new GameOverScreen();
         } catch (MqttException e) {
             e.printStackTrace();
             System.exit(1); // Exit if there's an error initializing AccelerationSubscriber
@@ -91,13 +94,9 @@ public class Bolt {
             accelerationSubscriber.unsubscribeFromMessages();
             Game.play(stage);
         } else if (timerValue == 0) {
-            Game.level = 0; //need to change this.
             timeline.stop();
             accelerationSubscriber.unsubscribeFromMessages();
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            stage.setScene(scene);
-            stage.show();
+            gameOverTrigger.runGameOver(stage);
         }
     }
 
