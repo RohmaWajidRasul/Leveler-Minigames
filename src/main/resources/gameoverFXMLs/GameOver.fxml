@@ -16,7 +16,7 @@
             <Insets top="75.0" />
          </StackPane.margin>
       </Text>
-      <Text fx:id="txtLvl" strokeType="OUTSIDE" strokeWidth="0.0" text="ACHIEVED LEVEL " StackPane.alignment="TOP_CENTER">
+      <Text fx:id="levelText" strokeType="OUTSIDE" strokeWidth="0.0" text="ACHIEVED LEVEL " StackPane.alignment="TOP_CENTER">
          <font>
             <Font name="Berlin Sans FB" size="25.0" />
          </font>

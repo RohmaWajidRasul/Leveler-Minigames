@@ -14,6 +14,6 @@ public class GameOverScreen {
         gameOverStage.setScene(gameOverScene);
         gameOverStage.show();
         GameOverController goController = gameOverLoader.getController();
-        goController.showlevel();
+        goController.showLevel();
     }
 }

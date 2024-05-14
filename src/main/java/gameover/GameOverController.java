@@ -16,16 +16,16 @@ import java.util.Random;
 public class GameOverController {
     
     @FXML
-    private Text txtLvl;
+    private Text levelText;
 
-    public void showlevel() {
+    public void showLevel() {
 
         Random randomSplashCaseNewbie = new Random();
         Random randomSplashCasePro = new Random();
         GameOverText gameOverString = new GameOverText();
 
-        int newbieSplashTexts = 14; //array range for 15 elements, so always subtract 1 from desired range
-        int proSplashTexts = 9; //array range for 10 elements, so always subtract 1 from desired range
+        int newbieSplashTexts = 14; //newbie range set for array with 15 elements, so always subtract 1 from desired range
+        int proSplashTexts = 9; //pro range set for array with 10 elements, so always subtract 1 from desired range
         
         int randomCaseNewbie = randomSplashCaseNewbie.nextInt(newbieSplashTexts);
         int randomCasePro = randomSplashCasePro.nextInt(proSplashTexts);
@@ -33,18 +33,18 @@ public class GameOverController {
         String textBeingSet;
 
         if(Game.level == 1) {
-            txtLvl.setText("LEVELER... SERIOUSLY!? ON LEVEL " + Game.level + "...");
+            levelText.setText("LEVELER... SERIOUSLY!? ON LEVEL " + Game.level + "...");
         } 
-        else if(Game.level >= 2 && Game.level <= 15) {
+        else if(Game.level <= 15) {
             textBeingSet = gameOverString.setGameOverTextNewbie(randomCaseNewbie);
-            txtLvl.setText(textBeingSet + Game.level);
+            levelText.setText(textBeingSet + Game.level);
         }
-        else if (Game.level >= 16 && Game.level <= 25) {
+        else if (Game.level <= 25) {
             textBeingSet = gameOverString.setGameOverTextPro(randomCasePro);
-            txtLvl.setText(textBeingSet + Game.level);
+            levelText.setText(textBeingSet + Game.level);
         }
         else if(Game.level > 25) {
-            txtLvl.setText("LEVELER WENT SUPER SAIYAN UNTIL LEVEL " + Game.level);
+            levelText.setText("LEVELER WENT SUPER SAIYAN UNTIL LEVEL " + Game.level);
         }
     }
 
