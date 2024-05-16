@@ -12,19 +12,19 @@ Leveler minigames currently contains two minigames with two additonal ones still
 ### Prerequisites
 
 Leveler requires:
-   - Computer that can run Java JDK 20 or greater (install [Java](https://www.oracle.com/java/technologies/downloads/) from Oracle) 
-   - Limited edition Leveler custom built controller
+- Computer that can run Java JDK 20 or greater (install [Java](https://www.oracle.com/java/technologies/downloads/) from Oracle) 
+- Limited edition Leveler custom built controller
 
 ### Installation Guide
 
 Step 1: Obtaining game repository files
-   - Go to the main project page [project page](https://git.chalmers.se/courses/dit113/2024/group-14/minigames)
-   - Click on the "Code" drop down and either clone the repository (with SSH or HTTPS) or download the source code zip
+- Go to the main project page [project page](https://git.chalmers.se/courses/dit113/2024/group-14/minigames)
+- Click on the "Code" drop down and either clone the repository (with SSH or HTTPS) or download the source code zip
 
 Step 2: Running the system 
-   - Open your command prompt (or terminal on mac)
-   - Navigate to the directory (folder) where your code was installed
-   - (TBD TBD TBD...) 
+- Open your command prompt (or terminal on mac)
+- Navigate to the directory (folder) where your code was installed
+- (TBD TBD TBD...) 
 Step 3: 
 
 ### Controller Manual
