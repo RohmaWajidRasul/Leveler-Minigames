@@ -4,42 +4,41 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import menu.Main;
 
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Leaderboard {
 
     public static String playerName;
+    private final String fileName;
     ArrayList<Entry> entries;
     public Leaderboard() {
-        entries = new ArrayList<Entry>();
+        this.entries = new ArrayList<Entry>();
+        this.fileName = "src/main/resources/menu/names.txt";
     }
 
     public void onDeath(int newScore) {
-        String filename = "src/main/resources/menu/names.txt";
+
 
         try {
             fillArray();
             if (playerName != null) {
-                entries.add(new Entry(playerName,newScore));
+                this.entries.add(new Entry(playerName,newScore));
             }
 
             insertEntry();
 
-            Writer writer = new Writer(filename);
+            Writer writer = new Writer(fileName);
 
             String newScores;
-            for (Entry entry : entries) {
-                newScores = entry.name + "," + entry.score + "\n";
+            for (Entry entry : this.entries) {
+                newScores = entry.getName() + "," + entry.getScore() + "\n";
                 writer.writeFile(newScores);
             }
             writer.close();
@@ -62,44 +61,42 @@ public class Leaderboard {
         Scene scene = new Scene(stackpane,600,400);
         int y = -150;
         for (int i = 0; i < 5; i++) {
-            Text score = new Text (entries.get(i).toString());
+            Text score = new Text (this.entries.get(i).toString());
             score.setTranslateY(y);
 
             score.setFont(Font.font("Georgia", 20));
-            y += 50;
+            //I don't know much about algebra, but I know -150 + 50 = -100
+            y = y + 50;
 
-
-            stackpane.getChildren().addAll(score);
-
-            Button button = new Button("Back to menu");
-            button.setTranslateY(150);
-
-            stackpane.getChildren().add(button);
-
-            button.setOnAction(actionEvent -> {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
-                Scene Menuscene;
-                try {
-                    Menuscene = new Scene(fxmlLoader.load());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                stage.setTitle("Leveler");
-                stage.setScene(Menuscene);
-                stage.show();
-            });
-
-
+            stackpane.getChildren().add(score);
         }
+
+        Button button = new Button("Back to menu");
+        button.setTranslateY(150);
+
+        stackpane.getChildren().add(button);
+
+        button.setOnAction(actionEvent -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Menu.fxml"));
+            Scene Menuscene;
+            try {
+                Menuscene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setTitle("Leveler");
+            stage.setScene(Menuscene);
+            stage.show();
+        });
 
         stage.setScene(scene);
 
     }
 
     private void fillArray() {
-        String filename = "src/main/resources/menu/names.txt";
 
-        try(Reader reader = new Reader(filename)) {
+
+        try(Reader reader = new Reader(this.fileName)) {
 
             String fileContent = reader.readFile();
 
@@ -110,15 +107,12 @@ public class Leaderboard {
             String name;
             int score;
 
-
-
-
             for (String string : currentScores) {
                 singleEntry = parser.splitAtComma(string);
                 name = singleEntry[0];
                 score = Integer.parseInt(singleEntry[1]);
 
-                entries.add(new Entry(name,score));
+                this.entries.add(new Entry(name,score));
             }
 
 
@@ -130,14 +124,14 @@ public class Leaderboard {
 
     }
     private void insertEntry() {
-        int length = entries.size();
-        Entry entry = entries.remove(entries.size() - 1);
+        int length = this.entries.size();
+        Entry entry = this.entries.remove(this.entries.size() - 1);
 
         int i = 0;
-        while(i <= entries.size() && length > entries.size()) {
+        while(i <= this.entries.size() && length > this.entries.size()) {
 
-            if (i == entries.size() || entry.score >= entries.get(i).score) {
-                entries.add(i,entry);
+            if (i == this.entries.size() || entry.getScore() >= this.entries.get(i).getScore()) {
+                this.entries.add(i,entry);
 
             }
             i++;

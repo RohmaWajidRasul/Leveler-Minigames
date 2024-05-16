@@ -2,8 +2,8 @@ package LeaderBoard;
 
 public class Entry {
 
-    String name;
-    int score;
+    private final String name;
+    private final int score;
 
     public Entry(String name,int score) {
 
@@ -11,9 +11,16 @@ public class Entry {
         this.name = name;
 
     }
-
     public String toString() {
         return this.name + " = " + this.score;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getScore() {
+        return this.score;
     }
 
 }

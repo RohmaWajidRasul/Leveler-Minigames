@@ -5,12 +5,12 @@ import java.io.IOException;
 
 public class Writer extends FileWriter {
 
-    public Writer(String string) throws IOException {
-        super(string);
+    public Writer(String fileName) throws IOException {
+        super(fileName);
     }
 
-    public void writeFile(String string) throws IOException {
-        this.write(string);
+    public void writeFile(String fileName) throws IOException {
+        this.write(fileName);
 
     }
 }
