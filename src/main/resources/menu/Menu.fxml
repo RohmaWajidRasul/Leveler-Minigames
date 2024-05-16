@@ -22,7 +22,7 @@
                   <Font size="18.0" />
                </font></Button>
             <Region prefHeight="10.0" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: transparent;" stylesheets="@Style.css" text="LEADERBOARD">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLeaderboardButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: transparent;" stylesheets="@Style.css" text="LEADERBOARD">
                <font>
                   <Font size="18.0" />
                </font>
