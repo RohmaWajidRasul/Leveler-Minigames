@@ -12,7 +12,8 @@ Leveler minigames currently contains two minigames with two additonal ones still
 ### Prerequisites
 
 Leveler requires:
-- Computer that can run Java JDK 20 or greater (install [Java](https://www.oracle.com/java/technologies/downloads/) from Oracle) 
+- Computer that can run Java JDK 20 or greater (install [Java](https://www.oracle.com/java/technologies/downloads/) from Oracle)
+- Maven which can be installed following the instructions [here](https://www.baeldung.com/install-maven-on-windows-linux-mac)  
 - Limited edition Leveler custom built controller
 
 ### Installation Guide
@@ -23,9 +24,15 @@ Step 1: Obtaining game repository files
 
 Step 2: Running the system 
 - Open your command prompt (or terminal on mac)
-- Navigate to the directory (folder) where your code was installed
-- (TBD TBD TBD...) 
+- Navigate to the directory (folder) where you cloned/downloaded the game files (extract if it's the zip)
+- Type the following commands one after the next in the command line/terminal:
+- mvn clean
+- mvn install
+- These commands will create a folder named "target" among the game files where you can find a jar executable
+
 Step 3: 
+- Click on the Leveler-1.0-SNAPSHOT-shaded.jar to run the game
+- Enjoy Leveler!
 
 ### Controller Manual
 
