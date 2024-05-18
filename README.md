@@ -72,13 +72,13 @@ The following is a link to the layout of the controller sensors and their connec
 - **Rohma Wajid Rasul**
     > (INSERT CONTRIBUTION)
 - **Zhaoyu Wang (Jerome)**
-    > Contributed by co-developing Color Match minigame, creating game menu, tutorial, code reviews, and co-building the Leveler controller. 
+    > _Contributed by co-developing Color Match minigame, creating game menu, tutorial, code reviews, and co-building the Leveler controller._ 
 - **Karl Byland**
-    > (INSERT CONTRIBUTION)
+    > _Contributed by co-developing Sequence Game minigame, developing the leaderboard, minor contributins to the ci pipeline and bug fixing in the color match mini-game, and code reviews._
 - **Filipe Rosa**
-    > Contributed by co-developing Bolt game and CI pipeline, co-building Leveler controller and researching arduino and maven.
+    > _Contributed by co-developing Bolt game and CI pipeline, co-building Leveler controller and researching arduino, maven, and code reviews._
 - **David zum Felde**
-    > _Contributed by co-developing Sequence Game minigame, developing game over screen, helping with project wiki, writing project README, co-building Leveler_ controller, and code reviews.      
+    > _Contributed by co-developing Sequence Game minigame, developing game over screen, helping with project wiki, writing project README, co-building Leveler controller, edit demo video, and code reviews._      
 ## _Product Demo Video_
 
 Feel free to checkout the official demo of the Leveler minigame product, complete with both tiers of the system.  
