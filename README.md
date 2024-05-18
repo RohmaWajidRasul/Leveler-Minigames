@@ -40,17 +40,41 @@ Below is a link to an image of the state-of-the-art Leveler controller:
 
 ![Leveler_Controller](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/blob/18-readme-revision/src/main/resources/readmeAssets/LevelerController.jpg?ref_type=heads)
 
-The following is a layout of the controller sensors and their connections once built into the controller:
+The following is a link to the layout of the controller sensors and their connections once built into the controller:
 
 ![Sensor_Layout](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/blob/18-readme-revision/src/main/resources/readmeAssets/LEVELER%20PORT%20LAYOUT.png?ref_type=heads)
 
 ## Hardware and Software Information
 
-### Hardware Components include:
+### The Hardware used for this project include:
+- Grove sensors
+- WIO SEEED terminal
+- Battery extension unit
+- Wire connections
+- Brick assembly system (lego bricks)
+
+### The Software used for this project include:
+- Java JDK
+- JavaFX
+- C++ (for Arduino)
+- Maven
+- Intellij Idea, VSCode, and Aruino IDEs
+- GitLab remote repository system (for git, file organization, and pipeline)
+- Git version control system
 
 ## Project Developers and Contributions
 
+- Rohma Wajid Rasul:
+    > (INSERT CONTRIBUTION)
+- Zhaoyu Wang (Jerome):
+    > (INSERT CONTRIBUTION)
+- Karl Byland:
+    > (INSERT CONTRIBUTION)
+- Filipe Rosa:
+    > (INSERT CONTRIBUTION)
+- David zum Felde:
+    > Contributed by co-developing Sequence Game minigame, developing game over screen, helping with project wiki, writing project README, and co-building Leveler controller.      
 ## Product Video Demo
 
 
-[Click Here](https://youtu.be/CiNcn1dWq7g) to go to the product video demo on YouTube
+The product [video demo](https://youtu.be/CiNcn1dWq7g) can be found on YouTube.
