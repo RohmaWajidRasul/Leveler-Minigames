@@ -78,7 +78,7 @@ The following is a link to the layout of the controller sensors and their connec
 - **Filipe Rosa**
     > _Contributed by co-developing Bolt game and CI pipeline, co-building Leveler controller and researching arduino, maven, and code reviews._
 - **David zum Felde**
-    > _Contributed by co-developing Sequence Game minigame, developing game over screen, helping with project wiki, writing project README, co-building Leveler controller, edit demo video, and code reviews._      
+    > _Contributed by co-developing Sequence Game minigame, developing game over screen, helping with project wiki, writing project README, co-building Leveler controller, edit demo video, animated Leveler logo, and code reviews._      
 ## _Product Demo Video_
 
 Feel free to checkout the official demo of the Leveler minigame product, complete with both tiers of the system.  
