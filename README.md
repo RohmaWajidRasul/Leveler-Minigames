@@ -36,6 +36,15 @@ Step 3:
 
 ### Controller Manual
 
+Below is an image of the state-of-the-art Leveler controller:
+
+![Leveler_Controller](./resources/readmeAssets/LevelerController.jpg)
+
+
+And the following is a layout of the controller sensors and their connections once built into the controller:
+
+![Sensor_Layout](./resources/readmeAssets/LEVELER PORT LAYOUT.png)
+
 ## Hardware and Software Information
 
 ### Hardware Components include:
