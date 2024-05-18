@@ -74,7 +74,7 @@ The following is a link to the layout of the controller sensors and their connec
     > (INSERT CONTRIBUTION)
 - **David zum Felde**
     > _Contributed by co-developing Sequence Game minigame, developing game over screen, helping with project wiki, writing project README, and co-building Leveler_ controller.      
-## Product Video Demo
+## _Product Video Demo_
 
 
 The Leveler Minigames product [video demo](https://youtu.be/CiNcn1dWq7g) can be found on YouTube.
