@@ -5,11 +5,15 @@ public class Parser {
     public Parser() {}
 
     public String[] split(String string) {
-        return string.split("\\r?\\n");
+        String[] strings = string.split("\\r?\\n");
+
+        return strings;
     }
 
     public String[] splitAtComma(String string) {
-        return string.split(",");
+        String[] strings = string.split(",");
+
+        return strings;
     }
 
 }

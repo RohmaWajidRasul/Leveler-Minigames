@@ -1,6 +1,7 @@
 package minigamesPackage;
 
 import java.util.ArrayList;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
@@ -14,7 +15,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class SequenceGui {
-
     private final ArrayList<ImageView> arrowViewArrL; //scalable array lists for arrow drawing
     private final ArrayList<String> arrowOrientationList;
     private double scrollSpeed; //Scroll speed of the arrows
