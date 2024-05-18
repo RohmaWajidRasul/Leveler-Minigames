@@ -3,20 +3,20 @@ _-brought to you by the members of DEV TEAM 14_
 
 
 
-## Leveler System Description
+## _Leveler System Description_
 
 Leveler minigames currently contains three primary minigames: _Bolt_, _Sequence_, and _Color Match_ (the latter of which has two variations, matching by either color or text). This system is composed of two primary surfaces: a graphical user interface and an embedded system controller. The computer surface is responsible for housing the code of the game, the graphical user interface, as well as the power delivery for the controller. The controller will read user input from three categories of Grove sensors that span: three LED buttons, a joystick, and an accelerometer. With a Wio Seeed terminal and battery extension, the sensors will provide various input forms required to play their respective minigame.
 
-## Getting Started with Leveler
+## _Getting Started with Leveler_
 
-### Prerequisites Before Installation
+### → Prerequisites Before Installation
 
 Leveler requires:
 - Computer that can run Java JDK 20 or greater (install [Java](https://www.oracle.com/java/technologies/downloads/) from Oracle)
 - Maven which can be installed following the instructions [here](https://www.baeldung.com/install-maven-on-windows-linux-mac)  
 - Limited edition Leveler custom built controller
 
-### Installation Guide
+### → Installation Guide
 
 Step 1: Obtaining game repository files
 - Go to the [main project page](https://git.chalmers.se/courses/dit113/2024/group-14/minigames)
@@ -34,7 +34,7 @@ Step 3:
 - Click on the Leveler-1.0-SNAPSHOT-shaded.jar to run the game
 - Enjoy Leveler!
 
-### Controller Manual
+### → Controller Details
 
 Below is a link to an image of the state-of-the-art Leveler controller:
 
@@ -44,16 +44,16 @@ The following is a link to the layout of the controller sensors and their connec
 
 ![Sensor_Layout](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/blob/18-readme-revision/src/main/resources/readmeAssets/LEVELER%20PORT%20LAYOUT.png?ref_type=heads)
 
-## Hardware and Software Information
+## _Hardware and Software Information_
 
-### The Hardware used for this project include:
+### → The Hardware used for this project include:
 - Grove sensors
 - WIO SEEED terminal
 - Battery extension unit
 - Wire connections
 - Brick assembly system (lego bricks)
 
-### The Software used for this project include:
+### → The Software used for this project include:
 - Java JDK
 - JavaFX
 - C++ (for Arduino)
@@ -62,19 +62,19 @@ The following is a link to the layout of the controller sensors and their connec
 - GitLab remote repository system (for git, file organization, and pipeline)
 - Git version control system
 
-## Project Developers and Contributions
+## _Project Developers and Contributions_
 
-- Rohma Wajid Rasul:
+- **Rohma Wajid Rasul**
     > (INSERT CONTRIBUTION)
-- Zhaoyu Wang (Jerome):
+- **Zhaoyu Wang (Jerome)**
     > (INSERT CONTRIBUTION)
-- Karl Byland:
+- **Karl Byland**
     > (INSERT CONTRIBUTION)
-- Filipe Rosa:
+- **Filipe Rosa**
     > (INSERT CONTRIBUTION)
-- David zum Felde:
-    > Contributed by co-developing Sequence Game minigame, developing game over screen, helping with project wiki, writing project README, and co-building Leveler controller.      
+- **David zum Felde**
+    > _Contributed by co-developing Sequence Game minigame, developing game over screen, helping with project wiki, writing project README, and co-building Leveler_ controller.      
 ## Product Video Demo
 
 
-The product [video demo](https://youtu.be/CiNcn1dWq7g) can be found on YouTube.
+The Leveler Minigames product [video demo](https://youtu.be/CiNcn1dWq7g) can be found on YouTube.
