@@ -71,7 +71,7 @@ The following is a link to the layout of the controller sensors and their connec
 - **Karl Byland**
     > (INSERT CONTRIBUTION)
 - **Filipe Rosa**
-    > (INSERT CONTRIBUTION)
+    > Contributed by co-developing Bolt game and CI pipeline, co-building Leveler controller and researching arduino and maven.
 - **David zum Felde**
     > _Contributed by co-developing Sequence Game minigame, developing game over screen, helping with project wiki, writing project README, and co-building Leveler_ controller.      
 ## _Product Video Demo_
