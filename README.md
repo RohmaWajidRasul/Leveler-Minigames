@@ -36,16 +36,13 @@ Step 3:
 
 ### Controller Manual
 
-Below is an image of the state-of-the-art Leveler controller:
+Below is a link to an image of the state-of-the-art Leveler controller:
 
-![LevelerController](/uploads/45db31e7e1c6209007be76a132242f12/LevelerController.jpg)
+![Leveler_Controller](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/blob/18-readme-revision/src/main/resources/readmeAssets/LevelerController.jpg?ref_type=heads)
 
-![Leveler_Controller](./resources/readmeAssets/LevelerController.jpg)
+The following is a layout of the controller sensors and their connections once built into the controller:
 
-
-And the following is a layout of the controller sensors and their connections once built into the controller:
-
-![Sensor_Layout](./resources/readmeAssets/LEVELER PORT LAYOUT.png)
+![Sensor_Layout](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/blob/18-readme-revision/src/main/resources/readmeAssets/LEVELER%20PORT%20LAYOUT.png?ref_type=heads)
 
 ## Hardware and Software Information
 
