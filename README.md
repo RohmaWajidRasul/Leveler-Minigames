@@ -38,6 +38,8 @@ Step 3:
 
 Below is an image of the state-of-the-art Leveler controller:
 
+![LevelerController](/uploads/45db31e7e1c6209007be76a132242f12/LevelerController.jpg)
+
 ![Leveler_Controller](./resources/readmeAssets/LevelerController.jpg)
 
 
