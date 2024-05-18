@@ -70,7 +70,7 @@ The following is a link to the layout of the controller sensors and their connec
 ## _Project Developers and Contributions_
 
 - **Rohma Wajid Rasul**
-    > (INSERT CONTRIBUTION)
+    > _Contributed by co-developing the Bolt and Color Match minigames, added the arduino cli configuration to the pipeline for the hardware build process, rewrote all the arduino code into a single program split into different files (classes), contributed to the wiki (requirements, issues and the architectural diagram), and code reviews._
 - **Zhaoyu Wang (Jerome)**
     > _Contributed by co-developing Color Match minigame, creating game menu, tutorial, code reviews, and co-building the Leveler controller._ 
 - **Karl Byland**
