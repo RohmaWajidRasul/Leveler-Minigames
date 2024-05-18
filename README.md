@@ -26,8 +26,8 @@ Step 2: Running the system
 - Open your command prompt (or terminal on mac)
 - Navigate to the directory (folder) where you cloned/downloaded the game files (don't forget to extract if it's the zip)
 - Type the following commands one after the next in the command line:
-- mvn clean
-- mvn install
+     - mvn clean
+     - mvn install
 - These commands will create a folder named "target" among the game files where you can find a jar executable
 
 Step 3: 
@@ -74,7 +74,8 @@ The following is a link to the layout of the controller sensors and their connec
     > Contributed by co-developing Bolt game and CI pipeline, co-building Leveler controller and researching arduino and maven.
 - **David zum Felde**
     > _Contributed by co-developing Sequence Game minigame, developing game over screen, helping with project wiki, writing project README, and co-building Leveler_ controller.      
-## _Product Video Demo_
+## _Product Demo Video_
 
+Feel free to checkout the official demo of the Leveler minigame product, complete with both tiers of the system.  
 
-The Leveler Minigames product [video demo](https://youtu.be/CiNcn1dWq7g) can be found on YouTube.
+**→**  [Leveler Product Demo Video](https://youtu.be/CiNcn1dWq7g)
