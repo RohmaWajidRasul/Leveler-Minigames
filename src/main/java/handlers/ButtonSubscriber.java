@@ -1,19 +1,20 @@
 package handlers;
 
 import org.eclipse.paho.client.mqttv3.*;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ButtonSubscriber implements MqttCallback{
-    private final static ExecutorService THREAD_POOL = Executors.newSingleThreadExecutor();
 
+    private final static ExecutorService THREAD_POOL = Executors.newSingleThreadExecutor();
     private final IMqttClient middleware;
+
     private final static String TOPIC_YELLOW = "sensor/yellow_button_state";
     private final static String TOPIC_RED = "sensor/red_button_state";
     private final static String TOPIC_BLUE = "sensor/blue_button_state";
     private final static String BROKER  = "tcp://test.mosquitto.org";
     private final static String USER_ID = "";
+
     private int yellowButtonState = 1;
     private int lastYellowButtonState = 1;
     private int redButtonState = 1;
@@ -88,11 +89,11 @@ public class ButtonSubscriber implements MqttCallback{
 
         } else if (redButtonState == 0 && lastRedButtonState == 1) {
             lastRedButtonState = 0;
-            return "Red"; //Loving him was read
+            return "Red";
 
         } else if (blueButtonState == 0 && lastBlueButtonState == 1) {
             lastBlueButtonState = 0;
-            return "Blue"; //Losing him was blue, like I'd never know
+            return "Blue";
         } else {
             return null;
         }

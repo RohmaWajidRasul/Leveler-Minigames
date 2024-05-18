@@ -1,8 +1,6 @@
 package minigamesPackage;
 
 import javafx.animation.Animation;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.util.Duration;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -11,15 +9,11 @@ import javafx.scene.text.Text;
 import handlers.JoystickHandler;
 import javafx.stage.Stage;
 import menu.Game;
-import menu.Main;
-import org.eclipse.paho.client.mqttv3.MqttException;
-
 import gameover.GameOverScreen;
 
-import java.io.IOException;
-
 public class SequenceGame {
-    private boolean gameActive;
+
+
     private final int numberOfArrows;
     private int currentArrow;
     private final int seqTime;
@@ -31,7 +25,7 @@ public class SequenceGame {
     private Timeline seqTimer;
     private final Stage stage;
     private boolean colorChange;
-    private GameOverScreen gameOverTrigger;
+    private final GameOverScreen gameOverTrigger;
 
 
     public SequenceGame(Stage stage) throws Exception {
@@ -51,15 +45,11 @@ public class SequenceGame {
 
     }
 
-    public void Game(Stage stage) throws Exception {
-
+    public void Game(Stage stage) {
 
         this.sequenceGui.start(stage);
-
         this.sequenceGui.drawArrows(this.numberOfArrows);
         this.sequenceGui.moveArrows(this.numberOfArrows); //starts timeline to move arrows to the left
-
-        gameActive = true;
 
         Duration updateInterval = Duration.millis(100);
 
@@ -73,20 +63,18 @@ public class SequenceGame {
                 String currentOrientation = this.sequenceGui.getArrowOrientationList().get(currentArrow); //string with arrow orientation from ArrayList
 
                 if(userInput.equals(currentOrientation) && this.currentArrow == (this.numberOfArrows - 1)) {
-                    if(this.currentArrow == (this.numberOfArrows - 1)) {
-                        performanceResult = "quota_met";
-                        this.sequenceGui.changeArrowColor(this.currentArrow, "green");
+                    performanceResult = "quota_met";
+                    this.sequenceGui.changeArrowColor(this.currentArrow, "green");
 
-                        if (this.colorChange) {
-                            managePerformance(performanceResult);
-                        }
-                        this.colorChange = true;
+                    if (this.colorChange) {
+                        managePerformance(performanceResult);
                     }
+                    this.colorChange = true;
+
                 } else if(userInput.equals(currentOrientation)) {
                     performanceResult = "arrow_correct"; //correct arrow direction performance
 
                     managePerformance(performanceResult);
-
 
                 } else {
 
@@ -95,17 +83,14 @@ public class SequenceGame {
                     this.sequenceGui.showDisplay();
 
                     if (this.colorChange) {
-
                         managePerformance(performanceResult);
 
                     }
                     this.colorChange = true;
                 }
-
-
             }
-
         }));
+
         this.timeline.setCycleCount(Animation.INDEFINITE);
         this.timeline.play();
 
@@ -151,6 +136,7 @@ public class SequenceGame {
                 }
             })
         );
+
         this.seqTimer.setCycleCount(this.seqTime + this.preCountdown + 2);
         this.seqTimer.play();
 
@@ -163,7 +149,7 @@ public class SequenceGame {
             switch (performanceResult) {
 
                 case "arrow_correct": /* input correct arrow counted --> (possibly visual/auditory feedback) --> game continues on to next arrow */
-                    gameActive = true;
+
                     this.sequenceGui.changeArrowColor(this.currentArrow, "green");
                     this.currentArrow++;
                     break;
@@ -175,16 +161,11 @@ public class SequenceGame {
 
                 case "arrow_wrong": /* game stops --> display game over (because of wrong arrow) --> with/without button to go to menu */
 
-
-                    gameActive = false;
-                    //Loving him was red
                     lose();
                     break;
 
                 case "time_out": /* game stops --> display game over (because of time out) --> with/without button to go to menu */
 
-                    gameActive = false;
-                    //Losing him was blue, like i'd never known
                     lose();
                     break;
             }
@@ -203,7 +184,6 @@ public class SequenceGame {
     }
 
     private void clearLevel() throws Exception{
-        gameActive = false;
 
         this.timeline.stop();
         this.seqTimer.stop();

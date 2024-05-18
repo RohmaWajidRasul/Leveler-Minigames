@@ -8,7 +8,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import menu.Main;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ public class Leaderboard {
     public static String playerName;
     private final String fileName;
     ArrayList<Entry> entries;
+
     public Leaderboard() {
         this.entries = new ArrayList<Entry>();
         this.fileName = "src/main/resources/menu/names.txt";
@@ -59,14 +59,14 @@ public class Leaderboard {
 
         StackPane stackpane = new StackPane();
         Scene scene = new Scene(stackpane,600,400);
-        int y = -150;
+        int textY = -150;
         for (int i = 0; i < 5; i++) {
             Text score = new Text (this.entries.get(i).toString());
-            score.setTranslateY(y);
+            score.setTranslateY(textY);
 
             score.setFont(Font.font("Georgia", 20));
-            //I don't know much about algebra, but I know -150 + 50 = -100
-            y = y + 50;
+            //Changing the texts y coordinate
+            textY = textY + 50;
 
             stackpane.getChildren().add(score);
         }

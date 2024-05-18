@@ -62,14 +62,15 @@ build_and_install:
         - "mvn clean"
         - "mvn compile"
 
-install_job:
-    image: maven:latest
-    stage: deploy
-    tags:
-        - docker
-    script:
-        - echo "Maven installing started"
-        - "mvn install"
-    artifacts:
-        paths:
-            - ./target
+#jar file currently has bugs and cannot be implemented
+#install_job:
+    #image: maven:latest
+    #stage: deploy
+    #tags:
+        #- docker
+    #script:
+        #- echo "Maven installing started"
+        #- "mvn install"
+    #artifacts:
+        #paths:
+            #- ./target
