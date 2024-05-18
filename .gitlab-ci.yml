@@ -62,6 +62,7 @@ build_and_install:
         - "mvn clean"
         - "mvn compile"
 
+#The jar file still has bugs so please don't use it
 install_job:
     image: maven:latest
     stage: deploy

@@ -1,7 +1,6 @@
 package gameover;
 
 import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,7 +42,7 @@ public class GameOverController {
             textBeingSet = gameOverString.setGameOverTextPro(randomCasePro);
             levelText.setText(textBeingSet + Game.level);
         }
-        else if(Game.level > 25) {
+        else {
             levelText.setText("LEVELER WENT SUPER SAIYAN UNTIL LEVEL " + Game.level);
         }
     }

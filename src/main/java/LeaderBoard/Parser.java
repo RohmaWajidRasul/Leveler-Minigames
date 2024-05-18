@@ -6,7 +6,6 @@ public class Parser {
 
     public String[] split(String string) {
         String[] strings = string.split("\\r?\\n");
-
         return strings;
     }
 

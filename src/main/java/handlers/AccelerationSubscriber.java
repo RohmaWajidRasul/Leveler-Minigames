@@ -15,9 +15,12 @@ public class AccelerationSubscriber implements MqttCallback {
     private final static ExecutorService THREAD_POOL = Executors.newSingleThreadExecutor();
 
     private final IMqttClient middleware;
+
     private final static String TOPIC   = "sensor/vibration";
     private final static String BROKER  = "tcp://test.mosquitto.org";
     private final static String USER_ID = "";
+
+    //we start with 0.9 because the accelerometer takes into account the force of gravity
     private double zValue = 0.9;
     private double lastZValue = 0.9;
 
@@ -63,10 +66,6 @@ public class AccelerationSubscriber implements MqttCallback {
             // Update zValue and lastZValue
             lastZValue = zValue;
             zValue = doubleValue;
-            // Now you have the float value
-            System.out.println("last" + lastZValue);
-            System.out.println("z" + zValue);
-            System.out.println((Math.abs(lastZValue - doubleValue) / 3) * 100);
         } catch (NumberFormatException e) {
             // Payload is not a valid float, so ignore it
             System.err.println("Received non-double value, ignoring: " + payloadString);
