@@ -2,8 +2,13 @@
 _-brought to you by the members of DEV TEAM 14_ 
 
 
+## _What is Leveler?_
 
-## _Leveler System Description_
+The primary purpose of Leveler Minigames is to provide an engaging entertainment system that also involves thought provoking tasks.
+
+Leveler brings the benefits of exercising critical thinking, adaptation to rapidly changing environments, and time management.    
+
+## _In-depth System Description_
 
 Leveler minigames currently contains three primary minigames: _Bolt_, _Sequence_, and _Color Match_ (the latter of which has two variations, matching by either color or text). This system is composed of two primary surfaces: a graphical user interface and an embedded system controller. The computer surface is responsible for housing the code of the game, the graphical user interface, as well as the power delivery for the controller. The controller will read user input from three categories of Grove sensors that span: three LED buttons, a joystick, and an accelerometer. With a Wio Seeed terminal and battery extension, the sensors will provide various input forms required to play their respective minigame.
 
