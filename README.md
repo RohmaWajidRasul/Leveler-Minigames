@@ -69,9 +69,9 @@ The following is a schematic layout of the controller sensors and their connecti
 
 <details><summary><h3> System Architecure </h3></summary>
 
-The two tier system is facilitated via an MQTT broker connection 'bridge' which is demonstrated in the diagram below:
+The two-tier system is facilitated via an MQTT broker publish/subscribe 'bridge' which is demonstrated in the diagram below:
 
-![System Architecture Diagram](readmeAssets/Architectural_Diagram.jpg){width=75%}
+![System Architecture Diagram](readmeAssets/Architectural_Diagram.jpg){width=85%}
 
 </details>
 
