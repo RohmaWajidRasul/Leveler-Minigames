@@ -3,7 +3,7 @@
 #include <Wire.h>
 #include "AccelerometerPublisher.h"
 #include "JoystickPublisher.h"
-#include "ButtonsPublisher.h"
+#include "ButtonPublisher.h"
 
 
 AccelerometerPublisher accelerometerPublisher;
