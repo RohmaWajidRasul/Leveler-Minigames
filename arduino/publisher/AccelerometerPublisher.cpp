@@ -1,14 +1,14 @@
-#include "Accelerometer.h"
+#include "AccelerometerPublisher.h"
 
-Accelerometer::Accelerometer() {}
+AccelerometerPublisher::AccelerometerPublisher() {}
 
-void Accelerometer::init(PubSubClient &mqttClient, const char* topic) {
+void AccelerometerPublisher::init(PubSubClient &mqttClient, const char* topic) {
     mqttClientPtr = &mqttClient;
     TOPIC = topic;
     accelerationSensor.init(); // Initialize the MMA7660 object
 }
 
-void Accelerometer::publishData() {
+void AccelerometerPublisher::publishData() {
     int8_t x;
     int8_t y;
     int8_t z;

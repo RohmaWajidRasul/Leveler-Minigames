@@ -1,7 +1,6 @@
 package gameover;
 
 import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,7 +42,7 @@ public class GameOverController {
             textBeingSet = gameOverString.setGameOverTextPro(randomCasePro);
             levelText.setText(textBeingSet + Game.level);
         }
-        else if(Game.level > 25) {
+        else {
             levelText.setText("LEVELER WENT SUPER SAIYAN UNTIL LEVEL " + Game.level);
         }
     }
@@ -51,7 +50,7 @@ public class GameOverController {
     @FXML
     public void restartGame(ActionEvent clickRestart) throws Exception{
         System.out.println("\nReplaying game . . .");
-        Game.level = 0;
+        Game.resetLevel();
         Node restartNode = (Node) clickRestart.getSource();
         Stage replayStage = (Stage) restartNode.getScene().getWindow();
         Game newGame = new Game(replayStage);
@@ -60,7 +59,7 @@ public class GameOverController {
     @FXML
     public void returnToMenu(ActionEvent clickReturnToMenu) throws IOException{
         System.out.println("\nReturning to Menu . . .");
-        Game.level = 0;
+        Game.resetLevel();
         Parent root = FXMLLoader.load(getClass().getResource("/menu/Menu.fxml"));
         Node returnNode = (Node) clickReturnToMenu.getSource();
         Scene menuScene = new Scene(root);

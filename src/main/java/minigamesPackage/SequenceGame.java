@@ -1,8 +1,6 @@
 package minigamesPackage;
 
 import javafx.animation.Animation;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.util.Duration;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -11,27 +9,26 @@ import javafx.scene.text.Text;
 import handlers.JoystickHandler;
 import javafx.stage.Stage;
 import menu.Game;
-import menu.Main;
-import org.eclipse.paho.client.mqttv3.MqttException;
-
 import gameover.GameOverScreen;
 
-import java.io.IOException;
-
 public class SequenceGame {
-    private boolean gameActive;
+
+    private boolean colorChange;
+    private final Stage stage;
+    private GameOverScreen gameOverTrigger;
+
     private final int numberOfArrows;
-    private int currentArrow;
     private final int seqTime;
+
+    private int currentArrow;
     private int seqTimeRemaining;
     private int preCountdown;
+
     private final SequenceGui sequenceGui;
     private final JoystickHandler joystickHandler;
+
     private Timeline timeline;
     private Timeline seqTimer;
-    private final Stage stage;
-    private boolean colorChange;
-    private GameOverScreen gameOverTrigger;
 
 
     public SequenceGame(Stage stage) throws Exception {
@@ -53,13 +50,10 @@ public class SequenceGame {
 
     public void Game(Stage stage) throws Exception {
 
-
         this.sequenceGui.start(stage);
 
         this.sequenceGui.drawArrows(this.numberOfArrows);
         this.sequenceGui.moveArrows(this.numberOfArrows); //starts timeline to move arrows to the left
-
-        gameActive = true;
 
         Duration updateInterval = Duration.millis(100);
 
@@ -77,6 +71,9 @@ public class SequenceGame {
                         performanceResult = "quota_met";
                         this.sequenceGui.changeArrowColor(this.currentArrow, "green");
 
+                        //written like this to make sure there is enough of a delay for the arrows to change color
+                        //even when the level is cleared, or you die. The timelines executes and extra time before
+                        //calling the managePerformance method.
                         if (this.colorChange) {
                             managePerformance(performanceResult);
                         }
@@ -163,7 +160,7 @@ public class SequenceGame {
             switch (performanceResult) {
 
                 case "arrow_correct": /* input correct arrow counted --> (possibly visual/auditory feedback) --> game continues on to next arrow */
-                    gameActive = true;
+
                     this.sequenceGui.changeArrowColor(this.currentArrow, "green");
                     this.currentArrow++;
                     break;
@@ -175,16 +172,11 @@ public class SequenceGame {
 
                 case "arrow_wrong": /* game stops --> display game over (because of wrong arrow) --> with/without button to go to menu */
 
-
-                    gameActive = false;
-                    //Loving him was red
                     lose();
                     break;
 
                 case "time_out": /* game stops --> display game over (because of time out) --> with/without button to go to menu */
 
-                    gameActive = false;
-                    //Losing him was blue, like i'd never known
                     lose();
                     break;
             }
@@ -203,7 +195,6 @@ public class SequenceGame {
     }
 
     private void clearLevel() throws Exception{
-        gameActive = false;
 
         this.timeline.stop();
         this.seqTimer.stop();

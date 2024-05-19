@@ -1,18 +1,18 @@
-#include "Joystick.h"
+#include "JoystickPublisher.h"
 
 // Define constants for joystick thresholds and debounce time
 const int JOYSTICK_THRESHOLD = 50; // Threshold for joystick movement detection
 const unsigned long DEBOUNCE_DELAY = 50; // Debounce time in milliseconds
 
-Joystick::Joystick() {}
+JoystickPublisher::JoystickPublisher() {}
 
-void Joystick::setup(PubSubClient &mqttClient, const char* topic) {
+void JoystickPublisher::setup(PubSubClient &mqttClient, const char* topic) {
     mqttClientPtr = &mqttClient;
     TOPIC = topic;
 
 }
 
-void Joystick::publishData() {
+void JoystickPublisher::publishData() {
     String direction = "";
 
     int sensorValue1 = analogRead(A2);

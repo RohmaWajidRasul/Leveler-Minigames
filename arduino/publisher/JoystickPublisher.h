@@ -1,12 +1,12 @@
-#ifndef JOYSTICK_H
-#define JOYSTICK_H
+#ifndef JOYSTICKPUBLISHER_H
+#define JOYSTICKPUBLISHER_H
 
 #include "Arduino.h"
 #include "PubSubClient.h"
 
-class Joystick {
+class JoystickPublisher {
 public:
-    Joystick();
+    JoystickPublisher();
     void setup(PubSubClient &mqttClient, const char* topic);
     void publishData();
 private:

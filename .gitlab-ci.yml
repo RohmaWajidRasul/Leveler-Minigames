@@ -18,7 +18,8 @@ compile:
     script:
         - export PATH=$PATH:/root/bin             # set the path to arduino-cli installation folder
         - pwd                                     # print the current working directory
-        - cd arduino/publisher                              # change the directory to arduino folder
+        - cd arduino/publisher                    # change the directory to arduino folder
+        - echo "$WIFI_INFO_H" > WifiInfo.h
         - arduino-cli lib list                    # check that libraries are installed
 
         # Compile
@@ -37,7 +38,8 @@ release:
     script:
         - export PATH=$PATH:/root/bin             # set the path to arduino-cli installation folder
         - pwd                                     # print the current working directory
-        - cd arduino/publisher                              # change the directory to arduino folder
+        - cd arduino/publisher                    # change the directory to arduino folder
+        - echo "$WIFI_INFO_H" > WifiInfo.h
         - arduino-cli lib list                    # check that libraries are installed
 
         # Compile
@@ -62,14 +64,3 @@ build_and_install:
         - "mvn clean"
         - "mvn compile"
 
-install_job:
-    image: maven:latest
-    stage: deploy
-    tags:
-        - docker
-    script:
-        - echo "Maven installing started"
-        - "mvn install"
-    artifacts:
-        paths:
-            - ./target
