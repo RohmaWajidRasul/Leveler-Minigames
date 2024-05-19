@@ -175,11 +175,12 @@ public class ColorMatch {
 
 
             graphicsContext.setFont(Font.font("Verdana", FontWeight.SEMI_BOLD, 20));
-            graphicsContext.setFill(Color.BLACK);
-            graphicsContext.fillText(text, x - 1, y - 1);
-            graphicsContext.fillText(text, x + 1, y - 1);
-            graphicsContext.fillText(text, x - 1, y + 1);
-            graphicsContext.fillText(text, x + 1, y + 1);
+            // Set the outline color to black
+            graphicsContext.setStroke(Color.BLACK);
+            graphicsContext.setLineWidth(3); // Adjust the outline width as needed
+
+            // Draw the text outline
+            graphicsContext.strokeText(text, x, y);
 
             if (color.equals("Red")) {
                 graphicsContext.setFill(Color.RED);
