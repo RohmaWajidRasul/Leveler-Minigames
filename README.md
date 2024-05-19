@@ -1,3 +1,8 @@
+![Leveler](readmeAssets/Leveler_Logo.png)
+
+
+
+
 # Leveler Minigames
 _-brought to you by the members of DEV TEAM 14_ 
 
@@ -55,11 +60,11 @@ Given that the system is having difficulties creating a stable jar file, the fol
 
 <details><summary><h3> Controller Details </h3></summary>
 
-Below is a link to an image of the state-of-the-art Leveler controller:
+Below is an image of the state-of-the-art Leveler controller:
 
 ![Leveler_Controller](readmeAssets/LevelerController.jpg){width=40%}
 
-The following is a link to the layout of the controller sensors and their connections once built into the controller:
+The following is a schematic layout of the controller sensors and their connections once built into the controller:
 
 ![Sensor_Layout](readmeAssets/levelerPortLayout.png){width=40%}
 
