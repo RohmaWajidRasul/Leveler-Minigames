@@ -13,6 +13,10 @@ public class Game {
         play(stage);
     }
 
+    public static void resetLevel() {
+        level = 0;
+    }
+
     public static void play(Stage stage) throws Exception {
         final int numberOfGames = 4;
         int min = 1;
