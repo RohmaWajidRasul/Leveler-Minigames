@@ -65,6 +65,13 @@ The following is a schematic layout of the controller sensors and their connecti
 
 ![Sensor_Layout](readmeAssets/levelerPortLayout.png){width=40%}
 
+Below is the WIO SEEED Terminal layout schematic courtesy of https://wiki.seeedstudio.com/Wio-Terminal-Getting-Started/
+
+![Wio_Terminal_Layout](readmeAssets/Wio_Terminal_Grove.jpeg){width=40%}
+
+The following is a schematic of the External Battery Chassis courtesy of https://wiki.seeedstudio.com/Wio-Terminal-Battery-Chassis/
+
+![External_Battery_Chassis_Layout](readmeAssets/External_Battery_Chassis.jpg){width=40%}
 </details>
 
 <details><summary><h3> System Architecure </h3></summary>
