@@ -24,6 +24,8 @@ Leveler requires:
 
 <details><summary><h3> Installation Guide </h3></summary>
 
+Given that the system is having difficulties creating a stable jar file, the following steps work but result in bugs within areas such as the leaderboard and gameover screen. 
+
 **Step 1:** _Obtaining Game Files_
 - Go to the [main project page](https://git.chalmers.se/courses/dit113/2024/group-14/minigames)
 - Click on the "Code" drop down and either clone the repository (with SSH or HTTPS) or download the source code zip file
@@ -38,7 +40,16 @@ Leveler requires:
 
 **Step 3:** _Running the Game_
 - Click on the Leveler-1.0-SNAPSHOT-shaded.jar to run the game
-- Enjoy Leveler! :)
+
+
+**_ALTERNATIVE INSTALLATION AND RUNNING METHOD_**
+
+    ALT Step 1: install an integrated development environment (IDE) of your choice (Intellij Idea, Visual Studio Code, Eclipse)
+
+    ALT Step 2: follow the same steps as the "Obtaining Game Files" for the installation guide.
+
+    ALT Step 3: navigate to the location where the game files are and open them in the IDE
+
 
 </details>
 
@@ -65,7 +76,7 @@ The following is a link to the layout of the controller sensors and their connec
 
 ### → The Software used for this project include:
 - Java JDK
-- JavaFX
+- JavaFX & Scene Builder
 - C++ (for Arduino)
 - Maven
 - Intellij Idea, VSCode, and Aruino IDEs
@@ -79,11 +90,11 @@ The following is a link to the layout of the controller sensors and their connec
 - **Zhaoyu Wang (Jerome)**
     > _Contributed by co-developing Color Match minigame, creating game menu, tutorial, code reviews, and co-building the Leveler controller._ 
 - **Karl Byland**
-    > _Contributed by co-developing Sequence Game minigame, developing the leaderboard, minor contributins to the ci pipeline and bug fixing in the color match mini-game, and code reviews._
+    > _Contributed by co-developing Sequence Game minigame, developing the leaderboard, helping with the ci pipeline, bug fixing in the color match mini-game, writing the wiki retrospective, and code reviews._
 - **Filipe Rosa**
     > _Contributed by co-developing Bolt game and CI pipeline, co-building Leveler controller and researching arduino, maven, and code reviews._
 - **David zum Felde**
-    > _Contributed by co-developing Sequence Game minigame, developing game over screen, helping with project wiki, writing project README, co-building Leveler controller, edit demo video, animated Leveler logo, and code reviews._      
+    > _Contributed by co-developing Sequence Game minigame, developing game over screen, helping with project wiki, writing project README, co-building Leveler controller, create controller layout diagram, edit demo video, animated Leveler logo, and code reviews._      
 ## _Product Demo Video_
 
 Feel free to checkout the official demo of the Leveler minigame product, complete with both tiers of the system.  
