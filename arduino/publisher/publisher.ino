@@ -4,6 +4,8 @@
 #include "AccelerometerPublisher.h"
 #include "JoystickPublisher.h"
 #include "ButtonPublisher.h"
+#include "WifiInfo.h"
+
 
 
 AccelerometerPublisher accelerometerPublisher;
@@ -13,8 +15,8 @@ ButtonPublisher buttonPublisher(1, 5, 8);
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 
-const char* ssid = "R15-C712";
-const char* password =  "kmnmq78963";
+const char* ssid = WIFI_SSID;
+const char* password =  WIFI_PASSWORD;
 
 unsigned long lastAccelTime = 0;
 unsigned long lastButtonsTime = 0;
