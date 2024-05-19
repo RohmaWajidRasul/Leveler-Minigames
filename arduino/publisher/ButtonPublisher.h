@@ -1,12 +1,12 @@
-#ifndef BUTTONS_H
-#define BUTTONS_H
+#ifndef BUTTONPUBLISHER_H
+#define BUTTONPUBLISHER_H
 
 #include "Arduino.h"
 #include "PubSubClient.h"
 
-class Buttons {
+class ButtonPublisher {
   public:
-    Buttons(int yellowPin, int redPin, int bluePin);
+    ButtonPublisher(int yellowPin, int redPin, int bluePin);
     void setup(PubSubClient &mqttClient, const char* yellowTopic, const char* redTopic, const char* blueTopic);
     void publishData();
 

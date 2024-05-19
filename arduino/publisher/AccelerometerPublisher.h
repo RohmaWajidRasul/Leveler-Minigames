@@ -1,5 +1,5 @@
-#ifndef ACCELEROMETER_H
-#define ACCELEROMETER_H
+#ifndef ACCELEROMETERPUBLISHER_H
+#define ACCELEROMETERPUBLISHER_H
 
 #include "Arduino.h"
 #include "LIS3DHTR.h"
@@ -7,9 +7,9 @@
 #include "PubSubClient.h"
 
 
-class Accelerometer {
+class AccelerometerPublisher {
 public:
-    Accelerometer();
+    AccelerometerPublisher();
     void init(PubSubClient &mqttClient, const char* topic);
     void publishData();
     void getAcceleration(float* ax, float* ay, float* az);

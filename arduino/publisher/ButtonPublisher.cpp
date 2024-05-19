@@ -1,4 +1,4 @@
-#include "Buttons.h"
+#include "ButtonPublisher.h"
 
 // Variables will change:
 int yellowButtonState;            // Yellow button state
@@ -11,9 +11,9 @@ int lastBlueButtonState = HIGH;   // Previous blue button state
 unsigned long lastDebounceTime = 0;  // Last time the output pin was toggled
 unsigned long debounceDelay = 50;    // Debounce time; increase if output flickers
 
-Buttons::Buttons(int yellowPin, int redPin, int bluePin) : yellowPin(yellowPin), redPin(redPin), bluePin(bluePin) {}
+ButtonPublisher::ButtonPublisher(int yellowPin, int redPin, int bluePin) : yellowPin(yellowPin), redPin(redPin), bluePin(bluePin) {}
 
-void Buttons::setup(PubSubClient &mqttClient,  const char* yellowTopic, const char* redTopic, const char* blueTopic) {
+void ButtonPublisher::setup(PubSubClient &mqttClient,  const char* yellowTopic, const char* redTopic, const char* blueTopic) {
   pinMode(yellowPin, INPUT);
   pinMode(redPin, INPUT);
   pinMode(bluePin, INPUT);
@@ -25,7 +25,7 @@ void Buttons::setup(PubSubClient &mqttClient,  const char* yellowTopic, const ch
 
 }
 
-void Buttons::publishData() {
+void ButtonPublisher::publishData() {
   // Read yellow button state
   int yellowReading = digitalRead(yellowPin);
   if (yellowReading != lastYellowButtonState && millis() - lastDebounceTime > debounceDelay) {
