@@ -37,3 +37,6 @@ build/
 
 Group-14-tcptestmosquittoorg1883/
 -tcptestmosquittoorg/
+
+# Wifi network info
+arduino/publisher/WifiInfo.h

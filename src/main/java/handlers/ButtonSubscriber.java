@@ -1,19 +1,23 @@
 package handlers;
 
 import org.eclipse.paho.client.mqttv3.*;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ButtonSubscriber implements MqttCallback{
+    //https://canvas.gu.se/courses/72527/files/folder/Code%20Examples/MQTT%20Java
+    //Code based on example code from canvas
+
     private final static ExecutorService THREAD_POOL = Executors.newSingleThreadExecutor();
 
     private final IMqttClient middleware;
+
     private final static String TOPIC_YELLOW = "sensor/yellow_button_state";
     private final static String TOPIC_RED = "sensor/red_button_state";
     private final static String TOPIC_BLUE = "sensor/blue_button_state";
     private final static String BROKER  = "tcp://test.mosquitto.org";
     private final static String USER_ID = "";
+
     private int yellowButtonState = 1;
     private int lastYellowButtonState = 1;
     private int redButtonState = 1;
@@ -59,6 +63,7 @@ public class ButtonSubscriber implements MqttCallback{
     }
 
     public void messageArrived(String topic, MqttMessage message) {
+
         String payloadString = new String(message.getPayload());
 
         try {
@@ -82,6 +87,7 @@ public class ButtonSubscriber implements MqttCallback{
     }
 
     public String getValidButtonPress() {
+
         if (yellowButtonState == 0 && lastYellowButtonState == 1) {
             lastYellowButtonState = 0;
             return "Yellow";

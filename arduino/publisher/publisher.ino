@@ -1,24 +1,28 @@
 #include "rpcWiFi.h"
 #include "PubSubClient.h"
 #include <Wire.h>
-#include "Accelerometer.h"
-#include "Joystick.h"
-#include "Buttons.h"
+#include "AccelerometerPublisher.h"
+#include "JoystickPublisher.h"
+#include "ButtonPublisher.h"
+#include "WifiInfo.h"
 
 
-Accelerometer accelerometer;
-Joystick joystick;
-Buttons buttons(1, 5, 8);   // Yellow button pin (terminal right)
+
+AccelerometerPublisher accelerometerPublisher;
+JoystickPublisher joystickPublisher;
+ButtonPublisher buttonPublisher(1, 5, 8); 
 
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 
-const char* ssid = "R15-C712";
-const char* password =  "kmnmq78963";
+const char* ssid = WIFI_SSID;
+const char* password =  WIFI_PASSWORD;
 
 unsigned long lastAccelTime = 0;
 unsigned long lastButtonsTime = 0;
 
+//https://github.com/knolleary/pubsubclient/blob/master/examples/mqtt_esp8266/mqtt_esp8266.ino
+//Part of method taken from this link
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
@@ -40,9 +44,11 @@ void reconnect() {
   }
 }
 
+//https://github.com/knolleary/pubsubclient/blob/master/examples/mqtt_esp8266/mqtt_esp8266.ino
+//Part of method taken from this link
 void setup() {
 
-    accelerometer.init(client, "sensor/vibration");
+    accelerometerPublisher.init(client, "sensor/vibration");
     Serial.begin(9600);
     //Serial.begin(115200);
     while(!Serial); // Wait for Serial to be ready
@@ -64,8 +70,8 @@ void setup() {
     Serial.println (WiFi.localIP()); // prints out the device's IP address
 
     client.setServer("test.mosquitto.org", 1883);
-    joystick.setup(client, "sensor/direction");
-    buttons.setup(client, "sensor/yellow_button_state", "sensor/red_button_state", "sensor/blue_button_state");
+    joystickPublisher.setup(client, "sensor/direction");
+    buttonPublisher.setup(client, "sensor/yellow_button_state", "sensor/red_button_state", "sensor/blue_button_state");
     
 
 }
@@ -80,13 +86,13 @@ void loop() {
     unsigned long currentTime = millis();
 
     if (currentTime - lastAccelTime >= 300) {
-      accelerometer.publishData();
-      joystick.publishData();
+      accelerometerPublisher.publishData();
+      joystickPublisher.publishData();
       lastAccelTime = currentTime;
     }
 
     if (currentTime - lastButtonsTime >= 110) {
-      buttons.publishData();
+      buttonPublisher.publishData();
       lastButtonsTime = currentTime;
 
     }

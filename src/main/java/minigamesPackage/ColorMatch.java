@@ -1,8 +1,8 @@
 package minigamesPackage;
+
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,12 +15,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import handlers.ButtonSubscriber;
 import menu.Game;
-import menu.Main;
-
 import org.eclipse.paho.client.mqttv3.MqttException;
-
 import gameover.GameOverScreen;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -29,26 +25,23 @@ public class ColorMatch {
 
     private ButtonSubscriber buttonSubscriber;
     private GraphicsContext graphicsContext;
+    private final String[] colorList;
+    private Random random;
+    private boolean gameOver;
+    private GameOverScreen gameOverTrigger;
+    private Stage stage;
 
     private ArrayList<String> fontColor;
     private ArrayList<String> writtenColor;
     private ArrayList<String> inputColors;
-    private int inputIndex;
-    private final String[] colorList;
 
-    private String version;
-
-    private final int baseNumOfColors;
-    private int currentNumOfColors;
-
-    private Random random;
     private Timeline timeline;
     private Timeline timer;
     private int timerValue;
-
-    private boolean gameOver;
-    private GameOverScreen gameOverTrigger;
-    private Stage stage;
+    private final int baseNumOfColors;
+    private int currentNumOfColors;
+    private int inputIndex;
+    private String version;
 
     public ColorMatch(Stage stage, String version) throws MqttException, IOException {
         this.colorList = new String[]{"Red", "Yellow", "Blue"};
@@ -84,7 +77,7 @@ public class ColorMatch {
 
         timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
             try {
-                run(stage);
+                run();
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
@@ -153,7 +146,7 @@ public class ColorMatch {
 
     }
 
-    public void run(Stage stage) throws Exception {
+    public void run() throws Exception {
         drawScreen(graphicsContext);
         getInput();
         checkGameCondition();
@@ -182,11 +175,12 @@ public class ColorMatch {
 
 
             graphicsContext.setFont(Font.font("Verdana", FontWeight.SEMI_BOLD, 20));
-            graphicsContext.setFill(Color.BLACK);
-            graphicsContext.fillText(text, x - 1, y - 1);
-            graphicsContext.fillText(text, x + 1, y - 1);
-            graphicsContext.fillText(text, x - 1, y + 1);
-            graphicsContext.fillText(text, x + 1, y + 1);
+            // Set the outline color to black
+            graphicsContext.setStroke(Color.BLACK);
+            graphicsContext.setLineWidth(3); 
+
+            // Draw the text outline
+            graphicsContext.strokeText(text, x, y);
 
             if (color.equals("Red")) {
                 graphicsContext.setFill(Color.RED);

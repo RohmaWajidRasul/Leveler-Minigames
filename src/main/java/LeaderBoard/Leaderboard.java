@@ -8,7 +8,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import menu.Main;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -95,7 +94,6 @@ public class Leaderboard {
 
     private void fillArray() {
 
-
         try(Reader reader = new Reader(this.fileName)) {
 
             String fileContent = reader.readFile();
@@ -114,7 +112,6 @@ public class Leaderboard {
 
                 this.entries.add(new Entry(name,score));
             }
-
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found");

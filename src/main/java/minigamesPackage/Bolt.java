@@ -3,7 +3,6 @@ import handlers.AccelerationSubscriber;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,21 +13,21 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import menu.Game;
-import menu.Main;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import gameover.GameOverScreen;
 
 public class Bolt {
 
     private GraphicsContext gc;
+
     private int runnerX;
-    private int runnerY;
-    private final int runnerSize;
-    private final int gridSquare;
-    private final int finishLineX;
-    private final int runnerRows;
-    private final int gridRow;
-    private final int gridColumn;
+    private final int runnerY = 177;
+    private final int runnerSize = 40;
+    private final int gridSquare = 20;
+    private final int finishLineX = 520;
+    private final int runnerRows = 5;
+    private final int gridRow = 20;
+    private final int gridColumn = 2;
     private int timerValue;
 
     private AccelerationSubscriber accelerationSubscriber;
@@ -38,13 +37,6 @@ public class Bolt {
 
     public Bolt(Stage stage){
         runnerX = 10;
-        runnerY = 177;
-        runnerSize = 40;
-        gridSquare = 20;
-        finishLineX = 520;
-        runnerRows = 5;
-        gridRow = 20;
-        gridColumn = 2;
         timerValue = 7;
 
         start(stage);

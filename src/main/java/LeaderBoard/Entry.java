@@ -9,7 +9,6 @@ public class Entry {
 
         this.score = score;
         this.name = name;
-
     }
     public String toString() {
         return this.name + " = " + this.score;
