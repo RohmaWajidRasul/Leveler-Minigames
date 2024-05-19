@@ -57,11 +57,11 @@ Given that the system is having difficulties creating a stable jar file, the fol
 
 Below is a link to an image of the state-of-the-art Leveler controller:
 
-![Leveler_Controller](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/blob/18-readme-revision/src/main/resources/readmeAssets/LevelerController.jpg?ref_type=heads)
+![Leveler_Controller](readmeAssets/LevelerController.jpg)
 
 The following is a link to the layout of the controller sensors and their connections once built into the controller:
 
-![Sensor_Layout](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/blob/18-readme-revision/src/main/resources/readmeAssets/LEVELER%20PORT%20LAYOUT.png?ref_type=heads)
+![Sensor_Layout](readmeAssets/levelerPortLayout.png)
 
 </details>
 
