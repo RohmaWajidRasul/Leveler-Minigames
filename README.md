@@ -23,11 +23,25 @@ Leveler requires:
 
 <details><summary><h3> Installation Guide </h3></summary> 
 
-**Step 1:** _Obtaining Game Files_
+**Step 1:** _Obtain Game Files_
 - Go to the [main project page](https://git.chalmers.se/courses/dit113/2024/group-14/minigames)
 - Click on the "Code" drop down and either clone the repository (with SSH or HTTPS) or download the source code zip file
 
-**Step 2:** _Building and Compiling the System_ 
+**Step 2:** _Configure Leveler Controller_
+- Go to the [arduino-cli website](https://arduino.github.io/arduino-cli/0.35/installation/) and follow the instructions under "Use the install script". This will prepare the controller's arduino libraries.  
+- Next, go back to the IDE and click on the file named setup-build-env.sh
+- In this file, a list of ardunio-cli commands will be found under "Install 'native' packages". Run the installs one after another in the bash terminal:
+    
+```bash
+    arduino-cli lib install "Seeed Arduino rpcWiFi@1.0.6"
+    arduino-cli lib install "PubSubClient@2.8"
+    arduino-cli lib install "Seeed Arduino RTC@2.0.0"
+    arduino-cli lib install "Grove-3-Axis-Digital-Accelerometer-2g-to-16g-LIS3DHTR"
+    arduino-cli lib install "Seeed Arduino rpcUnified"
+    arduino-cli lib install "Accelerometer_MMA7660"
+```
+
+**Step 3:** _Build and Compile the System_ 
 - Open your command prompt (or terminal on mac)
 - Navigate to the directory (folder) where you cloned/downloaded the game files (don't forget to extract if it's the zip)
 - Type the following commands one after the next in the command line:
@@ -35,11 +49,12 @@ Leveler requires:
      - mvn install
 - These commands will create a folder named "target" among the game files where you can find a jar executable
 
-**Step 3:** _Running the Game_
+**Step 4:** _Run the Game_
 - Click on the Leveler-1.0-SNAPSHOT-shaded.jar to run the game
+- Enjoy Leveler :D
 
 
-**_ALTERNATIVE INSTALLATION AND RUNNING METHOD_**
+**_ALTERNATIVE INSTALLATION AND RUNNING METHOD (without jar)_**
 
 >_Given the system is having difficulties creating stable jar files, the steps above work but may result in bugs within areas such as the leaderboard and gameover screen._
 
@@ -52,22 +67,9 @@ _Step 2_: follow the same steps as the "Obtaining Game Files" for retrieving the
 
 _Step 3_: navigate to the location where the game files are and open them in the IDE.
 
-_Step 4_: go to the [arduino-cli website](https://arduino.github.io/arduino-cli/0.35/installation/) and follow the instructions under "Use the install script". This will prepare the controller's arduino libraries.  
+_Step 4:_ next, run the Launch.java file in the IDE
 
-_Step 5_: after the previous step, go back to the IDE and click on the file named setup-build-env.sh
-
-_Step 6_: in this file, a list of ardunio-cli commands will be found under "Install 'native' packages". Run the installs one after in the bash terminal (setup back in Step 4)
-    
-    arduino-cli lib install "Seeed Arduino rpcWiFi@1.0.6"
-    arduino-cli lib install "PubSubClient@2.8"
-    arduino-cli lib install "Seeed Arduino RTC@2.0.0"
-    arduino-cli lib install "Grove-3-Axis-Digital-Accelerometer-2g-to-16g-LIS3DHTR"
-    arduino-cli lib install "Seeed Arduino rpcUnified"
-    arduino-cli lib install "Accelerometer_MMA7660"
-
-_Step 7:_ next, run the Launch.java file in the IDE
-
-_Step 8:_ enjoy Leveler! :D
+_Step 5:_ enjoy Leveler! :D
 
 </details>
 
