@@ -52,6 +52,9 @@ Given that the system is having difficulties creating a stable jar file, the fol
 
 </details>
 
+
+## _Hardware and Software Information_
+
 <details><summary><h3> Controller Details </h3></summary>
 
 Below is an image of the state-of-the-art Leveler controller:
@@ -64,10 +67,16 @@ The following is a schematic layout of the controller sensors and their connecti
 
 </details>
 
-## _Hardware and Software Information_
+<details><summary><h3> System Architecure </h3></summary>
+
+The two tier system is facilitated via an MQTT broker connection 'bridge' which is demonstrated in the diagram below:
+
+![System Architecture Diagram](readmeAssets/Architectural_Diagram.jpg){width=75%}
+
+</details>
 
 ### → The Hardware used for this project include:
-- Grove sensors
+- Grove sensors (see specific sensor details in [wiki](https://git.chalmers.se/courses/dit113/2024/group-14/minigames/-/wikis/home/System-Sensor-List))
 - WIO SEEED terminal
 - Battery extension unit
 - Wire connections
