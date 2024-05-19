@@ -29,7 +29,7 @@ Leveler requires:
 
 **Step 2:** _Configure Leveler Controller_
 - Go to the [arduino-cli website](https://arduino.github.io/arduino-cli/0.35/installation/) and follow the instructions under "Use the install script". This will prepare the controller's arduino libraries.  
-- In this file, a list of ardunio-cli commands will be found under "Install 'native' packages". Run the installs one after another in the bash/terminal:
+- Next, run the installs one after another in the bash/terminal:
     
 ```bash
     arduino-cli lib install "Seeed Arduino rpcWiFi@1.0.6"
