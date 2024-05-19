@@ -177,7 +177,7 @@ public class ColorMatch {
             graphicsContext.setFont(Font.font("Verdana", FontWeight.SEMI_BOLD, 20));
             // Set the outline color to black
             graphicsContext.setStroke(Color.BLACK);
-            graphicsContext.setLineWidth(3); // Adjust the outline width as needed
+            graphicsContext.setLineWidth(3); 
 
             // Draw the text outline
             graphicsContext.strokeText(text, x, y);
