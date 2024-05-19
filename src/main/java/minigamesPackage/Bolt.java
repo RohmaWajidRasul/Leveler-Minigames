@@ -21,13 +21,13 @@ public class Bolt {
     private GraphicsContext gc;
 
     private int runnerX;
-    private final int runnerY = 177;
-    private final int runnerSize = 40;
-    private final int gridSquare = 20;
-    private final int finishLineX = 520;
-    private final int runnerRows = 5;
-    private final int gridRow = 20;
-    private final int gridColumn = 2;
+    private final int runnerY;
+    private final int runnerSize;
+    private final int gridSquare;
+    private final int finishLineX;
+    private final int runnerRows;
+    private final int gridRow;
+    private final int gridColumn;
     private int timerValue;
 
     private AccelerationSubscriber accelerationSubscriber;
@@ -38,6 +38,13 @@ public class Bolt {
     public Bolt(Stage stage){
         runnerX = 10;
         timerValue = 7;
+        runnerY = 177;
+        runnerSize = 40;
+        gridSquare = 20;
+        finishLineX = 520;
+        runnerRows = 5;
+        gridRow = 20;
+        gridColumn = 2;
 
         start(stage);
     }
