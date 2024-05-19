@@ -88,11 +88,11 @@ The following is a schematic layout of the controller sensors and their connecti
 
 Below is the WIO SEEED Terminal layout schematic courtesy of https://wiki.seeedstudio.com/Wio-Terminal-Getting-Started/
 
-![Wio_Terminal_Layout](readmeAssets/Wio_Terminal_Grove.jpeg){width=40%}
+![Wio_Terminal_Layout](readmeAssets/Wio_Terminal_Grove.jpeg){width=60%}
 
 The following is a schematic of the External Battery Chassis courtesy of https://wiki.seeedstudio.com/Wio-Terminal-Battery-Chassis/
 
-![External_Battery_Chassis_Layout](readmeAssets/External_Battery_Chassis.jpg){width=40%}
+![External_Battery_Chassis_Layout](readmeAssets/External_Battery_Chassis.jpg){width=75%}
 </details>
 
 <details><summary><h3> System Architecure </h3></summary>
