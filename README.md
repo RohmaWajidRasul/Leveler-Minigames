@@ -21,9 +21,7 @@ Leveler requires:
 
 </details>
 
-<details><summary><h3> Installation Guide </h3></summary>
-
-Given that the system is having difficulties creating a stable jar file, the following steps work but result in bugs within areas such as the leaderboard and gameover screen. 
+<details><summary><h3> Installation Guide </h3></summary> 
 
 **Step 1:** _Obtaining Game Files_
 - Go to the [main project page](https://git.chalmers.se/courses/dit113/2024/group-14/minigames)
@@ -43,12 +41,33 @@ Given that the system is having difficulties creating a stable jar file, the fol
 
 **_ALTERNATIVE INSTALLATION AND RUNNING METHOD_**
 
-    ALT Step 1: install an integrated development environment (IDE) of your choice (Intellij Idea, Visual Studio Code, Eclipse)
+>_Given the system is having difficulties creating stable jar files, the steps above work but may result in bugs within areas such as the leaderboard and gameover screen._
 
-    ALT Step 2: follow the same steps as the "Obtaining Game Files" for the installation guide.
+>_The instructions below will circumvent this current issue, but will require extra steps._
 
-    ALT Step 3: navigate to the location where the game files are and open them in the IDE
 
+_Step 1_: install an integrated development environment (IDE) of your choice ([Intellij Idea](https://www.jetbrains.com/idea/), [Visual Studio Code](https://code.visualstudio.com/) (recommended), [Eclipse](https://eclipseide.org/))
+
+_Step 2_: follow the same steps as the "Obtaining Game Files" for retrieving the Leveler files mentioned in the default installation guide.
+
+_Step 3_: navigate to the location where the game files are and open them in the IDE.
+
+_Step 4_: go to the [arduino-cli website](https://arduino.github.io/arduino-cli/0.35/installation/) and follow the instructions under "Use the install script". This will prepare the controller's arduino libraries.  
+
+_Step 5_: after the previous step, go back to the IDE and click on the file named setup-build-env.sh
+
+_Step 6_: in this file, a list of ardunio-cli commands will be found under "Install 'native' packages". Run the installs one after in the bash terminal (setup back in Step 4)
+    
+    arduino-cli lib install "Seeed Arduino rpcWiFi@1.0.6"
+    arduino-cli lib install "PubSubClient@2.8"
+    arduino-cli lib install "Seeed Arduino RTC@2.0.0"
+    arduino-cli lib install "Grove-3-Axis-Digital-Accelerometer-2g-to-16g-LIS3DHTR"
+    arduino-cli lib install "Seeed Arduino rpcUnified"
+    arduino-cli lib install "Accelerometer_MMA7660"
+
+_Step 7:_ next, run the Launch.java file in the IDE
+
+_Step 8:_ enjoy Leveler! :D
 
 </details>
 
