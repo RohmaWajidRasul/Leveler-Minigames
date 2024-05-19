@@ -1,10 +1,4 @@
-![Leveler](readmeAssets/Leveler_Logo.png)
-
-
-
-
-# Leveler Minigames
-_-brought to you by the members of DEV TEAM 14_ 
+![Leveler](readmeAssets/Leveler_Logo.png){width=60%}
 
 
 ## _What is Leveler?_
