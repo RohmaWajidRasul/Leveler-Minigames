@@ -21,6 +21,8 @@ const char* password =  WIFI_PASSWORD;
 unsigned long lastAccelTime = 0;
 unsigned long lastButtonsTime = 0;
 
+//https://github.com/knolleary/pubsubclient/blob/master/examples/mqtt_esp8266/mqtt_esp8266.ino
+//Part of method taken from this link
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
@@ -42,6 +44,8 @@ void reconnect() {
   }
 }
 
+//https://github.com/knolleary/pubsubclient/blob/master/examples/mqtt_esp8266/mqtt_esp8266.ino
+//Part of method taken from this link
 void setup() {
 
     accelerometerPublisher.init(client, "sensor/vibration");

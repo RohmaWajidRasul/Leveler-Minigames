@@ -5,6 +5,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ButtonSubscriber implements MqttCallback{
+    //https://canvas.gu.se/courses/72527/files/folder/Code%20Examples/MQTT%20Java
+    //Code based on example code from canvas
 
     private final static ExecutorService THREAD_POOL = Executors.newSingleThreadExecutor();
 

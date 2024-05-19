@@ -71,6 +71,9 @@ public class SequenceGame {
                         performanceResult = "quota_met";
                         this.sequenceGui.changeArrowColor(this.currentArrow, "green");
 
+                        //written like this to make sure there is enough of a delay for the arrows to change color
+                        //even when the level is cleared, or you die. The timelines executes and extra time before
+                        //calling the managePerformance method.
                         if (this.colorChange) {
                             managePerformance(performanceResult);
                         }

@@ -11,6 +11,8 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.MqttSecurityException;
 
 public class AccelerationSubscriber implements MqttCallback {
+//https://canvas.gu.se/courses/72527/files/folder/Code%20Examples/MQTT%20Java
+// Code based on example code from canvas
 
     private final static ExecutorService THREAD_POOL = Executors.newSingleThreadExecutor();
 
