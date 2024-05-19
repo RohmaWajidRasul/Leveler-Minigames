@@ -63,7 +63,9 @@ Leveler requires:
 
 _Step 1_: install an integrated development environment (IDE) of your choice ([Intellij Idea](https://www.jetbrains.com/idea/), [Visual Studio Code](https://code.visualstudio.com/) (recommended), [Eclipse](https://eclipseide.org/))
 
-_Step 2_: follow the same steps as the "Obtaining Game Files" for retrieving the Leveler files mentioned in the default installation guide.
+_Step 2_: follow the same steps as the "Obtain Game Files" for retrieving the Leveler files mentioned in the default installation guide.
+
+_Step 3_: follow the same steps as the "Configure Leveler Controller" for setting up the controller libraries.
 
 _Step 3_: navigate to the location where the game files are and open them in the IDE.
 
