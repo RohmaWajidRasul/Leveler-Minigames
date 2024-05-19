@@ -29,8 +29,7 @@ Leveler requires:
 
 **Step 2:** _Configure Leveler Controller_
 - Go to the [arduino-cli website](https://arduino.github.io/arduino-cli/0.35/installation/) and follow the instructions under "Use the install script". This will prepare the controller's arduino libraries.  
-- Next, go back to the IDE and click on the file named setup-build-env.sh
-- In this file, a list of ardunio-cli commands will be found under "Install 'native' packages". Run the installs one after another in the bash terminal:
+- In this file, a list of ardunio-cli commands will be found under "Install 'native' packages". Run the installs one after another in the bash/terminal:
     
 ```bash
     arduino-cli lib install "Seeed Arduino rpcWiFi@1.0.6"
@@ -67,11 +66,13 @@ _Step 2_: follow the same steps as the "Obtain Game Files" for retrieving the Le
 
 _Step 3_: follow the same steps as the "Configure Leveler Controller" for setting up the controller libraries.
 
-_Step 3_: navigate to the location where the game files are and open them in the IDE.
+_Step 4_: next, go back to the IDE and click on the file named setup-build-env.sh
 
-_Step 4:_ next, run the Launch.java file in the IDE
+_Step 5_: navigate to the location where the game files are and open them in the IDE.
 
-_Step 5:_ enjoy Leveler! :D
+_Step 6:_ next, run the Launch.java file in the IDE
+
+_Step 7:_ enjoy Leveler! :D
 
 </details>
 
